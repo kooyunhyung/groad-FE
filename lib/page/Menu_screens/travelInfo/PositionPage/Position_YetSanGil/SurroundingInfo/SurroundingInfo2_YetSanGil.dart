@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 
 class SurroundingInfo2_YetSanGil extends StatelessWidget {
   const SurroundingInfo2_YetSanGil({Key? key}) : super(key: key);

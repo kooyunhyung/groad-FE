@@ -13,7 +13,7 @@ import 'benefits.dart';
 import 'feed.dart';
 import 'mypage.dart';
 import '../Menu_screens/Login_Info/signup.dart';
-import 'theme.dart';
+import '../../constant/theme.dart';
 import 'TourCourse/TourCourse.dart';
 
 class MainScreens extends StatefulWidget {

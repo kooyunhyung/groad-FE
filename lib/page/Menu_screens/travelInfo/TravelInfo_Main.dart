@@ -4,7 +4,7 @@ import 'package:gload_app/page/Main_screens/feed.dart';
 import 'package:gload_app/page/Main_screens/floatingActionButton/expandable_fab.dart';
 import 'package:gload_app/page/Main_screens/mypage.dart';
 import 'package:gload_app/page/Main_screens/schedule.dart';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage_Main.dart';
 import 'package:gload_app/page/Menu_screens/travelAssistant/travelAssistant.dart';
 import 'TravelInfo.dart';

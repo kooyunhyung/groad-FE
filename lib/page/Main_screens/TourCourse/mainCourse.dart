@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gload_app/page/Main_screens/TourCourse/components/round_border_text.dart';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 
 class MainCourse extends StatelessWidget {
   const MainCourse({Key? key}) : super(key: key);

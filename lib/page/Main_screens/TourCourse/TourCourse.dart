@@ -8,7 +8,7 @@ import 'package:gload_app/page/Main_screens/benefits.dart';
 import 'package:gload_app/page/Main_screens/feed.dart';
 import 'package:gload_app/page/Main_screens/mypage.dart';
 import 'package:gload_app/page/Main_screens/schedule.dart';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 import 'localCourse.dart';
 import 'longDistanceCourse.dart';
 import 'mainCourse.dart';

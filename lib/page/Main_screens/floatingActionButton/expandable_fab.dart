@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 
 const Duration _duration = Duration(milliseconds: 300);
 

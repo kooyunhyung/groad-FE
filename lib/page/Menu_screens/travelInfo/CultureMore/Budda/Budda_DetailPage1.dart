@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 
 class Budda_DetailPage1 extends StatelessWidget {
   const Budda_DetailPage1({Key? key}) : super(key: key);

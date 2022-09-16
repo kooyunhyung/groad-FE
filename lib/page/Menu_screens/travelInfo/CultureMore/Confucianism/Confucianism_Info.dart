@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/theme.dart';
+import 'package:gload_app/constant/theme.dart';
 
 import 'Confucianism_Detail.dart';
 
