@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Main_screens/main_screens.dart';
-import 'Main_screens/theme.dart';
+import 'page/Main_screens/main_screens.dart';
+import 'page/Main_screens/theme.dart';
 
 void main() => runApp(LoginDemo());
 
