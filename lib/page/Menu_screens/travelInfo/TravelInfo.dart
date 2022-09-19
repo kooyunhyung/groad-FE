@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Budda/Budda.dart';
-import 'CultureMore/Confucianism/Confucianism.dart';
-import 'PositionPage/Position_YetSanGil/PositionPage_YetSanGil_Main.dart';
+import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Budda/BuddaInfo.dart';
+import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Confucianism/Confucianism_Info.dart';
+import 'package:gload_app/page/Menu_screens/travelInfo/PositionPage/Position_YetSanGil/PositionPage_YetSanGil.dart';
+import '../../frame/common_frame2.dart';
 
 class TravelInfo extends StatelessWidget {
-  const TravelInfo({Key? key}) : super(key: key);
+  const TravelInfo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class TravelInfo extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PositionPage_YetSanGil_Main()),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '해당 코스', clas: PositionPage_YetSanGil(),)),
                   );
                 },
                 child: Center(
@@ -258,7 +259,7 @@ class TravelInfo extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => BuddaPage()),
+                MaterialPageRoute(builder: (context) => CommonFrame2(title:'불교문화', clas: BuddaInfoPage(),)),
               );
             },
             child: ClipRRect(
@@ -285,7 +286,7 @@ class TravelInfo extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ConfucianismPage()),
+                MaterialPageRoute(builder: (context) => CommonFrame2(title: '유교 문화', clas: Confucianism_InfoPage(),)),
               );
             },
             child: ClipRRect(

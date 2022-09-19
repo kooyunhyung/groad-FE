@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
 
 class RoundBorderText extends StatefulWidget {
-  const RoundBorderText({Key? key, required this.title, required this.position})
+  const RoundBorderText({Key key, this.title, this.position})
       : super(key: key);
 
   final String title;

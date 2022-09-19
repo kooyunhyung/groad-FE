@@ -4,7 +4,7 @@ import 'package:gload_app/models/popular_room.dart';
 class RoomItem extends StatelessWidget {
   final PopularRoom popularRoom;
 
-  const RoomItem({Key? key,required this.popularRoom}) : super(key: key);
+  const RoomItem({Key key, this.popularRoom}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

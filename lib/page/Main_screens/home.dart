@@ -1,258 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gload_app/page/Main_screens/components/food_store_item.dart';
-import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage_Main.dart';
-import 'package:gload_app/page/Menu_screens/travelAssistant/travelAssistant.dart';
-import 'package:gload_app/page/Main_screens/floatingActionButton/expandable_fab.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/TravelInfo_Main.dart';
 import 'package:gload_app/models/popular_food_store.dart';
 import 'package:gload_app/models/popular_room.dart';
+import 'package:gload_app/page/frame/common_frame1.dart';
 import 'components/room_item.dart';
-import 'schedule.dart';
-import 'benefits.dart';
-import 'feed.dart';
-import 'mypage.dart';
-import '../Menu_screens/Login_Info/signup.dart';
 import '../../constant/theme.dart';
 import 'TourCourse/TourCourse.dart';
 
-class MainScreens extends StatefulWidget {
-  @override
-  _MainScreensState createState() => _MainScreensState();
-}
-
-var selectedIndex=2;
-var pages = [
-  Schedule(), //하단 0번 인덱스
-  Benefits(), //하단 1번 인덱스
-  Home(), //하단 2번 인덱스(default)
-  Feed(), //하단 3번 인덱스
-  MyPage(), //하단 4번 인덱스
-];
-
-class _MainScreensState extends State<MainScreens> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: Drawer(
-        child: Container(
-          child: ListView(
-            padding: EdgeInsets.all(30),
-            children: [
-              DrawerHeader(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '로그인 해주세요',
-                          style: textTheme().headline2,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage_Main()),
-                            );
-                          },
-                          child: Row(
-                            children: [
-                              Text(
-                                '로그인',
-                                style: textTheme().subtitle1,
-                              ),
-                              SizedBox(
-                                width: 4.0,
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_sharp,
-                                color: Colors.black,
-                                size: 16,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.account_circle_sharp,
-                      color: Colors.grey,
-                      size: 90.0,
-                    ),
-                  ],
-                ),
-              ), //로그인 정보
-              ListTile(
-                title: Text(
-                  '여행 정보',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TravelInfo_Main()),
-                  );
-                },
-              ), //여행 정보
-              ListTile(
-                leading: Text(
-                  '여행 도우미',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TravelAssistant()),
-                  );
-                },
-              ),
-              ListTile(
-                leading: Text(
-                  '자주 묻는 질문',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Text(
-                  '이벤트',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Text(
-                  '문의',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Text(
-                  '도움말',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Text(
-                  '이용 약관',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Text(
-                  '알림',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Text(
-                  '로그아웃',
-                  style: textTheme().headline1,
-                ),
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
-      ),
-      //측면 메류 서랍
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(45.0),
-        child: AppBar(
-          title: Text(
-            'GROAD',
-            style:
-                TextStyle(fontWeight: FontWeight.bold, color: Color(deepNavy)),
-          ),
-          // actions: [
-          //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          //   IconButton(onPressed: () {}, icon: Icon(Icons.menu))
-          // ],
-        ),
-      ),
-      //앱 바
-      body: pages[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        onTap: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        currentIndex: selectedIndex, //선택된 인덱스
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            label: '일정',
-            icon: Icon(Icons.calendar_today),
-          ),
-          BottomNavigationBarItem(
-            label: '혜택',
-            icon: Icon(Icons.card_giftcard_rounded),
-          ),
-          BottomNavigationBarItem(
-            label: '홈',
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: '피드',
-            icon: Icon(Icons.list_alt),
-          ),
-          BottomNavigationBarItem(
-            label: '마이페이지',
-            icon: Icon(Icons.account_circle_sharp),
-          ),
-        ],
-      ),
-      //하단 아이콘
-      floatingActionButton: ExpandableFab(
-        distance: 150,
-        children: [
-          FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            child: Icon(
-              Icons.qr_code,
-              color: Colors.grey,
-            ),
-          ),
-          FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            child: Icon(
-              Icons.directions_walk,
-              color: Colors.grey,
-            ),
-          ),
-          FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            child: Icon(
-              Icons.info,
-              color: Colors.grey,
-            ),
-          ),
-        ],
-      ),
-      //플로팅 액션 버튼
-    );
-  }
-}
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({Key key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+
   int currentPage=0;
 
   @override
@@ -497,7 +262,7 @@ class _HomeState extends State<Home> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => TourCourse()));
+                              builder: (context) => CommonFrame1(title: '여행 코스 둘러보기', clas: TourCourse(),)));
                     });
                   },
                   child: Text(

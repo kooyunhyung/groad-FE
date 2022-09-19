@@ -4,7 +4,7 @@ import 'package:gload_app/models/popular_food_store.dart';
 class FoodStoreItem extends StatelessWidget {
   final PopularFoodStore popularFoodStore;
 
-  const FoodStoreItem({Key? key, required this.popularFoodStore}) : super(key: key);
+  const FoodStoreItem({Key key, this.popularFoodStore}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

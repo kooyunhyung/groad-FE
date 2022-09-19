@@ -3,7 +3,7 @@ import 'package:gload_app/page/Main_screens/TourCourse/components/round_border_t
 import 'package:gload_app/constant/theme.dart';
 
 class MainCourse extends StatelessWidget {
-  const MainCourse({Key? key}) : super(key: key);
+  const MainCourse({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

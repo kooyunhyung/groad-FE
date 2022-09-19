@@ -5,10 +5,10 @@ class PopularFoodStore {
   final String imageUrl;
 
   PopularFoodStore(
-      {required this.storeName,
-      required this.foodCase,
-      required this.distance,
-      required this.imageUrl});
+      {this.storeName,
+      this.foodCase,
+      this.distance,
+      this.imageUrl});
 }
 
 List<PopularFoodStore> foodList = [

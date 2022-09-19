@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Benefits extends StatelessWidget {
-  const Benefits({Key? key}) : super(key: key);
+  const Benefits({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

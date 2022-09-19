@@ -5,7 +5,7 @@ import 'package:gload_app/page/Menu_screens/travelAssistant/digitalPassport.dart
 import 'materials.dart';
 
 class TermsOfUse extends StatefulWidget {
-  const TermsOfUse({Key? key}) : super(key: key);
+  const TermsOfUse({Key key}) : super(key: key);
 
   @override
   _TermsOfUseState createState() => _TermsOfUseState();

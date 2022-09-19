@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
+import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Confucianism/Confucianism_Detail.dart';
+import 'package:gload_app/page/frame/common_frame2.dart';
 
 import 'Confucianism_Detail.dart';
 
 class Confucianism_InfoPage extends StatelessWidget {
-  const Confucianism_InfoPage({Key? key}) : super(key: key);
+  const Confucianism_InfoPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class Confucianism_InfoPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Confucianism_DetailPage()),
+                      builder: (context) => CommonFrame2(title: '유교 문화', clas: Confucianism_Detail(),)),
                 );
               },
               child: Center(

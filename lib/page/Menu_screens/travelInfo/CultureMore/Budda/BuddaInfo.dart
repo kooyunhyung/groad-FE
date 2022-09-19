@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Budda/Budda_DetailPage1.dart';
-
+import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Budda/Budda_Detail.dart';
+import 'package:gload_app/page/frame/common_frame2.dart';
 import 'Budda_Detail.dart';
 
 class BuddaInfoPage extends StatelessWidget {
-  const BuddaInfoPage({Key? key}) : super(key: key);
+  const BuddaInfoPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class BuddaInfoPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Budda_DetailPage()),
+                  MaterialPageRoute(builder: (context) => CommonFrame2(title: '불교 문화', clas: Budda_Detail(),)),
                 );
               },
               child: Center(

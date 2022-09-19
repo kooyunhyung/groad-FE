@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/PositionPage/Position_YetSanGil/SurroundingInfo/SurroundingInfo1_YetSanGil_Main.dart';
-
-import 'SurroundingInfo/SurroundingInfo2_YetSanGil_Main.dart';
-import 'SurroundingInfo/SurroundingInfo3_YetSanGil_Main.dart';
+import 'package:gload_app/page/Menu_screens/travelInfo/PositionPage/Position_YetSanGil/SurroundingInfo/SurroundingInfo1_YetSanGil.dart';
+import 'package:gload_app/page/frame/common_frame2.dart';
+import 'SurroundingInfo/SurroundingInfo2_YetSanGil.dart';
+import 'SurroundingInfo/SurroundingInfo3_YetSanGil.dart';
 
 class PositionPage_YetSanGil extends StatelessWidget {
-  const PositionPage_YetSanGil({Key? key}) : super(key: key);
+  const PositionPage_YetSanGil({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -981,7 +981,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SurroundingInfo1_YetSanGil_Main()),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '세부 정보', clas: SurroundingInfo1_YetSanGil(),)),
                   );
                 },
                 child: Column(
@@ -1013,7 +1013,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
                 onTap: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SurroundingInfo2_YetSanGil_Main()),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '세부 정보', clas: SurroundingInfo2_YetSanGil(),)),
                   );
                 },
                 child: Column(
@@ -1045,7 +1045,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SurroundingInfo3_YetSanGil_Main()),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '세부 정보', clas: SurroundingInfo3_YetSanGil(),)),
                   );
                 },
                 child: Column(

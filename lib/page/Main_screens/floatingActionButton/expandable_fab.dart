@@ -9,7 +9,7 @@ class ExpandableFab extends StatefulWidget {
   final List<Widget> children;
 
   const ExpandableFab(
-      {Key? key, required this.distance, required this.children})
+      {Key key, this.distance, this.children})
       : super(key: key);
 
   @override
@@ -19,8 +19,8 @@ class ExpandableFab extends StatefulWidget {
 class _ExpandableFabState extends State<ExpandableFab>
     with SingleTickerProviderStateMixin {
   bool _open = false;
-  late AnimationController _controller;
-  late Animation<double> _expandAnimation;
+  AnimationController _controller;
+  Animation<double> _expandAnimation;
 
   @override
   void initState() {
@@ -116,11 +116,11 @@ class _ExpandableActionButton extends StatelessWidget {
   final Animation<double> progress;
   final Widget child;
 
-  const _ExpandableActionButton({Key? key,
-    required this.distance,
-    required this.degree,
-    required this.progress,
-    required this.child})
+  const _ExpandableActionButton({Key key,
+    this.distance,
+    this.degree,
+    this.progress,
+    this.child})
       : super(key: key);
 
   @override
@@ -133,7 +133,7 @@ class _ExpandableActionButton extends StatelessWidget {
           return Positioned(
             right: offset.dx + 4,
             bottom: offset.dy + 4,
-            child: child!,
+            child: child,
           );
         },
         child: child);

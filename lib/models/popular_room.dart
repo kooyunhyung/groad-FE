@@ -5,10 +5,10 @@ class PopularRoom {
   final String imageUrl;
 
   PopularRoom(
-      {required this.roomName,
-      required this.priceInfo,
-      required this.distance,
-      required this.imageUrl});
+      {this.roomName,
+      this.priceInfo,
+      this.distance,
+      this.imageUrl});
 }
 
 List<PopularRoom> PopularRoomList = [

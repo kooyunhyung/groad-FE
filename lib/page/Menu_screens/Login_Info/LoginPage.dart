@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/main_screens.dart';
+import 'package:gload_app/page/frame/common_frame1.dart';
+import 'package:gload_app/page/Main_screens/home.dart';
 import 'package:gload_app/constant/theme.dart';
 import 'package:gload_app/page/Menu_screens/Login_Info/signup.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (BuildContext context) =>
-                                                  MainScreens()));
+                                                  CommonFrame1(title: 'GROAD', clas: Home(),)));
                                     } else if (controller.text == 'id' &&
                                         controller2.text != '1234') {
                                       showSnackBar2(context);

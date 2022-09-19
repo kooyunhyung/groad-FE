@@ -1,37 +1,40 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/benefits.dart';
-import 'package:gload_app/page/Main_screens/feed.dart';
-import 'package:gload_app/page/Main_screens/floatingActionButton/expandable_fab.dart';
-import 'package:gload_app/page/Main_screens/mypage.dart';
-import 'package:gload_app/page/Main_screens/schedule.dart';
-import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage_Main.dart';
-import 'package:gload_app/page/Menu_screens/travelAssistant/digitalPassport.dart';
-import 'package:gload_app/page/Menu_screens/travelAssistant/termsOfUse.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/TravelInfo_Main.dart';
-import 'materials.dart';
-import 'digitalPassport.dart';
+import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage.dart';
 
-class TravelAssistant extends StatefulWidget {
-  const TravelAssistant({Key? key}) : super(key: key);
+import '../../constant/theme.dart';
+import '../Main_screens/benefits.dart';
+import '../Main_screens/feed.dart';
+import '../Main_screens/floatingActionButton/expandable_fab.dart';
+import '../Main_screens/mypage.dart';
+import '../Main_screens/schedule.dart';
+import '../Menu_screens/travelAssistant/termsOfUse.dart';
+import '../Menu_screens/travelInfo/TravelInfo.dart';
+import 'common_frame2.dart';
+
+class CommonFrame1 extends StatefulWidget {
+  const CommonFrame1({Key key, this.title, this.clas}) : super(key: key);
+
+  final Object clas;
+  final String title;
 
   @override
-  _TravelAssistantState createState() => _TravelAssistantState();
+  _CommonFrame1State createState() => _CommonFrame1State();
 }
 
-class _TravelAssistantState extends State<TravelAssistant> {
-  var _selectedIndex = 2;
-  var _pages = [
-    Schedule(), //하단 0번 인덱스
-    Benefits(), //하단 1번 인덱스
-    TermsOfUse(), //하단 2번 인덱스(default)
-    Feed(), //하단 3번 인덱스
-    MyPage(), //하단 4번 인덱스
-  ];
+class _CommonFrame1State extends State<CommonFrame1> {
 
   @override
   Widget build(BuildContext context) {
+
+    var selectedIndex=2;
+    var pages = [
+      Schedule(), //하단 0번 인덱스
+      Benefits(), //하단 1번 인덱스
+      widget.clas, //하단 2번 인덱스(default)
+      Feed(), //하단 3번 인덱스
+      MyPage(), //하단 4번 인덱스
+    ];
+
     return Scaffold(
       endDrawer: Drawer(
         child: Container(
@@ -53,7 +56,8 @@ class _TravelAssistantState extends State<TravelAssistant> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => LoginPage_Main()),
+                              MaterialPageRoute(
+                                  builder: (context) => CommonFrame2(title: '로그인',clas: LoginPage(),)),
                             );
                           },
                           child: Row(
@@ -91,7 +95,7 @@ class _TravelAssistantState extends State<TravelAssistant> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TravelInfo_Main()),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '여행 정보', clas: TravelInfo(),)),
                   );
                 },
               ), //여행 정보
@@ -103,7 +107,7 @@ class _TravelAssistantState extends State<TravelAssistant> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TravelAssistant()),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '여행 도우미', clas: TermsOfUse(),)),
                   );
                 },
               ),
@@ -165,22 +169,27 @@ class _TravelAssistantState extends State<TravelAssistant> {
         preferredSize: Size.fromHeight(45.0),
         child: AppBar(
           title: Text(
-            'GROAD',
+            widget.title,
             style:
             TextStyle(fontWeight: FontWeight.bold, color: Color(deepNavy)),
           ),
+          // actions: [
+          //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          //   IconButton(onPressed: () {}, icon: Icon(Icons.menu))
+          // ],
         ),
       ),
       //앱 바
-      body: _pages[_selectedIndex],
+      body: pages[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: selectedIndex, //선택된 인덱스
         onTap: (index) {
           setState(() {
-            _selectedIndex = index;
+            print(index);
+            selectedIndex = index;
           });
         },
-        currentIndex: _selectedIndex, //선택된 인덱스
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: '일정',
@@ -238,6 +247,3 @@ class _TravelAssistantState extends State<TravelAssistant> {
     );
   }
 }
-
-
-

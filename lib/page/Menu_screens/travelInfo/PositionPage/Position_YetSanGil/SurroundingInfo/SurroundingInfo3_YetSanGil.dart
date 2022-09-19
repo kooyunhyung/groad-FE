@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
 
 class SurroundingInfo3_YetSanGil extends StatelessWidget {
-  const SurroundingInfo3_YetSanGil({Key? key}) : super(key: key);
+  const SurroundingInfo3_YetSanGil({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
