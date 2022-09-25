@@ -28,7 +28,7 @@ class _CommonFrame2State extends State<CommonFrame2> {
           title: Text(
             widget.title,
             style:
-            TextStyle(fontWeight: FontWeight.bold, color: Color(deepNavy)),
+            TextStyle(fontWeight: FontWeight.bold, color: Color(ThemeColors.deepNavy)),
           ),
           // actions: [
           //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),

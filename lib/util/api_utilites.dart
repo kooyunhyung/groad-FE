@@ -7,10 +7,10 @@ class APIConfig {
   APIConfig(this.host, {this.version});
 }
 
-final bool dev = false;
+final bool dev = true;
 
 final host = dev
-    ? APIConfig('http://222.113.31.130:8080', version: 1)
+    ? APIConfig('http://15.165.25.66:8000',version: 1)
 // 주소 변경 시 아래의 부분만 변경하면 됩니다.
     : APIConfig('https://api.telliot.co.kr', version: 1);
 
@@ -40,6 +40,7 @@ String getQueryString(Map params,
 String createUri(String path, Map<String, dynamic> param) {
   final params = param != null ? getQueryString(param) : '';
 
+  print('${host.host}/$path?${params.substring(min(params.length, 1))}');
   // 이 부분도 필요하시다면 변경하시고 사용하시면 됩니다.
-  return '${host.host}/v${host.version}$path?${params.substring(min(params.length, 1))}';
+  return '${host.host}/$path?${params.substring(min(params.length, 1))}';
 }

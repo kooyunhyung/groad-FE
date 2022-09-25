@@ -25,7 +25,7 @@ class Confucianism_Detail extends StatelessWidget {
                     child: Text(
                       '소양정',
                       style: TextStyle(
-                        color: Color(deepNavy),
+                        color: Color(ThemeColors.deepNavy),
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -35,7 +35,7 @@ class Confucianism_Detail extends StatelessWidget {
                     height: 7.0,
                   ),
                   Container(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     width: 199.0,
                     height: 3.0,
                   ),
@@ -113,7 +113,7 @@ class Confucianism_Detail extends StatelessWidget {
               child: Text(
                 '소양정 소개',
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -160,7 +160,7 @@ class Confucianism_Detail extends StatelessWidget {
               child: Text(
                 '옛 사람의 소양정 유람기',
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -193,7 +193,7 @@ class Confucianism_Detail extends StatelessWidget {
                       child: Text(
                         '안석경,<유청평산기>',
                         style: TextStyle(
-                          color: Color(deepNavy),
+                          color: Color(ThemeColors.deepNavy),
                           fontSize: 11.0,
                         ),
                       ),

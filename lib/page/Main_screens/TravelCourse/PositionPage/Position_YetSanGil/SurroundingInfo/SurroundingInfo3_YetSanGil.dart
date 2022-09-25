@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/PositionPage/Position_YetSanGil/SurroundingInfo/SurroundingInfo1_YetSanGil.dart';
-import 'package:gload_app/page/frame/common_frame2.dart';
-import 'SurroundingInfo/SurroundingInfo2_YetSanGil.dart';
-import 'SurroundingInfo/SurroundingInfo3_YetSanGil.dart';
 
-class PositionPage_YetSanGil extends StatelessWidget {
-  const PositionPage_YetSanGil({Key key}) : super(key: key);
+class SurroundingInfo3_YetSanGil extends StatelessWidget {
+  const SurroundingInfo3_YetSanGil({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +15,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
         children: [
           Container(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.only(right: 220.0),
@@ -30,10 +25,10 @@ class PositionPage_YetSanGil extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
-                        '옛산길',
+                        '주변 이미지3',
                         style: TextStyle(
-                          color: Color(deepNavy),
-                          fontSize: 25.0,
+                          color: Color(ThemeColors.deepNavy),
+                          fontSize: 22.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -42,8 +37,8 @@ class PositionPage_YetSanGil extends StatelessWidget {
                       height: 7.0,
                     ),
                     Container(
-                      color: Color(deepNavy),
-                      width: 128.0,
+                      color: Color(ThemeColors.deepNavy),
+                      width: 199.0,
                       height: 3.0,
                     ),
                   ],
@@ -126,123 +121,18 @@ class PositionPage_YetSanGil extends StatelessWidget {
                 ],
               ), //서브 이미지
             ]),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 58.0,
-                  ),
-                  child: Container(
-                    width: 40,
-                    height: 37,
-                    color: Colors.grey[200],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Center(
-                    child: Container(
-                      color: Color(lightSky),
-                      width: 333.0,
-                      height: 1.0,
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.circle,
-                      color: Color(lightSky),
-                      size: 10.0,
-                    ),
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Icon(
-                      Icons.circle,
-                      color: Color(lightSky),
-                      size: 10.0,
-                    ),
-                    SizedBox(
-                      width: 35.0,
-                    ),
-                    Icon(
-                      Icons.circle,
-                      color: Color(lightSky),
-                      size: 10.0,
-                    ),
-                    SizedBox(
-                      width: 50.0,
-                    ),
-                    Icon(
-                      Icons.circle,
-                      color: Color(lightSky),
-                      size: 10.0,
-                    ),
-                    SizedBox(
-                      width: 50.0,
-                    ),
-                    Icon(
-                      Icons.circle,
-                      color: Color(lightSky),
-                      size: 10.0,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "춘천역",
-                        style:
-                            TextStyle(color: Color(deepNavy), fontSize: 12.0),
-                      ),
-                      Text(
-                        "옛산길",
-                        style:
-                            TextStyle(color: Color(deepNavy), fontSize: 12.0),
-                      ),
-                      Text(
-                        "고개마루에서 직진",
-                        style:
-                            TextStyle(color: Color(deepNavy), fontSize: 12.0),
-                      ),
-                      Text(
-                        "미나리폭포",
-                        style:
-                            TextStyle(color: Color(deepNavy), fontSize: 12.0),
-                      ),
-                      Text(
-                        "소양로 성당",
-                        style:
-                            TextStyle(color: Color(deepNavy), fontSize: 12.0),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ), //코스 선(그림)
-          SizedBox(
-            height: 30.0,
-          ),
+          ),  //안녕하세요~서브이미지
           Padding(
             padding: const EdgeInsets.only(right: 260.0),
             child: Text(
-              '정의 및 역사',
+              '설명',
               style: TextStyle(
-                color: Color(deepNavy),
+                color: Color(ThemeColors.deepNavy),
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
             ),
-          ), //정의 및 역사
+          ), //설명
           SizedBox(
             height: 5.0,
           ),
@@ -346,7 +236,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
             child: Text(
               '교통 정보',
               style: TextStyle(
-                color: Color(deepNavy),
+                color: Color(ThemeColors.deepNavy),
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
@@ -449,7 +339,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
                                   children: [
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      CrossAxisAlignment.center,
                                       children: [
                                         Text(
                                           '21번',
@@ -479,8 +369,8 @@ class PositionPage_YetSanGil extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                   color: Colors.grey[700],
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0)),
+                                                  BorderRadius.circular(
+                                                      10.0)),
                                               width: 40,
                                               height: 15,
                                               child: Center(
@@ -507,8 +397,8 @@ class PositionPage_YetSanGil extends StatelessWidget {
                                                   height: 0.0,
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
                                                     children: [
                                                       Icon(
                                                         Icons.circle,
@@ -551,8 +441,8 @@ class PositionPage_YetSanGil extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                   color: Colors.grey[700],
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0)),
+                                                  BorderRadius.circular(
+                                                      10.0)),
                                               width: 40,
                                               height: 15,
                                               child: Center(
@@ -573,7 +463,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
                                         ),
                                         Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                           children: [
                                             Container(
                                               color: Colors.grey,
@@ -961,121 +851,7 @@ class PositionPage_YetSanGil extends StatelessWidget {
               ),
             ),
           ),  //교통 정보 내용...
-          SizedBox(height: 40.0,),
-          Padding(
-            padding: const EdgeInsets.only(right: 280.0),
-            child: Text(
-              '주변 정보',
-              style: TextStyle(
-                color: Color(deepNavy),
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              ),
-            ),
-          ), //주변정보
-          SizedBox(height: 10.0,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '세부 정보', clas: SurroundingInfo1_YetSanGil(),)),
-                  );
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 115.0,
-                      height: 71.0,
-                      color: Colors.grey[400],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '주변 이미지1',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 3.0,),
-                    Text('안녕하세요',style: TextStyle(color: Colors.black),)
-                  ],
-                ),
-              ),
-              InkWell(
-                onTap: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '세부 정보', clas: SurroundingInfo2_YetSanGil(),)),
-                  );
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 115.0,
-                      height: 71.0,
-                      color: Colors.grey[400],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '주변 이미지2',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 3.0,),
-                    Text('주변 이미지 타이틀',style: TextStyle(color: Colors.black),)
-                  ],
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '세부 정보', clas: SurroundingInfo3_YetSanGil(),)),
-                  );
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 115.0,
-                      height: 71.0,
-                      color: Colors.grey[400],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '주변 이미지',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 3.0,),
-                    Text('주변 이미지 타이틀',style: TextStyle(color: Colors.black),)
-                  ],
-                ),
-              )
-            ],
-          ),  //주변 이미지 1 2 3
-          SizedBox(height: 30.0,)
+          SizedBox(height: 30,)
         ],
       ),
     );

@@ -5,7 +5,7 @@ import 'localCourse.dart';
 import 'longDistanceCourse.dart';
 import 'mainCourse.dart';
 
-class TourCourse extends StatelessWidget {
+class TravelInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> categories = ["메인 추천 코스", "장거리 코스", "단거리 코스", "지역별 코스"];
@@ -24,17 +24,17 @@ class TourCourse extends StatelessWidget {
               child: TabBar(
                 tabs: List.generate(
                   categories.length,
-                  (index) => Tab(
+                      (index) => Tab(
                     text: categories[index],
                   ),
                 ),
                 isScrollable: true,
-                labelColor: Color(deepNavy),
+                labelColor: Color(ThemeColors.deepNavy),
                 unselectedLabelColor: Colors.grey,
                 labelStyle: TextTheme().headline2?.copyWith(
-                    color: Color(deepNavy), fontWeight: FontWeight.bold),
+                    color: Color(ThemeColors.deepNavy), fontWeight: FontWeight.bold),
                 indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(width: 4, color: Color(deepNavy))),
+                    borderSide: BorderSide(width: 4, color: Color(ThemeColors.deepNavy))),
               ),
             ),
             preferredSize: Size.fromHeight(0.0),

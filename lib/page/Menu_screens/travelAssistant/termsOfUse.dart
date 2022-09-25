@@ -39,7 +39,7 @@ class _TermsOfUseState extends State<TermsOfUse> {
                 Text(
                   '여행도우미',
                   style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -48,7 +48,7 @@ class _TermsOfUseState extends State<TermsOfUse> {
                   height: 7.0,
                 ),
                 Container(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   width: 128.0,
                   height: 3.0,
                 ),

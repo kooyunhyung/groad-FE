@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gload_app/page/Main_screens/TravelCourse/TravelCourse.dart';
 import 'package:gload_app/page/Main_screens/components/food_store_item.dart';
 import 'package:gload_app/models/popular_food_store.dart';
 import 'package:gload_app/models/popular_room.dart';
 import 'package:gload_app/page/frame/common_frame1.dart';
 import 'components/room_item.dart';
 import '../../constant/theme.dart';
-import 'TourCourse/TourCourse.dart';
 
 
 class Home extends StatefulWidget {
@@ -17,49 +17,62 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int currentPage;
 
-  int currentPage=0;
+  @override
+  void initState() {
+    currentPage=1;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
           Container(
-            width: 420,
-            height: 306,
+            width: width,
+            height: height * 0.3834,
             child: Stack(
               children: [
                 PageView(
                   onPageChanged: (value) {
                     setState(() {
-                      currentPage=value+1;
+                      if(value == 1){
+                        currentPage+=1;
+                      }else{
+                        currentPage-=1;
+                      }
                     });
                   },
                   children: [
                     Stack(children: [
                       Container(
                         color: Colors.lightBlue[50],
-                        width: 420,
-                        height: 306,
+                        width: width,
+                        height: height * 0.3834,
                         child: Container(
-                          padding: EdgeInsets.only(top: 145, left: 20),
+                          padding: EdgeInsets.only(top: height * 0.1817, left: width * 0.0486),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 '나를 찾기 위해 걷는',
                                 style: TextStyle(
-                                  fontSize: 17.0,
+                                  fontSize: 6987 / width,
                                   color: Colors.grey[600],
                                 ),
                               ),
                               Text(
                                 '마음의 길',
                                 style: TextStyle(
-                                    fontSize: 35.0,
-                                    color: Color(deepNavy),
+                                    fontSize: 14385 / width,
+                                    color: Color(ThemeColors.deepNavy),
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -67,40 +80,40 @@ class _HomeState extends State<Home> {
                         ), //'나를 찾기 위해 걷는 마음의 길'
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 164.0, top: 75.0),
+                        padding: EdgeInsets.only(left: width*0.399, top: height*0.09398),
                         child: Image.asset(
                           'assets/character.png',
                         ),
                       ), //데코레이션
                       Padding(
-                        padding: EdgeInsets.only(left: 293.5, top: 4.3),
+                        padding: EdgeInsets.only(left: width*0.71411, top: height*0.00538),
                         child: Image.asset('assets/1.png'),
                       ), //데코레이션
                       Padding(
-                        padding: EdgeInsets.only(left: 32.4, top: 20.6),
+                        padding: EdgeInsets.only(left: width*0.0788, top: height*0.02581),
                         child: Image.asset('assets/2.png'),
                       ), //데코레이션
                       Padding(
-                        padding: EdgeInsets.only(left: 96.9, top: 68.5),
+                        padding: EdgeInsets.only(left: width*0.2357, top: height*0.085839),
                         child: Image.asset('assets/3.png'),
                       ), //데코레이션
                       Padding(
-                        padding: EdgeInsets.only(left: 10.3, top: 114.6),
+                        padding: EdgeInsets.only(left: width*0.02506, top: height*0.1436),
                         child: Image.asset('assets/4.png'),
                       ), //데코레이션
                       Padding(
-                        padding: EdgeInsets.only(left: 2.4, top: 221.3),
+                        padding: EdgeInsets.only(left: width*0.005839, top: height*0.277318),
                         child: Image.asset('assets/5.png'),
                       ), //데코레이션
                       Padding(
-                        padding: EdgeInsets.only(left: 100.6, top: 240),
+                        padding: EdgeInsets.only(left: width*0.244768, top: height*0.300751),
                         child: Image.asset('assets/6.png'),
                       ), //데코레이션
                     ]),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      width: 420.0,
-                      height: 306.0,
+                      padding: EdgeInsets.symmetric(horizontal: width*0.04866),
+                      width: width,
+                      height: height*0.38345,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -118,24 +131,24 @@ class _HomeState extends State<Home> {
                               Text(
                                 '강원도 춘천시',
                                 style: TextStyle(
-                                  color: Color(deepNavy),
-                                  fontSize: 30.0,
+                                  color: Color(ThemeColors.deepNavy),
+                                  fontSize: 12330 / width,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(width: 100,),
+                              SizedBox(width: width*0.2433,),
                               Text(
                                 '26 ℃',
                                 style: TextStyle(
-                                  color: Color(deepNavy),
-                                  fontSize: 30.0,
+                                  color: Color(ThemeColors.deepNavy),
+                                  fontSize: 12330 / width,
                                   fontWeight: FontWeight.bold,
                                 ),
                               )
                             ],
                           ),
                           SizedBox(
-                            height: 20.0,
+                            height: height*0.02506,
                           ),
                           Row(
                             children: [
@@ -155,10 +168,10 @@ class _HomeState extends State<Home> {
                                   )
                                 ],
                               ),
-                              SizedBox(width: 50.0,),
+                              SizedBox(width: width*0.12165,),
                               Container(
-                                width: 124,
-                                height: 124,
+                                width: width*0.3017,
+                                height: width*0.3017,
                                 color: Colors.grey[400],
                                 child: Center(
                                     child: Text(
@@ -174,10 +187,10 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 340.0,top: 275.0),
+                  padding: EdgeInsets.only(left: width*0.86,top: height*0.344611),
                   child: Container(
-                    width: 48,
-                    height: 25,
+                    width: width*0.11678,
+                    height: height*0.03132,
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12)
@@ -194,9 +207,9 @@ class _HomeState extends State<Home> {
             ),
           ), //상단 화면(banner)
           Container(
-            color: Color(deepNavy),
-            width: 420,
-            height: 50,
+            color: Color(ThemeColors.deepNavy),
+            width: width,
+            height: height*0.06265,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -216,7 +229,7 @@ class _HomeState extends State<Home> {
                 ),
                 Text(
                   '9230',
-                  style: TextStyle(color: Colors.white, fontSize: 23.0),
+                  style: TextStyle(color: Colors.white, fontSize: 9543/width),
                 ),
                 Text(
                   '걸음',
@@ -229,7 +242,7 @@ class _HomeState extends State<Home> {
                 Text(
                   '2.3',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 23.0, letterSpacing: 5.0),
+                      color: Colors.white, fontSize: 9543/width, letterSpacing: 5.0),
                 ),
                 Text(
                   'Km',
@@ -239,56 +252,40 @@ class _HomeState extends State<Home> {
             ),
           ), //중간 걸음수, km 정보
           SizedBox(
-            height: 25.0,
+            height: height*0.03132,
           ),
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: EdgeInsets.only(left: width*0.048661),
                 child: Text(
                   '여행 코스 둘러보기',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 8220/width,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey[700],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 150.0),
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CommonFrame1(title: '여행 코스 둘러보기', clas: TourCourse(),)));
-                    });
-                  },
-                  child: Text(
-                    '더보기',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
-                      color: Color(deepNavy),
-                    ),
                   ),
                 ),
               ),
             ],
           ), //여행 코스 둘러보기
           SizedBox(
-            height: 20.0,
+            height: height*0.02506,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 SizedBox(
-                  width: 10.0,
+                  width: width*0.02433,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CommonFrame1(title: '여행 코스 둘러보기', clas: TravelCourse())),
+                    );
+                  },
                   child: Stack(
                     children: [
                       ClipRRect(
@@ -298,25 +295,25 @@ class _HomeState extends State<Home> {
                         ),
                         child: Image.asset(
                           'assets/courseImage.png',
-                          width: 350,
-                          height: 260,
+                          width: width*0.85158,
+                          height: height*0.32581,
                           fit: BoxFit.cover,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 185),
+                        padding: EdgeInsets.only(top: height*0.23182),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Color(deepNavy),
+                              color: Color(ThemeColors.deepNavy),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0),
                               )),
                           padding: EdgeInsets.symmetric(
-                            vertical: 15.0,
-                            horizontal: 22.0,
+                            vertical: height*0.01879,
+                            horizontal: width*0.05352,
                           ),
-                          width: 350,
+                          width: width*0.85158,
                           //color: Colors.lightBlue[800],
                           child: Column(
                             children: [
@@ -335,7 +332,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 130.0,
+                                    width: width*0.3163,
                                   ),
                                   Text(
                                     '약 43분',
@@ -348,7 +345,7 @@ class _HomeState extends State<Home> {
                                 ],
                               ),
                               SizedBox(
-                                height: 5.0,
+                                height: height*0.006265,
                               ),
                               Row(
                                 children: [
@@ -365,7 +362,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 82.0,
+                                    width: width*0.19951,
                                   ),
                                   Text(
                                     '총 2.4km',
@@ -383,7 +380,7 @@ class _HomeState extends State<Home> {
                       ),
                       Image.asset('assets/backShade.png'),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 22.0),
+                        padding: EdgeInsets.only(left: width*0.048661, top: height*0.027568),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -396,7 +393,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             SizedBox(
-                              height: 5.0,
+                              height: height*0.00626,
                             ),
                             Text(
                               '드라마 주인공처럼',
@@ -406,7 +403,7 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
-                              height: 5.0,
+                              height: 0.00626,
                             ),
                             Text(
                               '운치있게 나혼자 사색하기',
@@ -420,17 +417,22 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 310.0, top: 20.0),
+                        padding: EdgeInsets.only(left: width*0.75425, top: height*0.025062),
                         child: Image.asset('assets/heart.png'),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: 10.0,
+                  width: width*0.02433,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CommonFrame1(title: '여행 코스 둘러보기', clas: TravelCourse())),
+                    );
+                  },
                   child: Stack(
                     children: [
                       ClipRRect(
@@ -440,25 +442,25 @@ class _HomeState extends State<Home> {
                         ),
                         child: Image.asset(
                           'assets/courseImage.png',
-                          width: 350,
-                          height: 260,
+                          width: width*0.85158,
+                          height: height*0.32581,
                           fit: BoxFit.cover,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 185),
+                        padding: EdgeInsets.only(top: height*0.23182),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Color(deepNavy),
+                              color: Color(ThemeColors.deepNavy),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0),
                               )),
                           padding: EdgeInsets.symmetric(
-                            vertical: 15.0,
-                            horizontal: 22.0,
+                            vertical: height*0.01879,
+                            horizontal: width*0.05352,
                           ),
-                          width: 350,
+                          width: width*0.85158,
                           //color: Colors.lightBlue[800],
                           child: Column(
                             children: [
@@ -477,7 +479,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 130.0,
+                                    width: width*0.3163,
                                   ),
                                   Text(
                                     '약 43분',
@@ -490,7 +492,7 @@ class _HomeState extends State<Home> {
                                 ],
                               ),
                               SizedBox(
-                                height: 5.0,
+                                height: height*0.006265,
                               ),
                               Row(
                                 children: [
@@ -507,7 +509,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 82.0,
+                                    width: width*0.19951,
                                   ),
                                   Text(
                                     '총 2.4km',
@@ -525,12 +527,12 @@ class _HomeState extends State<Home> {
                       ),
                       Image.asset('assets/backShade.png'),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 22.0),
+                        padding: EdgeInsets.only(left: width*0.048661, top: height*0.027568),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '제1코스',
+                              '제2코스',
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Colors.white,
@@ -538,7 +540,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             SizedBox(
-                              height: 5.0,
+                              height: height*0.00626,
                             ),
                             Text(
                               '드라마 주인공처럼',
@@ -548,7 +550,7 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
-                              height: 5.0,
+                              height: 0.00626,
                             ),
                             Text(
                               '운치있게 나혼자 사색하기',
@@ -562,7 +564,154 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 310.0, top: 20.0),
+                        padding: EdgeInsets.only(left: width*0.75425, top: height*0.025062),
+                        child: Image.asset('assets/heart.png'),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: width*0.02433,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CommonFrame1(title: '여행 코스 둘러보기', clas: TravelCourse())),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10.0),
+                          bottomRight: Radius.circular(10.0),
+                        ),
+                        child: Image.asset(
+                          'assets/courseImage.png',
+                          width: width*0.85158,
+                          height: height*0.32581,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: height*0.23182),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Color(ThemeColors.deepNavy),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                              )),
+                          padding: EdgeInsets.symmetric(
+                            vertical: height*0.01879,
+                            horizontal: width*0.05352,
+                          ),
+                          width: width*0.85158,
+                          //color: Colors.lightBlue[800],
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_rounded,
+                                    color: Colors.white,
+                                  ),
+                                  Text(
+                                    ' 출발 춘천역',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: width*0.3163,
+                                  ),
+                                  Text(
+                                    '약 43분',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: height*0.006265,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_rounded,
+                                    color: Colors.white,
+                                  ),
+                                  Text(
+                                    ' 도착 소양로 성당',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: width*0.19951,
+                                  ),
+                                  Text(
+                                    '총 2.4km',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Image.asset('assets/backShade.png'),
+                      Padding(
+                        padding: EdgeInsets.only(left: width*0.048661, top: height*0.027568),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '제3코스',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.white,
+                                //fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: height*0.00626,
+                            ),
+                            Text(
+                              '드라마 주인공처럼',
+                              style: TextStyle(
+                                  fontSize: 19.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 0.00626,
+                            ),
+                            Text(
+                              '운치있게 나혼자 사색하기',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.white,
+                                //fontWeight: FontWeight.bold
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: width*0.75425, top: height*0.025062),
                         child: Image.asset('assets/heart.png'),
                       ),
                     ],
@@ -572,20 +721,20 @@ class _HomeState extends State<Home> {
             ),
           ), //코스 종류(수평 슬라이드)
           SizedBox(
-            height: 25.0,
+            height: height*0.03132,
           ),
           Container(
             color: Colors.grey,
             height: 1.0,
-            width: 343.0,
+            width: width*0.83454,
           ), //수평선
           SizedBox(
-            height: 30.0,
+            height: height*0.037593,
           ),
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: EdgeInsets.only(left: width*0.04866),
                 child: Text(
                   '여행 전 알아둘 여행꿀팁',
                   style: TextStyle(
@@ -595,31 +744,17 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 110.0),
-                child: InkWell(
-                  onTap: () {},
-                  child: Text(
-                    '더보기',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
-                      color: Color(deepNavy),
-                    ),
-                  ),
-                ),
-              ),
             ],
           ), //여행전 알아둘 여행꿀팁
           SizedBox(
-            height: 20.0,
+            height: height*0.025062,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 SizedBox(
-                  width: 10.0,
+                  width: width*0.02433,
                 ),
                 InkWell(
                   onTap: () {},
@@ -627,12 +762,12 @@ class _HomeState extends State<Home> {
                     children: [
                       Image.asset(
                         'assets/travelTip1.png',
-                        width: 240,
-                        height: 240,
+                        width: width*0.583941,
+                        height: width*0.583941,
                         fit: BoxFit.cover,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 22.0),
+                        padding: EdgeInsets.only(left: width*0.04866, top: height*0.02756),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -662,7 +797,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(
-                  width: 10.0,
+                  width: width*0.02433,
                 ),
                 InkWell(
                   onTap: () {},
@@ -672,13 +807,13 @@ class _HomeState extends State<Home> {
                         borderRadius: BorderRadius.circular(10.0),
                         child: Image.asset(
                           'assets/travelTip2.png',
-                          width: 240,
-                          height: 240,
+                          width: width*0.583941,
+                          height: width*0.583941,
                           fit: BoxFit.cover,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 22.0),
+                        padding: EdgeInsets.only(left: width*0.04866, top: height*0.02756),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -710,20 +845,20 @@ class _HomeState extends State<Home> {
             ),
           ), //여행전 알아둘 여행꿀팁(수평 슬라이드)
           SizedBox(
-            height: 25.0,
+            height: height*0.031328,
           ),
           Container(
             color: Colors.grey,
-            width: 343,
+            width: width*0.83454,
             height: 1.0,
           ), //수평선
           SizedBox(
-            height: 26.0,
+            height: height*0.032581,
           ),
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 140.0, left: 20.0),
+                padding: EdgeInsets.only(left: width*0.04866),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -731,7 +866,7 @@ class _HomeState extends State<Home> {
                       "GROAD'S PICK",
                       style: TextStyle(
                           fontSize: 17.0,
-                          color: Color(deepNavy),
+                          color: Color(ThemeColors.deepNavy),
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
@@ -745,33 +880,19 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30.0),
-                child: InkWell(
-                  onTap: () {},
-                  child: Text(
-                    '더보기',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
-                      color: Color(deepNavy),
-                    ),
-                  ),
-                ),
-              ),
             ],
           ), //GROAD'S PICK 이번주 인기 맛집
           SizedBox(
-            height: 20.0,
+            height: height*0.02506,
           ),
           Container(
-            height: 230,
+            height: height*0.28822,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: foodList.length,
               itemBuilder: (context, index){
                 return Padding(
-                  padding: EdgeInsets.only(left:10),
+                  padding: EdgeInsets.only(left:width*0.02433),
                   child: FoodStoreItem(
                     popularFoodStore: foodList[index],
                   ),
@@ -780,12 +901,12 @@ class _HomeState extends State<Home> {
             ),
           ), //이번 주 인기 맛집 종류(수평 슬라이드)
           SizedBox(
-            height: 40.0,
+            height: height*0.05012,
           ),
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 140.0, left: 20.0),
+                padding: EdgeInsets.only(left: width*0.048661),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -793,7 +914,7 @@ class _HomeState extends State<Home> {
                       "GROAD'S PICK",
                       style: TextStyle(
                           fontSize: 17.0,
-                          color: Color(deepNavy),
+                          color: Color(ThemeColors.deepNavy),
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
@@ -807,33 +928,19 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30.0),
-                child: InkWell(
-                  onTap: () {},
-                  child: Text(
-                    '더보기',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
-                      color: Color(deepNavy),
-                    ),
-                  ),
-                ),
-              ),
             ],
           ), //GROAD'S PICK 이번주 인기 숙소
           SizedBox(
-            height: 20.0,
+            height: height*0.025062,
           ),
           Container(
-            height: 230,
+            height: height*0.28822,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: PopularRoomList.length,
               itemBuilder: (context, index){
                 return Padding(
-                  padding: EdgeInsets.only(left:10),
+                  padding: EdgeInsets.only(left:width*0.02433),
                   child: RoomItem(
                     popularRoom: PopularRoomList[index],
                   ),
@@ -842,12 +949,12 @@ class _HomeState extends State<Home> {
             ),
           ), //이번 주 인기 숙소 종류(수평 슬라이드)
           SizedBox(
-            height: 40.0,
+            height: height*0.05012,
           ),
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 140.0, left: 20.0),
+                padding: EdgeInsets.only(right: width*0.34063, left: width*0.04866),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -863,7 +970,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: width*0.07299),
                 child: InkWell(
                   onTap: () {},
                   child: Text(
@@ -871,7 +978,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       fontSize: 17.0,
                       fontWeight: FontWeight.bold,
-                      color: Color(deepNavy),
+                      color: Color(ThemeColors.deepNavy),
                     ),
                   ),
                 ),
@@ -879,37 +986,37 @@ class _HomeState extends State<Home> {
             ],
           ), //여행자들의 후기
           SizedBox(
-            height: 20.0,
+            height: height*0.02506,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 SizedBox(
-                  width: 10.0,
+                  width: width*0.02433,
                 ),
                 InkWell(
                   onTap: () {},
                   child: Card(
                     child: Container(
-                      width: 260.0,
-                      height: 240.0,
+                      width: width*0.6326,
+                      height: height*0.30075,
                       child: Column(
                         children: [
                           Stack(
                             children: [
                               Image.asset('assets/reviewImage1.png'),
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, top: 75.0),
+                                padding: EdgeInsets.only(
+                                    left: width*0.02433, top: height*0.09398),
                                 child: Image.asset('assets/reviewAvatar1.png'),
                               )
                             ],
                           ),
                           Container(
                             padding: EdgeInsets.symmetric(
-                              vertical: 5.0,
-                              horizontal: 15.0,
+                              vertical: height*0.006265,
+                              horizontal: width*0.036496,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -921,7 +1028,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 7.0,
+                                  height: height*0.00877,
                                 ),
                                 Row(
                                   children: [
@@ -932,7 +1039,7 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 5.0,
+                                      width: width*0.012165,
                                     ),
                                     Image.asset('assets/star.png')
                                   ],
@@ -954,14 +1061,14 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(
-                  width: 10.0,
+                  width: width*0.02433,
                 ),
                 InkWell(
                   onTap: () {},
                   child: Card(
                     child: Container(
-                      width: 260.0,
-                      height: 240.0,
+                      width: width*0.6326,
+                      height: height*0.30075,
                       child: Column(
                         children: [
                           Stack(
@@ -976,16 +1083,16 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, top: 75.0),
+                                padding: EdgeInsets.only(
+                                    left: width*0.02433, top: height*0.09398),
                                 child: Image.asset('assets/reviewAvatar2.png'),
                               )
                             ],
                           ),
                           Container(
                             padding: EdgeInsets.symmetric(
-                              vertical: 5.0,
-                              horizontal: 15.0,
+                              vertical: height*0.006265,
+                              horizontal: width*0.036496,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -997,7 +1104,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 7.0,
+                                  height: height*0.00877,
                                 ),
                                 Row(
                                   children: [
@@ -1008,7 +1115,7 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 5.0,
+                                      width: width*0.012165,
                                     ),
                                     Image.asset('assets/star.png')
                                   ],
@@ -1033,7 +1140,7 @@ class _HomeState extends State<Home> {
             ),
           ), //여행자들의 후기(수평 슬라이드)
           SizedBox(
-            height: 40.0,
+            height: height*0.05012,
           ),
         ],
       ), //메인스크린

@@ -7,8 +7,8 @@ import '../Main_screens/feed.dart';
 import '../Main_screens/floatingActionButton/expandable_fab.dart';
 import '../Main_screens/mypage.dart';
 import '../Main_screens/schedule.dart';
+import '../Menu_screens/TravleInfo/TravelInfo.dart';
 import '../Menu_screens/travelAssistant/termsOfUse.dart';
-import '../Menu_screens/travelInfo/TravelInfo.dart';
 import 'common_frame2.dart';
 
 class CommonFrame1 extends StatefulWidget {
@@ -95,7 +95,7 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '여행 정보', clas: TravelInfo(),)),
+                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '여행 정보', clas: TravelInfo())),
                   );
                 },
               ), //여행 정보
@@ -171,7 +171,7 @@ class _CommonFrame1State extends State<CommonFrame1> {
           title: Text(
             widget.title,
             style:
-            TextStyle(fontWeight: FontWeight.bold, color: Color(deepNavy)),
+            TextStyle(fontWeight: FontWeight.bold, color: Color(ThemeColors.deepNavy)),
           ),
           // actions: [
           //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),

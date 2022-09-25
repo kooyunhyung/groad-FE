@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
 
-class SurroundingInfo3_YetSanGil extends StatelessWidget {
-  const SurroundingInfo3_YetSanGil({Key key}) : super(key: key);
+class SurroundingInfo1_YetSanGil extends StatelessWidget {
+  const SurroundingInfo1_YetSanGil({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class SurroundingInfo3_YetSanGil extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Text(
-                        '주변 이미지3',
+                        '안녕하세요',
                         style: TextStyle(
-                          color: Color(deepNavy),
-                          fontSize: 22.0,
+                          color: Color(ThemeColors.deepNavy),
+                          fontSize: 25.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -37,7 +37,7 @@ class SurroundingInfo3_YetSanGil extends StatelessWidget {
                       height: 7.0,
                     ),
                     Container(
-                      color: Color(deepNavy),
+                      color: Color(ThemeColors.deepNavy),
                       width: 199.0,
                       height: 3.0,
                     ),
@@ -127,7 +127,7 @@ class SurroundingInfo3_YetSanGil extends StatelessWidget {
             child: Text(
               '설명',
               style: TextStyle(
-                color: Color(deepNavy),
+                color: Color(ThemeColors.deepNavy),
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
@@ -236,7 +236,7 @@ class SurroundingInfo3_YetSanGil extends StatelessWidget {
             child: Text(
               '교통 정보',
               style: TextStyle(
-                color: Color(deepNavy),
+                color: Color(ThemeColors.deepNavy),
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),

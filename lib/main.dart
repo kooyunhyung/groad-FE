@@ -44,15 +44,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => AuthState()),
-    ],
-    child: MaterialApp(
-      //title: _title,
-      debugShowCheckedModeBanner: false,
-      theme: theme(),
-      home: CommonFrame1(title: 'GROAD', clas: Home(),),
-    ));
+    return ChangeNotifierProvider(
+        create: (_) => AuthState(),
+        child: MaterialApp(
+          //title: _title,
+          debugShowCheckedModeBanner: false,
+          theme: theme(),
+          home: CommonFrame1(
+            title: 'GROAD',
+            clas: Home(),
+          ),
+        ));
     // return MaterialApp(
     //   //title: _title,
     //   debugShowCheckedModeBanner: false,
@@ -61,8 +63,3 @@ class _MyAppState extends State<MyApp> {
     // );
   }
 }
-
-
-
-
-

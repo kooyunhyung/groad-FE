@@ -73,6 +73,30 @@ class CommonAPI {
     return response;
   }
 
+  Future<Http.Response> put(
+      String path, {
+        dynamic body,
+        Map<String, String> headers,
+        Map<String, dynamic> params,
+      }) async {
+    final response = await Http.post(Uri.parse(createUri(path, params)),
+        body: body != null ? jsonEncode(body) : null,
+        headers: {
+          if (this.headers != null) ...await this.headers,
+          if (this.defaultHeader != null) ...?this.defaultHeader,
+          if (headers != null) ...headers
+        });
+
+    if (response.statusCode != 200) {
+      print(Uri.parse(createUri(path, params)));
+      print(response.statusCode);
+      print(jsonDecode(response.body));
+      throw Exception(['알 수 없는 에러가 발생했습니다.']);
+    }
+
+    return response;
+  }
+
   Future<Http.Response> delete(
       String path, {
         dynamic body,

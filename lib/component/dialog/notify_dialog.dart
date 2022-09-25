@@ -38,7 +38,7 @@ class NotifyDialog extends AlertDialog {
         padding: padding ?? EdgeInsets.fromLTRB(49, 23, 49, 25),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius ?? 10),
-          color: white,
+          color: ThemeColors.white,
         ),
         child: message != null
             ? Text(
@@ -46,7 +46,7 @@ class NotifyDialog extends AlertDialog {
           style: style ??
               TextStyle(
                 fontSize: 18,
-                color: black,
+                color: ThemeColors.black,
                 height: 23 / 18,
               ),
           textAlign: TextAlign.center,

@@ -1,33 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/TourCourse/components/round_border_text.dart';
 import 'package:gload_app/constant/theme.dart';
+import 'components/round_border_text.dart';
 
 class MainCourse extends StatelessWidget {
   const MainCourse({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List searchKeyword = ['전체','춘천','강릉','원주','양양'];
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
       child: ListView(
         children: [
-          SizedBox(
-            height: 66,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: searchKeyword.length,
-              itemBuilder: (context,index){
-                return Center(
-                  child: RoundBorderText(
-                    title: searchKeyword[index],
-                    position: index,
-                  ),
-                );
-              },
-            ),
-          ), //전체, 춘천, 강릉, 원주, 양양
           SizedBox(
             height: 15.0,
           ),
@@ -40,7 +24,7 @@ class MainCourse extends StatelessWidget {
               Text(
                 "춘천 사색의 길",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0
                 ),
@@ -83,7 +67,7 @@ class MainCourse extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 4.0),
                 child: Center(
                   child: Container(
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     width: 333.0,
                     height: 1.0,
                   ),
@@ -94,7 +78,7 @@ class MainCourse extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -102,7 +86,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -110,7 +94,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -118,7 +102,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -126,7 +110,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                 ],
@@ -139,35 +123,35 @@ class MainCourse extends StatelessWidget {
               Text(
                 "춘천역",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontSize: 12.0
                 ),
               ),
               Text(
                 "옛산길",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "고개마루에서 직진",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "미나리폭포",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "소양로 성당",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
@@ -189,7 +173,7 @@ class MainCourse extends StatelessWidget {
               Text(
                 "의암 순례길",
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0
                 ),
@@ -232,7 +216,7 @@ class MainCourse extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 4.0),
                 child: Center(
                   child: Container(
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     width: 333.0,
                     height: 1.0,
                   ),
@@ -243,7 +227,7 @@ class MainCourse extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -251,7 +235,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -259,7 +243,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -267,7 +251,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                   SizedBox(
@@ -275,7 +259,7 @@ class MainCourse extends StatelessWidget {
                   ),
                   Icon(
                     Icons.circle,
-                    color: Color(lightSky),
+                    color: Color(ThemeColors.lightSky),
                     size: 10.0,
                   ),
                 ],
@@ -288,35 +272,35 @@ class MainCourse extends StatelessWidget {
               Text(
                 "춘천역",
                 style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "옛산길",
                 style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "고개마루에서 직진",
                 style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "미나리폭포",
                 style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),
               Text(
                 "쟁골교",
                 style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 12.0
                 ),
               ),

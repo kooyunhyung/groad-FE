@@ -26,7 +26,7 @@ class Budda_Detail extends StatelessWidget {
                     child: Text(
                       '청평사',
                       style: TextStyle(
-                        color: Color(deepNavy),
+                        color: Color(ThemeColors.deepNavy),
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -36,7 +36,7 @@ class Budda_Detail extends StatelessWidget {
                     height: 7.0,
                   ),
                   Container(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     width: 199.0,
                     height: 3.0,
                   ),
@@ -114,7 +114,7 @@ class Budda_Detail extends StatelessWidget {
               child: Text(
                 '청평사 소개',
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -194,7 +194,7 @@ class Budda_Detail extends StatelessWidget {
               child: Text(
                 '옛 사람의 청평사 유람기',
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -228,7 +228,7 @@ class Budda_Detail extends StatelessWidget {
                         Text(
                           '양대박,<금강산기행록>',
                           style: TextStyle(
-                            color: Color(deepNavy),
+                            color: Color(ThemeColors.deepNavy),
                             fontSize: 11.0,
                           ),
                         ),
@@ -239,7 +239,7 @@ class Budda_Detail extends StatelessWidget {
                           '1572년 4월 3일 아버지를 모시고 횡성, 홍천을 지나 4월 7일에 청평사를 찾은 기록',
                           maxLines: 2,
                           style: TextStyle(
-                            color: Color(deepNavy),
+                            color: Color(ThemeColors.deepNavy),
                             fontSize: 11.0,
                           ),
                         )
@@ -257,7 +257,7 @@ class Budda_Detail extends StatelessWidget {
               child: Text(
                 '김시습과 청평사',
                 style: TextStyle(
-                  color: Color(deepNavy),
+                  color: Color(ThemeColors.deepNavy),
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -411,7 +411,7 @@ class Budda_Detail extends StatelessWidget {
                   Text(
                     '청평사 관련 설화',
                     style: TextStyle(
-                      color: Color(deepNavy),
+                      color: Color(ThemeColors.deepNavy),
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -422,7 +422,7 @@ class Budda_Detail extends StatelessWidget {
                   Text(
                     '[ 공주와 상사뱀 ]',
                     style: TextStyle(
-                      color: Color(deepNavy),
+                      color: Color(ThemeColors.deepNavy),
                     ),
                   )
                 ],

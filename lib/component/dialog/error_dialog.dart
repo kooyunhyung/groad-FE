@@ -37,12 +37,12 @@ class ErrorDialog extends AlertDialog {
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: gray1),
+                      border: Border.all(color: ThemeColors.gray1),
                     ),
                     child: Icon(
                       Icons.close,
                       size: 20,
-                      color: gray1,
+                      color: ThemeColors.gray1,
                     ),
                   ),
                 )
@@ -54,7 +54,7 @@ class ErrorDialog extends AlertDialog {
               children: [
                 Text(message,
                     style: TextStyle(
-                        color: gray1,
+                        color: ThemeColors.gray1,
                         fontSize: 15,
                         height: 23 / 15)),
               ],

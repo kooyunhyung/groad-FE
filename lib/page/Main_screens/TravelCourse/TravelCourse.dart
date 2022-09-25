@@ -1,52 +1,52 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Budda/BuddaInfo.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Confucianism/Confucianism_Info.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/PositionPage/Position_YetSanGil/PositionPage_YetSanGil.dart';
 import '../../frame/common_frame2.dart';
+import 'CultureMore/Budda/BuddaInfo.dart';
+import 'CultureMore/Confucianism/Confucianism_Info.dart';
+import 'PositionPage/Position_YetSanGil/PositionPage_YetSanGil.dart';
 
-class TravelInfo extends StatelessWidget {
-  const TravelInfo({Key key}) : super(key: key);
+class TravelCourse extends StatelessWidget {
+  const TravelCourse({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final data = MediaQuery.of(context);
-    final screenSize = data.size;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
+            padding: EdgeInsets.symmetric(horizontal: width*0.037593, vertical: height*0.03759),
             //color: Colors.grey[100],
             child: Column(children: [
               Padding(
-                padding: const EdgeInsets.only(right: 230),
+                padding: EdgeInsets.only(right: width*0.60827),
                 child: Column(
                   children: [
                     Text(
                       '1번 코스',
                       style: TextStyle(
-                        color: Color(deepNavy),
+                        color: Color(ThemeColors.deepNavy),
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(
-                      height: 7.0,
+                      height: height*0.00877,
                     ),
                     Container(
-                      color: Color(deepNavy),
-                      width: 100.0,
+                      color: Color(ThemeColors.deepNavy),
+                      width: width*0.243309,
                       height: 3.0,
                     ),
                   ],
                 ), //1번 코스
               ),
               SizedBox(
-                height: 25.0,
+                height: height*0.03132,
               ),
               InkWell(
                 onTap: () {
@@ -57,8 +57,8 @@ class TravelInfo extends StatelessWidget {
                 },
                 child: Center(
                   child: Container(
-                    width: screenSize.width * 0.85,
-                    height: 250.0,
+                    width: width * 0.85,
+                    height: height*0.31328,
                     color: Colors.grey[400],
                     child: Center(
                       child: Text(
@@ -75,18 +75,18 @@ class TravelInfo extends StatelessWidget {
             ]),
           ), //해당 코스 지도
           SizedBox(
-            height: 15.0,
+            height: height*0.018796,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: width*0.048661),
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
+                  padding: EdgeInsets.only(top: height*0.005012),
                   child: Center(
                     child: Container(
-                      color: Color(lightSky),
-                      width: 333.0,
+                      color: Color(ThemeColors.lightSky),
+                      width: width*0.81508515,
                       height: 1.0,
                     ),
                   ),
@@ -96,39 +96,39 @@ class TravelInfo extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.circle,
-                      color: Color(lightSky),
+                      color: Color(ThemeColors.lightSky),
                       size: 10.0,
                     ),
                     SizedBox(
-                      width: 20.0,
+                      width: width*0.04866,
                     ),
                     Icon(
                       Icons.circle,
-                      color: Color(lightSky),
+                      color: Color(ThemeColors.lightSky),
                       size: 10.0,
                     ),
                     SizedBox(
-                      width: 35.0,
+                      width: width*0.085158,
                     ),
                     Icon(
                       Icons.circle,
-                      color: Color(lightSky),
+                      color: Color(ThemeColors.lightSky),
                       size: 10.0,
                     ),
                     SizedBox(
-                      width: 50.0,
+                      width: width*0.12165,
                     ),
                     Icon(
                       Icons.circle,
-                      color: Color(lightSky),
+                      color: Color(ThemeColors.lightSky),
                       size: 10.0,
                     ),
                     SizedBox(
-                      width: 50.0,
+                      width: width*0.12165,
                     ),
                     Icon(
                       Icons.circle,
-                      color: Color(lightSky),
+                      color: Color(ThemeColors.lightSky),
                       size: 10.0,
                     ),
                   ],
@@ -141,31 +141,31 @@ class TravelInfo extends StatelessWidget {
             children: [
               Text(
                 "춘천역",
-                style: TextStyle(color: Color(deepNavy), fontSize: 12.0),
+                style: TextStyle(color: Color(ThemeColors.deepNavy), fontSize: 12.0),
               ),
               Text(
                 "옛산길",
-                style: TextStyle(color: Color(deepNavy), fontSize: 12.0),
+                style: TextStyle(color: Color(ThemeColors.deepNavy), fontSize: 12.0),
               ),
               Text(
                 "고개마루에서 직진",
-                style: TextStyle(color: Color(deepNavy), fontSize: 12.0),
+                style: TextStyle(color: Color(ThemeColors.deepNavy), fontSize: 12.0),
               ),
               Text(
                 "미나리폭포",
-                style: TextStyle(color: Color(deepNavy), fontSize: 12.0),
+                style: TextStyle(color: Color(ThemeColors.deepNavy), fontSize: 12.0),
               ),
               Text(
                 "소양로 성당",
-                style: TextStyle(color: Color(deepNavy), fontSize: 12.0),
+                style: TextStyle(color: Color(ThemeColors.deepNavy), fontSize: 12.0),
               ),
             ],
           ), //춘천역 옛산길 고개마루에서 직진
           SizedBox(
-            height: 50.0,
+            height: height*0.06265,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0),
+            padding: EdgeInsets.only(left: width*0.048661),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -195,7 +195,7 @@ class TravelInfo extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: width*0.02433),
             child: Text(
               '람 사는 냄새가 물씬 풍기는 번개 시장을 스쳐 지나면 해질녘 노',
               style: TextStyle(
@@ -204,7 +204,7 @@ class TravelInfo extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 17.0),
+            padding: EdgeInsets.only(left: width*0.04136),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -218,7 +218,7 @@ class TravelInfo extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 10.0),
+            padding: EdgeInsets.only(right: width*0.02433),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -234,17 +234,17 @@ class TravelInfo extends StatelessWidget {
             ),
           ), //글귀
           SizedBox(
-            height: 25.0,
+            height: height*0.03132,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0),
+            padding: EdgeInsets.only(left: width*0.04866),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   '문화 더보기',
                   style: TextStyle(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -253,7 +253,7 @@ class TravelInfo extends StatelessWidget {
             ),
           ), //문화 더보기
           SizedBox(
-            height: 20.0,
+            height: height*0.025062,
           ),
           InkWell(
             onTap: () {
@@ -266,8 +266,8 @@ class TravelInfo extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: Container(
                 color: Colors.grey[400],
-                width: 299,
-                height: 26,
+                width: width*0.7274,
+                height: height*0.032581,
                 child: Center(
                   child: Text(
                     '불교문화',
@@ -281,7 +281,7 @@ class TravelInfo extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5.0,),
+          SizedBox(height: height*0.00626,),
           InkWell(
             onTap: () {
               Navigator.push(
@@ -293,8 +293,8 @@ class TravelInfo extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: Container(
                 color: Colors.grey[400],
-                width: 299,
-                height: 26,
+                width: width*0.7274,
+                height: height*0.032581,
                 child: Center(
                   child: Text(
                     '유교문화',
@@ -308,15 +308,15 @@ class TravelInfo extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5.0),
+          SizedBox(height: height*0.00626,),
           InkWell(
             onTap: () {},
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: Container(
                 color: Colors.grey[400],
-                width: 299,
-                height: 26,
+                width: width*0.7274,
+                height: height*0.032581,
                 child: Center(
                   child: Text(
                     '현대 콘텐츠',
@@ -331,7 +331,7 @@ class TravelInfo extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 30.0,
+            height: height*0.03759,
           )
         ],
       ),

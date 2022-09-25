@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gload_app/constant/theme.dart';
-import 'package:gload_app/page/Menu_screens/travelInfo/CultureMore/Confucianism/Confucianism_Detail.dart';
 import 'package:gload_app/page/frame/common_frame2.dart';
-
 import 'Confucianism_Detail.dart';
 
 class Confucianism_InfoPage extends StatelessWidget {
@@ -27,7 +25,7 @@ class Confucianism_InfoPage extends StatelessWidget {
                   Text(
                     '해당 코스의 유교문화',
                     style: TextStyle(
-                      color: Color(deepNavy),
+                      color: Color(ThemeColors.deepNavy),
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -36,7 +34,7 @@ class Confucianism_InfoPage extends StatelessWidget {
                     height: 7.0,
                   ),
                   Container(
-                    color: Color(deepNavy),
+                    color: Color(ThemeColors.deepNavy),
                     width: 240.0,
                     height: 3.0,
                   ),
