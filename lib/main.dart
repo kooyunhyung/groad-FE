@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:catcher/catcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gload_app/intro.dart';
 import 'package:gload_app/page/frame/common_frame1.dart';
 import 'package:gload_app/page/Main_screens/home.dart';
 import 'package:gload_app/state/auth_state.dart';
@@ -50,10 +51,7 @@ class _MyAppState extends State<MyApp> {
           //title: _title,
           debugShowCheckedModeBanner: false,
           theme: theme(),
-          home: CommonFrame1(
-            title: 'GROAD',
-            clas: Home(),
-          ),
+          home: IntroPage(),
         ));
     // return MaterialApp(
     //   //title: _title,

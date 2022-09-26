@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage.dart';
+import 'package:gload_app/page/Menu_screens/question/question.dart';
 
 import '../../constant/theme.dart';
 import '../Main_screens/benefits.dart';
@@ -22,11 +23,9 @@ class CommonFrame1 extends StatefulWidget {
 }
 
 class _CommonFrame1State extends State<CommonFrame1> {
-
   @override
   Widget build(BuildContext context) {
-
-    var selectedIndex=2;
+    var selectedIndex = 2;
     var pages = [
       Schedule(), //하단 0번 인덱스
       Benefits(), //하단 1번 인덱스
@@ -57,7 +56,10 @@ class _CommonFrame1State extends State<CommonFrame1> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CommonFrame2(title: '로그인',clas: LoginPage(),)),
+                                  builder: (context) => CommonFrame2(
+                                        title: '로그인',
+                                        clas: LoginPage(),
+                                      )),
                             );
                           },
                           child: Row(
@@ -95,7 +97,9 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '여행 정보', clas: TravelInfo())),
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            CommonFrame2(title: '여행 정보', clas: TravelInfo())),
                   );
                 },
               ), //여행 정보
@@ -107,7 +111,11 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CommonFrame2(title: '여행 도우미', clas: TermsOfUse(),)),
+                    MaterialPageRoute(
+                        builder: (context) => CommonFrame2(
+                              title: '여행 도우미',
+                              clas: TermsOfUse(),
+                            )),
                   );
                 },
               ),
@@ -116,7 +124,16 @@ class _CommonFrame1State extends State<CommonFrame1> {
                   '자주 묻는 질문',
                   style: textTheme().headline1,
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CommonFrame2(
+                              title: '자주 묻는 질문',
+                              clas: Question(),
+                            )),
+                  );
+                },
               ),
               ListTile(
                 leading: Text(
@@ -170,8 +187,9 @@ class _CommonFrame1State extends State<CommonFrame1> {
         child: AppBar(
           title: Text(
             widget.title,
-            style:
-            TextStyle(fontWeight: FontWeight.bold, color: Color(ThemeColors.deepNavy)),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(ThemeColors.deepNavy)),
           ),
           // actions: [
           //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),
