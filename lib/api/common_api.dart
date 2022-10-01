@@ -79,7 +79,7 @@ class CommonAPI {
         Map<String, String> headers,
         Map<String, dynamic> params,
       }) async {
-    final response = await Http.post(Uri.parse(createUri(path, params)),
+    final response = await Http.put(Uri.parse(createUri(path, params)),
         body: body != null ? jsonEncode(body) : null,
         headers: {
           if (this.headers != null) ...await this.headers,

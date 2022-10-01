@@ -38,37 +38,6 @@ class _CommonFrame2State extends State<CommonFrame2> {
       ),
       //앱 바
       body: widget.clas,
-      //하단 아이콘
-      floatingActionButton: ExpandableFab(
-        distance: 150,
-        children: [
-          FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            child: Icon(
-              Icons.qr_code,
-              color: Colors.grey,
-            ),
-          ),
-          FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            child: Icon(
-              Icons.directions_walk,
-              color: Colors.grey,
-            ),
-          ),
-          FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () {},
-            child: Icon(
-              Icons.info,
-              color: Colors.grey,
-            ),
-          ),
-        ],
-      ),
-      //플로팅 액션 버튼
     );
   }
 }

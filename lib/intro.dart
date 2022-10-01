@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info/device_info.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -125,18 +126,28 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(ThemeColors.deepNavy),
-        child: Center(
-          child: Text(
-            'GROAD',
-            style: TextStyle(
-              color: ThemeColors.white,
-              fontSize: 50,
-              fontWeight: FontWeight.bold
-            ),
+            width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.lightBlue[50],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/character.png',
+                  ),
+                  SizedBox(height: 20,),
+                  Text(
+                    'GROAD',
+                    style: TextStyle(
+                        color: Color(ThemeColors.deepNavy),
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              )
           ),
-        )
-      ),
     );
   }
 }

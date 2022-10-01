@@ -26,11 +26,11 @@ abstract class ThemeColors {
 TextTheme textTheme() {
   return TextTheme(
     headline1: GoogleFonts.ibmPlexSans(
-        fontSize: 18.0, color: Color(ThemeColors.deepNavy), fontWeight: FontWeight.bold),
+        fontSize: 20.0, color: Color(ThemeColors.deepNavy), fontWeight: FontWeight.bold),
     headline2: GoogleFonts.ibmPlexSans(
-        fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
-    bodyText1: GoogleFonts.ibmPlexSans(fontSize: 16.0, color: Color(ThemeColors.deepNavy)),
-    bodyText2: GoogleFonts.ibmPlexSans(fontSize: 14.0, color: Color(ThemeColors.deepNavy)),
+        fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold),
+    bodyText1: GoogleFonts.ibmPlexSans(fontSize: 18.0, color: ThemeColors.black),
+    bodyText2: GoogleFonts.ibmPlexSans(fontSize: 16.0, color: ThemeColors.black),
     subtitle1: GoogleFonts.ibmPlexSans(fontSize: 14.0, color: Colors.black),
   );
 }

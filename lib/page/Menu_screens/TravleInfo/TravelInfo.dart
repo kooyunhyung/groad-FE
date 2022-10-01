@@ -14,6 +14,7 @@ class TravelInfo extends StatelessWidget {
       length: categories.length,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           backgroundColor: Colors.white,
           bottom: PreferredSize(
             child: Container(

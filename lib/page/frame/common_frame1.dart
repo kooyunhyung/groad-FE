@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage.dart';
+import 'package:gload_app/page/Menu_screens/inquiry/inquiry.dart';
 import 'package:gload_app/page/Menu_screens/question/question.dart';
+import 'package:gload_app/page/Menu_screens/setting/setting.dart';
 
 import '../../constant/theme.dart';
 import '../Main_screens/benefits.dart';
@@ -23,6 +26,8 @@ class CommonFrame1 extends StatefulWidget {
 }
 
 class _CommonFrame1State extends State<CommonFrame1> {
+  String _output = 'Empty Scan Code';
+
   @override
   Widget build(BuildContext context) {
     var selectedIndex = 2;
@@ -38,11 +43,10 @@ class _CommonFrame1State extends State<CommonFrame1> {
       endDrawer: Drawer(
         child: Container(
           child: ListView(
-            padding: EdgeInsets.all(30),
+            padding: EdgeInsets.all(15),
             children: [
               DrawerHeader(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +106,11 @@ class _CommonFrame1State extends State<CommonFrame1> {
                             CommonFrame2(title: '여행 정보', clas: TravelInfo())),
                   );
                 },
-              ), //여행 정보
+              ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
+              ),
               ListTile(
                 leading: Text(
                   '여행 도우미',
@@ -118,6 +126,10 @@ class _CommonFrame1State extends State<CommonFrame1> {
                             )),
                   );
                 },
+              ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
               ),
               ListTile(
                 leading: Text(
@@ -135,6 +147,10 @@ class _CommonFrame1State extends State<CommonFrame1> {
                   );
                 },
               ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
+              ),
               ListTile(
                 leading: Text(
                   '이벤트',
@@ -142,12 +158,29 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 ),
                 onTap: () {},
               ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
+              ),
               ListTile(
                 leading: Text(
-                  '문의',
+                  '문의하기',
                   style: textTheme().headline1,
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CommonFrame2(
+                              title: '문의하기',
+                              clas: Inquiry(),
+                            )),
+                  );
+                },
+              ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
               ),
               ListTile(
                 leading: Text(
@@ -156,6 +189,10 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 ),
                 onTap: () {},
               ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
+              ),
               ListTile(
                 leading: Text(
                   '이용 약관',
@@ -163,12 +200,29 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 ),
                 onTap: () {},
               ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
+              ),
               ListTile(
                 leading: Text(
-                  '알림',
+                  '설정',
                   style: textTheme().headline1,
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CommonFrame2(
+                              title: '설정',
+                              clas: Setting(),
+                            )),
+                  );
+                },
+              ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
               ),
               ListTile(
                 leading: Text(
@@ -176,6 +230,10 @@ class _CommonFrame1State extends State<CommonFrame1> {
                   style: textTheme().headline1,
                 ),
                 onTap: () {},
+              ),
+              Container(
+                height: 1,
+                color: Colors.grey[200],
               ),
             ],
           ),
@@ -237,7 +295,8 @@ class _CommonFrame1State extends State<CommonFrame1> {
         children: [
           FloatingActionButton(
             backgroundColor: Colors.white,
-            onPressed: () {},
+            onPressed: () => _scan(),
+            tooltip: 'scan',
             child: Icon(
               Icons.qr_code,
               color: Colors.grey,
@@ -264,4 +323,14 @@ class _CommonFrame1State extends State<CommonFrame1> {
       //플로팅 액션 버튼
     );
   }
+
+
+  Future _scan() async{
+    String barcode = await scanner.scan();
+    setState(() {
+      _output = barcode;
+      print('qrcode: $_output');
+    });
+  }
 }
+
