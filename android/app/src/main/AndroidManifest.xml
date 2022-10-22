@@ -13,6 +13,9 @@
        <meta-data
            android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyCzu8grWBs-q6bVuCdv-QYxoNj-MCaBd2M" />
+       <meta-data
+           android:name="com.naver.maps.map.CLIENT_ID"
+           android:value="as65du43vl" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
