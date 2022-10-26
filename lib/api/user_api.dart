@@ -5,6 +5,22 @@ import 'common_api.dart';
 class UserAPI extends CommonAPI {
   UserAPI({BuildContext context, bool listen}) : super(context, listen: listen);
 
+  // Naver Map path 불러오기
+  Future<Map<String, dynamic>> getPath_1() async {
+    final response = await getPath1('https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.692045,37.980143&goal=127.725276,37.8938973&waypoints=127.5790956,37.9679432|127.7253862,37.9232548|127.7234127,37.8933383&option=trafast',
+        headers: {
+          "X-NCP-APIGW-API-KEY-ID": "as65du43vl",
+          "X-NCP-APIGW-API-KEY" : "vwZVWIcJbjPwM94keIEdxKen8DhveB0QE3dheiZ7"
+        }, params: {});
+    final result = jsonDecode(utf8.decode(response.bodyBytes));
+    return {
+      "code": result['code'],
+      "message": result['message'],
+      "currentDateTime": result['currentDateTime'],
+      "route": result['route']
+    };
+  }
+
   // 유저 정보 불러오기
   Future<Map<String, dynamic>> getUser({int pk}) async {
     final response = await get('/groad/user/$pk', headers: {}, params: {});

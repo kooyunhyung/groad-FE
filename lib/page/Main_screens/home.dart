@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gload_app/page/Main_screens/TravelCourse/TravelCourse.dart';
+import 'package:gload_app/page/Main_screens/TravelCourse/TravelCourse1.dart';
 import 'package:gload_app/page/Main_screens/Traveler_review/traveler_review.dart';
 import 'package:gload_app/page/Main_screens/components/food_store_item.dart';
 import 'package:gload_app/models/popular_food_store.dart';
 import 'package:gload_app/models/popular_room.dart';
 import 'package:gload_app/page/frame/common_frame1.dart';
 import 'package:gload_app/page/frame/common_frame2.dart';
+import 'TravelCourse/TravelCourse2.dart';
+import 'TravelCourse/TravelCourse3.dart';
 import 'components/room_item.dart';
 import '../../constant/theme.dart';
 
@@ -297,7 +299,7 @@ class _HomeState extends State<Home> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CommonFrame1(
-                              title: '여행 코스 둘러보기', clas: TravelCourse())),
+                              title: '여행 코스 둘러보기', clas: TravelCourse1())),
                     );
                   },
                   child: Stack(
@@ -368,7 +370,7 @@ class _HomeState extends State<Home> {
                                     color: Colors.white,
                                   ),
                                   Text(
-                                    ' 도착 소양로 성당',
+                                    ' 도착 춘천 교육 대학교',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 17.0,
@@ -376,7 +378,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: width * 0.19951,
+                                    width: width * 0.10951,
                                   ),
                                   Text(
                                     '총 2.4km',
@@ -448,7 +450,7 @@ class _HomeState extends State<Home> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CommonFrame1(
-                              title: '여행 코스 둘러보기', clas: TravelCourse())),
+                              title: '여행 코스 둘러보기', clas: TravelCourse2())),
                     );
                   },
                   child: Stack(
@@ -599,7 +601,7 @@ class _HomeState extends State<Home> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CommonFrame1(
-                              title: '여행 코스 둘러보기', clas: TravelCourse())),
+                              title: '여행 코스 둘러보기', clas: TravelCourse3())),
                     );
                   },
                   child: Stack(
