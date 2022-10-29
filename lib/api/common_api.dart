@@ -49,7 +49,29 @@ class CommonAPI {
     return response;
   }
 
-  Future<Http.Response> getPath1(
+  Future<Http.Response> getWeather(
+      String path, {
+        Map<String, String> headers,
+        Map<String, dynamic> params,
+      }) async {
+    final response =
+    await Http.get(Uri.parse(path), headers: {
+      if (this.headers != null) ...await this.headers,
+      if (this.defaultHeader != null) ...?this.defaultHeader,
+      if (headers != null) ...headers
+    });
+    if (response.statusCode != 200) {
+      print(Uri.parse(createUri(path, params)));
+      print(response.statusCode);
+      print(jsonDecode(response.body));
+      print(response.statusCode);
+      throw Exception(['알 수 없는 에러가 발생했습니다.']);
+    }
+
+    return response;
+  }
+
+  Future<Http.Response> getPath(
       String path, {
         Map<String, String> headers,
         Map<String, dynamic> params,

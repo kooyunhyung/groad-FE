@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gload_app/api/user_api.dart';
 import 'package:gload_app/page/Main_screens/TravelCourse/TravelCourse1.dart';
 import 'package:gload_app/page/Main_screens/Traveler_review/traveler_review.dart';
 import 'package:gload_app/page/Main_screens/components/food_store_item.dart';
@@ -7,6 +8,7 @@ import 'package:gload_app/models/popular_food_store.dart';
 import 'package:gload_app/models/popular_room.dart';
 import 'package:gload_app/page/frame/common_frame1.dart';
 import 'package:gload_app/page/frame/common_frame2.dart';
+import 'package:intl/intl.dart';
 import 'TravelCourse/TravelCourse2.dart';
 import 'TravelCourse/TravelCourse3.dart';
 import 'components/room_item.dart';
@@ -21,10 +23,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentPage;
+  Map<String, dynamic> weather;
+  String formattedDate;
+  String weatherImage;
 
   @override
   void initState() {
     currentPage = 1;
+    var now = new DateTime.now();
+    formattedDate = DateFormat('yyyy년 MM월 dd일').format(now);
     super.initState();
   }
 
@@ -119,83 +126,126 @@ class _HomeState extends State<Home> {
                       child: Image.asset('assets/6.png'),
                     ), //데코레이션
                   ]),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.04866),
-                    width: width,
-                    height: height * 0.38345,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '2021년 9월 1일',
-                          style: TextStyle(
-                            color: Colors.grey[500],
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  Stack(
+                    children: [
+                      Container(
+                        width: width,
+                        height: height * 0.38345,
+                        child: Image.asset('assets/background.jpg',fit: BoxFit.fill,),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: width * 0.04866),
+                        width: width,
+                        height: height * 0.38345,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '강원도 춘천시',
+                              formattedDate,
                               style: TextStyle(
-                                color: Color(ThemeColors.deepNavy),
-                                fontSize: 12330 / width,
+                                color: Colors.grey[500],
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(
-                              width: width * 0.2433,
-                            ),
-                            Text(
-                              '26 ℃',
-                              style: TextStyle(
-                                color: Color(ThemeColors.deepNavy),
-                                fontSize: 12330 / width,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: height * 0.02506,
-                        ),
-                        Row(
-                          children: [
-                            Column(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  '뜨거운 태양이 내리쬐는 오늘',
+                                  '강원도 춘천시',
                                   style: TextStyle(
-                                    color: Colors.grey[500],
+                                    color: Color(ThemeColors.deepNavy),
+                                    fontSize: 12330 / width,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(
-                                  '햇살을 만끽하며 걸어볼까요?',
-                                  style: TextStyle(
-                                    color: Colors.grey[500],
-                                  ),
-                                )
+                                SizedBox(
+                                  width: width * 0.2433,
+                                ),
+                                FutureBuilder(
+                                  future: _fetchWeather(),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return CircularProgressIndicator();
+                                    } else if (snapshot.hasError) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Error: ${snapshot.error}',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      );
+                                    } else {
+                                      return Text(
+                                        '${snapshot.data["temp"]} ℃',
+                                        style: TextStyle(
+                                          color: Color(ThemeColors.deepNavy),
+                                          fontSize: 12330 / width,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
                               ],
                             ),
                             SizedBox(
-                              width: width * 0.12165,
+                              height: height * 0.02506,
                             ),
-                            Container(
-                              width: width * 0.3017,
-                              height: width * 0.3017,
-                              color: Colors.grey[400],
-                              child: Center(
-                                  child: Text(
-                                '날씨 일러스트',
-                                style: TextStyle(color: Colors.grey[600]),
-                              )),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(
+                                      '뜨거운 태양이 내리쬐는 오늘',
+                                      style: TextStyle(
+                                        color: ThemeColors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      '햇살을 만끽하며 걸어볼까요?',
+                                      style: TextStyle(
+                                        color: ThemeColors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: width * 0.11065,
+                                ),
+                                FutureBuilder(
+                                  future: _fetchWeather(),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return CircularProgressIndicator();
+                                    } else if (snapshot.hasError) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Error: ${snapshot.error}',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      );
+                                    } else {
+                                      return Container(
+                                        width: width * 0.2807,
+                                        height: width * 0.2807,
+                                        child: Image.asset(
+                                          'assets/weather/$weatherImage',
+                                          fit: BoxFit.fill,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
+                              ],
                             )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    ]
                   )
                 ],
               ),
@@ -1186,5 +1236,63 @@ class _HomeState extends State<Home> {
         ],
       ), //메인스크린
     );
+  }
+
+  Future<Map<String, dynamic>> _fetchWeather() async {
+    weather = await UserAPI(context: context).getWeather_();
+    if (weather['main_weather'] == "Thunderstorm") {
+      weatherImage = "thunder.png";
+    }
+    if (weather['main_weather'] == "Drizzle") {
+      weatherImage = "showerRain.png";
+    }
+    if (weather['main_weather'] == "Rain") {
+      if (weather['description'] == "freezing rain") {
+        weatherImage = "snow.png";
+      }
+      if (weather['description'] == "light rain" ||
+          weather['description'] == "moderate rain" ||
+          weather['description'] == "heavy intensity rain" ||
+          weather['description'] == "very heavy rain" ||
+          weather['description'] == "extreme rain") {
+        if (weather['time'] >= 7 && weather['time'] <= 17) {
+          weatherImage = "rain.png";
+        } else {
+          weatherImage = "rain2.png";
+        }
+      }
+      if (weather['description'] == "light intensity shower rain" ||
+          weather['description'] == "shower rain" ||
+          weather['description'] == "heavy intensity shower rain" ||
+          weather['description'] == "ragged shower rain") {
+        weatherImage = "showerRain.png";
+      }
+    }
+    if (weather['main_weather'] == "Snow") {
+      weatherImage = "snow.png";
+    }
+    if (weather['main_weather'] == "Mist" ||
+        weather['main_weather'] == "Smoke" ||
+        weather['main_weather'] == "Haze" ||
+        weather['main_weather'] == "Dust" ||
+        weather['main_weather'] == "Fog" ||
+        weather['main_weather'] == "Sand" ||
+        weather['main_weather'] == "Ash" ||
+        weather['main_weather'] == "Squall" ||
+        weather['main_weather'] == "Tornado") {
+      weatherImage = "mist+.png";
+    }
+    if (weather['main_weather'] == "Clear") {
+      if (weather['time'] >= 7 && weather['time'] <= 17) {
+        weatherImage = "clear.png";
+      } else {
+        weatherImage = "clear2.png";
+      }
+    }
+    if (weather['main_weather'] == "Clouds") {
+      weatherImage = "clouds.png";
+    }
+
+    return weather;
   }
 }

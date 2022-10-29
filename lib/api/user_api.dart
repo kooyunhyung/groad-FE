@@ -5,9 +5,52 @@ import 'common_api.dart';
 class UserAPI extends CommonAPI {
   UserAPI({BuildContext context, bool listen}) : super(context, listen: listen);
 
+  // 날씨 API 불러오기
+  Future<Map<String, dynamic>> getWeather_() async {
+    final response = await getWeather('https://api.openweathermap.org/data/2.5/weather?lat=37.8570328&lon=127.7397966&appid=8dd13edf7d3512a5f100606b7f660691',
+        headers: {}, params: {});
+    final result = jsonDecode(utf8.decode(response.bodyBytes));
+    return {
+      "main_weather": result['weather'][0]['main'],
+      "description" : result['weather'][0]['description'],
+      "temp": (result['main']['temp']-273.15).round(),
+      "time": (result['timezone']/3600) + 9
+    };
+  }
+
   // Naver Map path 불러오기
-  Future<Map<String, dynamic>> getPath_1() async {
-    final response = await getPath1('https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.692045,37.980143&goal=127.725276,37.8938973&waypoints=127.5790956,37.9679432|127.7253862,37.9232548|127.7234127,37.8933383&option=trafast',
+  Future<Map<String, dynamic>> getPath1_() async {
+    final response = await getPath('https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.5790956,37.9679432&goal=127.725276,37.8938973&waypoints=127.692045,37.980143|127.7253862,37.9232548|127.7234127,37.8933383&option=trafast',
+        headers: {
+          "X-NCP-APIGW-API-KEY-ID": "as65du43vl",
+          "X-NCP-APIGW-API-KEY" : "vwZVWIcJbjPwM94keIEdxKen8DhveB0QE3dheiZ7"
+        }, params: {});
+    final result = jsonDecode(utf8.decode(response.bodyBytes));
+    return {
+      "code": result['code'],
+      "message": result['message'],
+      "currentDateTime": result['currentDateTime'],
+      "route": result['route']
+    };
+  }
+
+  Future<Map<String, dynamic>> getPath2_() async {
+    final response = await getPath('https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.6801772,37.8468056&goal=127.6969079,37.8839056&waypoints=127.6854547,37.8557222|127.6913653,37.8644008|127.7023584,37.8741327&option=trafast',
+        headers: {
+          "X-NCP-APIGW-API-KEY-ID": "as65du43vl",
+          "X-NCP-APIGW-API-KEY" : "vwZVWIcJbjPwM94keIEdxKen8DhveB0QE3dheiZ7"
+        }, params: {});
+    final result = jsonDecode(utf8.decode(response.bodyBytes));
+    return {
+      "code": result['code'],
+      "message": result['message'],
+      "currentDateTime": result['currentDateTime'],
+      "route": result['route']
+    };
+  }
+
+  Future<Map<String, dynamic>> getPath3_() async {
+    final response = await getPath('https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.7176616,37.8182592&goal=127.7524778,37.8637742&waypoints=127.7247551,37.8193813|127.6963556,37.8211885|127.7271483,37.8774578&option=trafast',
         headers: {
           "X-NCP-APIGW-API-KEY-ID": "as65du43vl",
           "X-NCP-APIGW-API-KEY" : "vwZVWIcJbjPwM94keIEdxKen8DhveB0QE3dheiZ7"
