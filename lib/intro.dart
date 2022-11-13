@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gload_app/api/user_api.dart';
 import 'package:gload_app/constant/theme.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -23,10 +24,11 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
+  dynamic courseInfoList;
+
   @override
   void initState() {
     super.initState();
-
     _next();
   }
 
@@ -37,6 +39,7 @@ class _IntroPageState extends State<IntroPage> {
           (Platform.isAndroid && deviceInfo.version.sdkInt <= 30))
         Permission.location,
         Permission.camera,
+        Permission.storage,
     ].request();
 
     bool per = true;
@@ -49,7 +52,7 @@ class _IntroPageState extends State<IntroPage> {
 
     if (!per) {
       await Fluttertoast.showToast(
-          msg: '카메라 및 위치 사용권한이 거부되었습니다.\nGROAD 이용에 제한이 있을 수 있습니다.');
+          msg: '카메라 및 위치, 갤러리 저장소 사용권한이 거부되었습니다.\nGROAD 이용에 제한이 있을 수 있습니다.');
     }
     return per;
   }
@@ -63,17 +66,6 @@ class _IntroPageState extends State<IntroPage> {
         //context.read<AuthState>().autoLogin(context),
         Future.delayed(Duration(seconds: 3))
       ]);
-
-      // if (context.read<AuthState>().isLogin) {    // 핸드폰 내부 저장소 _storage에
-      //   // token 값이 있으면 = true
-      //   Navigator.pushReplacement(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => HomePage(title: 'Robot'),
-      //     ),
-      //   );
-      //   return;
-      // }
 
       if (context.read<AuthState>().firstInit) {
         Navigator.pushReplacement(
@@ -134,7 +126,7 @@ class _IntroPageState extends State<IntroPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/character.png',
+                    'assets/character_blue.png',
                   ),
                   SizedBox(height: 20,),
                   Text(

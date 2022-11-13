@@ -5,13 +5,29 @@ import 'package:gload_app/page/Main_screens/Traveler_review/traveler_review_writ
 import '../../../constant/theme.dart';
 
 class TravelerReview extends StatefulWidget {
-  const TravelerReview({Key key}) : super(key: key);
+  TravelerReview({Key key,this.idKey, this.userInfo, this.themeColor}) : super(key: key);
+
+  int idKey;
+  dynamic userInfo;
+  int themeColor;
 
   @override
   _TravelerReviewState createState() => _TravelerReviewState();
 }
 
 class _TravelerReviewState extends State<TravelerReview> {
+  @override
+  void initState() {
+    if(widget.idKey==null){
+      widget.idKey=-1;
+    }
+    if(widget.themeColor==null){
+      widget.themeColor=0;
+    }
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -40,19 +56,27 @@ class _TravelerReviewState extends State<TravelerReview> {
                             text: categories[index],
                           )),
                       isScrollable: false,
-                      labelColor: Color(ThemeColors.deepNavy),
+                      labelColor: widget.themeColor == 0
+                          ? Color(ThemeColors.deepNavy)
+                          : widget.themeColor == 1
+                          ? ThemeColors.deepGreen
+                          : ThemeColors.deepOrange,
                       labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       unselectedLabelColor: ThemeColors.gray1,
                       unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       indicator: UnderlineTabIndicator(
                           borderSide: BorderSide(
-                              width: 4, color: Color(ThemeColors.deepNavy)))),
+                              width: 4, color: widget.themeColor == 0
+                              ? Color(ThemeColors.deepNavy)
+                              : widget.themeColor == 1
+                              ? ThemeColors.deepGreen
+                              : ThemeColors.deepOrange,))),
                 ),
                 preferredSize: Size.fromHeight(0.0),
               )),
           body: TabBarView(children: [
-            TravelerReviewDetail(),
-            TravelerReviewWrite(),
+            TravelerReviewDetail(idKey: widget.idKey, userInfo: widget.userInfo, themeColor: widget.themeColor,),
+            TravelerReviewWrite(idKey:widget.idKey, userInfo: widget.userInfo, themeColor: widget.themeColor),
           ]),
         ));
   }

@@ -5,7 +5,9 @@ import 'package:gload_app/constant/theme.dart';
 import '../../../models/question_text_menu.dart';
 
 class Question extends StatefulWidget {
-  const Question({Key key}) : super(key: key);
+  Question({Key key,this.themeColor}) : super(key: key);
+
+  int themeColor;
 
   @override
   State<Question> createState() => _QuestionState();
@@ -26,6 +28,15 @@ class _QuestionState extends State<Question> {
   bool Q_point3 = false;
   bool Q_etc1 = false;
   bool Q_etc2 = false;
+
+  @override
+  void initState() {
+    if(widget.themeColor==null){
+      widget.themeColor=0;
+    }
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +71,11 @@ class _QuestionState extends State<Question> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ToggleButtons(
-                      selectedColor: ThemeColors.skyBlue,
+                      selectedColor: widget.themeColor == 0
+                          ? ThemeColors.skyBlue
+                          : widget.themeColor == 1
+                          ? Color(0xFF90EE90)
+                          : Color(0xFFDAA520),
                       isSelected: isSelected,
                       renderBorder: false,
                       onPressed: (int newIndex) {
@@ -166,7 +181,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -197,7 +216,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -228,7 +251,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -259,7 +286,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -300,7 +331,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -329,7 +364,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -358,7 +397,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -397,7 +440,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -426,7 +473,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -455,7 +506,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -494,7 +549,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -523,7 +582,11 @@ class _QuestionState extends State<Question> {
           leading: Text(
             'Q.',
             style: TextStyle(
-                color: ThemeColors.skyBlue,
+                color: widget.themeColor == 0
+                    ? ThemeColors.skyBlue
+                    : widget.themeColor == 1
+                    ? Color(0xFF90EE90)
+                    : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),

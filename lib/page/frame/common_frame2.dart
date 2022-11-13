@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-
 import '../../constant/theme.dart';
-import '../Main_screens/benefits.dart';
-import '../Main_screens/feed.dart';
-import '../Main_screens/floatingActionButton/expandable_fab.dart';
-import '../Main_screens/mypage.dart';
-import '../Main_screens/schedule.dart';
+
 
 class CommonFrame2 extends StatefulWidget {
-  const CommonFrame2({Key key, this.title, this.clas}) : super(key: key);
+  CommonFrame2({Key key, this.idKey, this.title, this.clas, this.themeColor})
+      : super(key: key);
 
+  int themeColor;
+  int idKey;
   final Object clas;
   final String title;
 
@@ -18,6 +16,16 @@ class CommonFrame2 extends StatefulWidget {
 }
 
 class _CommonFrame2State extends State<CommonFrame2> {
+  @override
+  void initState() {
+    if (widget.idKey == null) {
+      widget.idKey = -1;
+    }
+    super.initState();
+    if (widget.themeColor == null) {
+      widget.themeColor = 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +33,32 @@ class _CommonFrame2State extends State<CommonFrame2> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(45.0),
         child: AppBar(
+          backgroundColor: widget.themeColor == 0
+              ? Color(0xffA2E2F8)
+              : widget.themeColor == 1
+                  ? Color(0xFF90EE90)
+                  : Color(0xFFFFD700),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back,
+                color: widget.themeColor == 0
+                    ? Color(ThemeColors.deepNavy)
+                    : widget.themeColor == 1
+                        ? ThemeColors.deepGreen
+                        : ThemeColors.deepOrange),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           title: Text(
             widget.title,
-            style:
-            TextStyle(fontWeight: FontWeight.bold, color: Color(ThemeColors.deepNavy)),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: widget.themeColor == 0
+                    ? Color(ThemeColors.deepNavy)
+                    : widget.themeColor == 1
+                        ? ThemeColors.deepGreen
+                        : ThemeColors.deepOrange),
           ),
-          // actions: [
-          //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          //   IconButton(onPressed: () {}, icon: Icon(Icons.menu))
-          // ],
         ),
       ),
-      //앱 바
       body: widget.clas,
     );
   }

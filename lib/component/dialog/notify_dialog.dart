@@ -49,7 +49,7 @@ class NotifyDialog extends AlertDialog {
                 color: ThemeColors.black,
                 height: 23 / 18,
               ),
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.left,
         )
             : spanText,
       ),

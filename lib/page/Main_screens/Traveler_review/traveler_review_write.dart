@@ -1,11 +1,21 @@
+import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
-
+import 'package:gload_app/api/user_api.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../component/common_button.dart';
 import '../../../component/dialog/notify_dialog.dart';
 import '../../../constant/theme.dart';
 
 class TravelerReviewWrite extends StatefulWidget {
-  const TravelerReviewWrite({Key key}) : super(key: key);
+  TravelerReviewWrite({Key key, this.idKey, this.userInfo, this.themeColor}) : super(key: key);
+
+  int idKey;
+  int themeColor;
+  dynamic userInfo;
 
   @override
   _TravelerReviewWriteState createState() => _TravelerReviewWriteState();
@@ -17,15 +27,35 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
   bool star3 = false;
   bool star4 = false;
   bool star5 = false;
+  TextEditingController name = TextEditingController();
+  TextEditingController place = TextEditingController();
+  TextEditingController content_text = TextEditingController();
+  int grade;
+  final imgBBkey = '0546c22e94c94bf76ece9bca3e0542f2';
+  Dio dio = new Dio();
+  dynamic imageUriResponse;
+
+  final ImagePicker _picker = ImagePicker();
+  XFile _image;
+
+  @override
+  void initState() {
+    if (widget.idKey == null) {
+      widget.idKey = -1;
+    }
+    if (widget.themeColor == null) {
+      widget.themeColor = 0;
+    }
+    // TODO: implement initState
+    super.initState();
+    grade = 1;
+    _image = null;
+  }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-
-    TextEditingController name = TextEditingController();
-    TextEditingController place = TextEditingController();
-    TextEditingController comment = TextEditingController();
 
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -118,7 +148,7 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
                 minLines: 10,
                 maxLines: 10,
                 maxLength: 1000,
-                controller: comment,
+                controller: content_text,
                 decoration: InputDecoration(
                     hintText: '후기를 입력해주세요.(최대 1000자)',
                     hintStyle: TextStyle(color: Colors.grey[350]),
@@ -161,20 +191,43 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      width: width * 0.24,
-                      height: width * 0.24,
-                      decoration:
-                          BoxDecoration(border: Border.all(color: Colors.grey)),
-                      child: Center(
+                  _image == null
+                      ? GestureDetector(
+                          onTap: () {
+                            _getImage();
+                          },
+                          child: Container(
+                            width: width * 0.24,
+                            height: width * 0.24,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey)),
+                            child: Center(
+                                child: Icon(
+                              Icons.add,
+                              color: Colors.grey,
+                            )),
+                          ),
+                        )
+                      : Container(
+                          width: width * 0.24,
+                          height: width * 0.24,
+                          child: Image.file(File(_image.path)),
+                        ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  _image != null
+                      ? GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _image=null;
+                            });
+                          },
                           child: Icon(
-                        Icons.add,
-                        color: Colors.grey,
-                      )),
-                    ),
-                  )
+                            Icons.delete,
+                            size: 40,
+                          ))
+                      : Container(),
                 ],
               ),
               SizedBox(
@@ -196,59 +249,134 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(onTap: (){
-                    setState(() {
-                      star1=true;
-                      star2=false;
-                      star3=false;
-                      star4=false;
-                      star5=false;
-                    });
-                  }, child:star1?Icon(Icons.star_rounded, size: 75,color: Color(ThemeColors.deepNavy),):Icon(Icons.star_border_rounded, size: 75)),
-                  GestureDetector(onTap: (){
-                    setState(() {
-                      star1=true;
-                      star2=true;
-                      star3=false;
-                      star4=false;
-                      star5=false;
-                    });
-                  }, child:star2?Icon(Icons.star_rounded, size: 75,color: Color(ThemeColors.deepNavy),):Icon(Icons.star_border_rounded, size: 75)),
-                  GestureDetector(onTap: (){
-                    setState(() {
-                      star1=true;
-                      star2=true;
-                      star3=true;
-                      star4=false;
-                      star5=false;
-                    });
-                  }, child:star3?Icon(Icons.star_rounded, size: 75,color: Color(ThemeColors.deepNavy),):Icon(Icons.star_border_rounded, size: 75)),
-                  GestureDetector(onTap: (){
-                    setState(() {
-                      star1=true;
-                      star2=true;
-                      star3=true;
-                      star4=true;
-                      star5=false;
-                    });
-                  }, child:star4?Icon(Icons.star_rounded, size: 75,color: Color(ThemeColors.deepNavy),):Icon(Icons.star_border_rounded, size: 75)),
-                  GestureDetector(onTap: (){
-                    setState(() {
-                      star1=true;
-                      star2=true;
-                      star3=true;
-                      star4=true;
-                      star5=true;
-                    });
-                  }, child:star5?Icon(Icons.star_rounded, size: 75,color: Color(ThemeColors.deepNavy),):Icon(Icons.star_border_rounded, size: 75)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          star1 = true;
+                          star2 = false;
+                          star3 = false;
+                          star4 = false;
+                          star5 = false;
+                          grade = 1;
+                        });
+                      },
+                      child: star1
+                          ? Icon(
+                              Icons.star_rounded,
+                              size: 75,
+                              color: widget.themeColor == 0
+                                  ? Color(ThemeColors.deepNavy)
+                                  : widget.themeColor == 1
+                                      ? ThemeColors.deepGreen
+                                      : ThemeColors.deepOrange,
+                            )
+                          : Icon(Icons.star_border_rounded, size: 75)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          star1 = true;
+                          star2 = true;
+                          star3 = false;
+                          star4 = false;
+                          star5 = false;
+                          grade = 2;
+                        });
+                      },
+                      child: star2
+                          ? Icon(
+                              Icons.star_rounded,
+                              size: 75,
+                              color: widget.themeColor == 0
+                                  ? Color(ThemeColors.deepNavy)
+                                  : widget.themeColor == 1
+                                      ? ThemeColors.deepGreen
+                                      : ThemeColors.deepOrange,
+                            )
+                          : Icon(Icons.star_border_rounded, size: 75)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          star1 = true;
+                          star2 = true;
+                          star3 = true;
+                          star4 = false;
+                          star5 = false;
+                          grade = 3;
+                        });
+                      },
+                      child: star3
+                          ? Icon(
+                              Icons.star_rounded,
+                              size: 75,
+                              color: widget.themeColor == 0
+                                  ? Color(ThemeColors.deepNavy)
+                                  : widget.themeColor == 1
+                                      ? ThemeColors.deepGreen
+                                      : ThemeColors.deepOrange,
+                            )
+                          : Icon(Icons.star_border_rounded, size: 75)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          star1 = true;
+                          star2 = true;
+                          star3 = true;
+                          star4 = true;
+                          star5 = false;
+                          grade = 4;
+                        });
+                      },
+                      child: star4
+                          ? Icon(
+                              Icons.star_rounded,
+                              size: 75,
+                              color: widget.themeColor == 0
+                                  ? Color(ThemeColors.deepNavy)
+                                  : widget.themeColor == 1
+                                      ? ThemeColors.deepGreen
+                                      : ThemeColors.deepOrange,
+                            )
+                          : Icon(Icons.star_border_rounded, size: 75)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          star1 = true;
+                          star2 = true;
+                          star3 = true;
+                          star4 = true;
+                          star5 = true;
+                          grade = 5;
+                        });
+                      },
+                      child: star5
+                          ? Icon(
+                              Icons.star_rounded,
+                              size: 75,
+                              color: widget.themeColor == 0
+                                  ? Color(ThemeColors.deepNavy)
+                                  : widget.themeColor == 1
+                                      ? ThemeColors.deepGreen
+                                      : ThemeColors.deepOrange,
+                            )
+                          : Icon(Icons.star_border_rounded, size: 75)),
                 ],
               ),
               SizedBox(
                 height: 25,
               ),
               CommonButton(
+                themeColor: widget.themeColor,
                 label: '작성 완료',
-                onPress: () {
+                onPress: () async {
+                  if (widget.idKey == -1) {
+                    NotifyDialog.show(context,
+                        style: TextStyle(
+                            fontSize: 50,
+                            color: ThemeColors.black,
+                            height: 23 / 18),
+                        message: '로그인 후 작성 가능합니다.');
+                    return;
+                  }
                   if (name.text == '') {
                     NotifyDialog.show(context,
                         style: TextStyle(
@@ -267,7 +395,7 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
                         message: '장소를 선택하지 않았습니다.');
                     return;
                   }
-                  if (comment.text == '') {
+                  if (content_text.text == '') {
                     NotifyDialog.show(context,
                         style: TextStyle(
                             fontSize: 50,
@@ -276,7 +404,40 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
                         message: '후기 내용을 입력하지 않았습니다.');
                     return;
                   }
-                  Navigator.pop(context);
+                  if (_image == null) {
+                    NotifyDialog.show(context,
+                        style: TextStyle(
+                            fontSize: 50,
+                            color: ThemeColors.black,
+                            height: 23 / 18),
+                        message: '사진 등록을 하지 않았습니다.');
+                    return;
+                  }
+
+                  if (_image != null) {
+                    try{
+                      imageUriResponse = await uploadImageFile(_image);
+                    }catch(e){
+                      print(e);
+                    }
+                  }
+
+                  final result = await UserAPI(context: context).createReview(
+                      name: name.text,
+                      place: place.text,
+                      contentText: content_text.text,
+                      grade: grade,
+                      date: DateTime.now().toString(),
+                      contentImage: imageUriResponse['data']['url'],
+                      profileImage: widget.userInfo['gu_profile_image'],
+                      fk: widget.idKey);
+                  print(result['code']);
+                  NotifyDialog.show(context,
+                      style: TextStyle(
+                          fontSize: 50,
+                          color: ThemeColors.black,
+                          height: 23 / 18),
+                      message: '작성이 완료되었습니다.');
                 },
               )
             ],
@@ -284,5 +445,29 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> uploadImageFile(
+    XFile media,
+  ) async {
+    File _media = File(media.path);
+
+    ByteData bytes = _media.readAsBytesSync().buffer.asByteData();
+    var buffer = bytes.buffer;
+    var m = base64.encode(Uint8List.view(buffer));
+
+    FormData formData = FormData.fromMap({"key": imgBBkey, "image": m});
+    Response response = await dio.post(
+      "https://api.imgbb.com/1/upload",
+      data: formData,
+    );
+    return response.data;
+  }
+
+  Future _getImage() async {
+    XFile image = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
   }
 }

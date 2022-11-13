@@ -16,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController id = TextEditingController();
   TextEditingController pw = TextEditingController();
+  dynamic response2;
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +70,84 @@ class _LoginPageState extends State<LoginPage> {
                                 height: 50.0,
                                 child: RaisedButton(
                                     color: Color(ThemeColors.deepNavy),
-                                    onPressed: () async{
-                                      final response = await UserAPI(context: context).user_login(id: id.text, pw: pw.text);
-                                      print(response);
-                                      if (response["gu_seq"] != -1) {
-                                        Navigator.pop(context);
+                                    onPressed: () async {
+                                      final response1 = await UserAPI(
+                                              context: context)
+                                          .user_login(id: id.text, pw: pw.text);
+                                      print(response1);
+                                      if (response1["gu_seq"] != -1) {
+                                        try {
+                                          response2 =
+                                              await UserAPI(context: context)
+                                                  .getSetting(
+                                                      fk: response1["gu_seq"]);
+                                        } catch (e) {
+                                          print(e);
+                                          await UserAPI(context: context)
+                                              .createSetting(
+                                                  map: 0,
+                                                  themeColor: 0,
+                                                  onoff1: 0,
+                                                  onoff2: 0,
+                                                  onoff3: 0,
+                                                  fk: response1["gu_seq"]);
+
+                                          final response4 =
+                                          await UserAPI(context: context)
+                                              .getSetting(
+                                              fk: response1["gu_seq"]);
+
+                                          final response3 = await UserAPI(
+                                              context: context)
+                                              .getUser(pk: response1["gu_seq"]);
+
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                  context) =>
+                                                      CommonFrame1(
+                                                        idKey:
+                                                        response1["gu_seq"],
+                                                        userInfo: response3,
+                                                        themeColor:
+                                                        response4['gs_theme'],
+                                                        title: "GROAD",
+                                                        clas: Home(
+                                                            userInfo: response3,
+                                                            idKey: response1[
+                                                            "gu_seq"],
+                                                            mapType: response4[
+                                                            'gs_map'],
+                                                            themeColor: response4[
+                                                            'gs_theme']),
+                                                      )),(route) => false);
+                                          return;
+                                        }
+
+                                        final response3 = await UserAPI(
+                                                context: context)
+                                            .getUser(pk: response1["gu_seq"]);
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    CommonFrame1(
+                                                      idKey:
+                                                          response1["gu_seq"],
+                                                      themeColor:
+                                                          response2['gs_theme'],
+                                                      title: "GROAD",
+                                                      clas: Home(
+                                                          userInfo: response3,
+                                                          idKey: response1[
+                                                              "gu_seq"],
+                                                          mapType: response2[
+                                                              'gs_map'],
+                                                          themeColor: response2[
+                                                              'gs_theme']),
+                                                    )),(route) => false);
                                       } else {
                                         showSnackBar(context);
                                       }
@@ -129,4 +203,3 @@ void showSnackBar(BuildContext context) {
     backgroundColor: Color(ThemeColors.deepNavy),
   ));
 }
-

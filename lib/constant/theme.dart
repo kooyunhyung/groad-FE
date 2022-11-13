@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class ThemeColors {
   static const deepNavy = 0xff3B7097;
-  static const navy = 0xff4A8DB7;
-  static const sky = 0x75BDE0;
   static const lightSky = 0xffA2E2F0;
+  static const deepGreen = const Color(0XFF006400);
+  static const lightGreen = const Color(0XFF00FF00);
+  static const deepOrange = const Color(0XFFFF8C00);
+  static const lightOrange = const Color(0XFFFFA500);
   static const white = const Color(0XFFFFFFFF);
   static const black = const Color(0XFF000000);
   static const primary = const Color(0XFF6C40EE);
@@ -28,6 +30,10 @@ TextTheme textTheme() {
     headline1: GoogleFonts.ibmPlexSans(
         fontSize: 20.0, color: Color(ThemeColors.deepNavy), fontWeight: FontWeight.bold),
     headline2: GoogleFonts.ibmPlexSans(
+        fontSize: 20.0, color: ThemeColors.deepGreen, fontWeight: FontWeight.bold),
+    headline3: GoogleFonts.ibmPlexSans(
+        fontSize: 20.0, color: ThemeColors.deepOrange, fontWeight: FontWeight.bold),
+    headline4: GoogleFonts.ibmPlexSans(
         fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold),
     bodyText1: GoogleFonts.ibmPlexSans(fontSize: 18.0, color: ThemeColors.black),
     bodyText2: GoogleFonts.ibmPlexSans(fontSize: 16.0, color: ThemeColors.black),

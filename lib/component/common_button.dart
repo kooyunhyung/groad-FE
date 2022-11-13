@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../constant/theme.dart';
 
 class CommonButton extends StatelessWidget {
+  final int themeColor;
   final String label;
   final Border border;
   final Color activeColor;
@@ -19,6 +20,7 @@ class CommonButton extends StatelessWidget {
   final MainAxisAlignment alignment;
 
   CommonButton({
+    this.themeColor=0,
     this.label = '',
     this.border = const Border(),
     this.labelStyle = const TextStyle(
@@ -59,7 +61,11 @@ class CommonButton extends StatelessWidget {
         decoration: BoxDecoration(
           border: border,
           borderRadius: BorderRadius.circular(radius),
-          color: activeColor,//onPress != null ? activeColor : inactiveColor,
+          color: themeColor == 0
+              ? Color(ThemeColors.deepNavy)
+              : themeColor == 1
+              ? ThemeColors.deepGreen
+              : ThemeColors.deepOrange,
           boxShadow: shadow,
         ),
         child: Text(label,
