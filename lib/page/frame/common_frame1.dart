@@ -14,11 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../api/user_api.dart';
 import '../../component/dialog/notify_dialog.dart';
 import '../../constant/theme.dart';
-import '../Main_screens/benefits.dart';
-import '../Main_screens/feed.dart';
 import '../Main_screens/home.dart';
-import '../Main_screens/mypage.dart';
-import '../Main_screens/schedule.dart';
 import '../Menu_screens/TravleInfo/TravelInfo.dart';
  import '../Menu_screens/travelAssistant/travel_assistant.dart';
 import 'common_frame2.dart';
@@ -71,14 +67,6 @@ class _CommonFrame1State extends State<CommonFrame1> {
 
   @override
   Widget build(BuildContext context) {
-    var selectedIndex = 2;
-    var pages = [
-      Schedule(), //하단 0번 인덱스
-      Benefits(), //하단 1번 인덱스
-      widget.clas, //하단 2번 인덱스(default)
-      Feed(), //하단 3번 인덱스
-      MyPage(), //하단 4번 인덱스
-    ];
 
     return Scaffold(
       endDrawer: Drawer(
@@ -389,56 +377,69 @@ class _CommonFrame1State extends State<CommonFrame1> {
                 color: Colors.grey[200],
               ),
               widget.idKey != -1
-                  ? ListTile(
-                      leading: Text(
-                        '이벤트',
-                        style: widget.themeColor == 0
-                            ? textTheme().headline1
-                            : widget.themeColor == 1
-                                ? textTheme().headline2
-                                : widget.themeColor == 2
-                                    ? textTheme().headline3
-                                    : textTheme().headline1,
-                      ),
-                      onTap: () {},
-                    )
+                  ? Column(
+                    children: [
+                      ListTile(
+                          leading: Text(
+                            '이벤트',
+                            style: widget.themeColor == 0
+                                ? textTheme().headline1
+                                : widget.themeColor == 1
+                                    ? textTheme().headline2
+                                    : widget.themeColor == 2
+                                        ? textTheme().headline3
+                                        : textTheme().headline1,
+                          ),
+                          onTap: () {
+                            NotifyDialog.show(context,
+                                style: TextStyle(
+                                    fontSize: 50,
+                                    color: ThemeColors.black,
+                                    height: 23 / 18),
+                                message: '준비중입니다.');
+                          },
+                        ),
+                      Container(
+                        height: 1,
+                        color: Colors.grey[200],
+                      )
+                    ],
+                  )
                   : Container(),
               widget.idKey != -1
-                  ? Container(
-                      height: 1,
-                      color: Colors.grey[200],
-                    )
-                  : Container(),
-              widget.idKey != -1
-                  ? ListTile(
-                      leading: Text(
-                        '문의하기',
-                        style: widget.themeColor == 0
-                            ? textTheme().headline1
-                            : widget.themeColor == 1
-                                ? textTheme().headline2
-                                : widget.themeColor == 2
-                                    ? textTheme().headline3
-                                    : textTheme().headline1,
+                  ? Column(
+                    children: [
+                      ListTile(
+                          leading: Text(
+                            '문의하기',
+                            style: widget.themeColor == 0
+                                ? textTheme().headline1
+                                : widget.themeColor == 1
+                                    ? textTheme().headline2
+                                    : widget.themeColor == 2
+                                        ? textTheme().headline3
+                                        : textTheme().headline1,
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommonFrame2(
+                                        themeColor: widget.themeColor,
+                                        title: '문의하기',
+                                        clas:
+                                            Inquiry(idKey:widget.idKey,themeColor: widget.themeColor),
+                                      )),
+                            );
+                          },
+                        ),
+                      Container(
+                        height: 1,
+                        color: Colors.grey[200],
                       ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CommonFrame2(
-                                    themeColor: widget.themeColor,
-                                    title: '문의하기',
-                                    clas:
-                                        Inquiry(themeColor: widget.themeColor),
-                                  )),
-                        );
-                      },
-                    )
+                    ],
+                  )
                   : Container(),
-              Container(
-                height: 1,
-                color: Colors.grey[200],
-              ),
               ListTile(
                 leading: Text(
                   '이용 약관',
@@ -450,85 +451,100 @@ class _CommonFrame1State extends State<CommonFrame1> {
                               ? textTheme().headline3
                               : textTheme().headline1,
                 ),
-                onTap: () {},
+                onTap: () {
+                  NotifyDialog.show(context,
+                      style: TextStyle(
+                          fontSize: 50,
+                          color: ThemeColors.black,
+                          height: 23 / 18),
+                      message: '준비중입니다.');
+                },
               ),
               Container(
                 height: 1,
                 color: Colors.grey[200],
               ),
               widget.idKey != -1
-                  ? ListTile(
-                      leading: Text(
-                        '설정',
-                        style: widget.themeColor == 0
-                            ? textTheme().headline1
-                            : widget.themeColor == 1
-                                ? textTheme().headline2
-                                : widget.themeColor == 2
-                                    ? textTheme().headline3
-                                    : textTheme().headline1,
+                  ? Column(
+                    children: [
+                      ListTile(
+                          leading: Text(
+                            '설정',
+                            style: widget.themeColor == 0
+                                ? textTheme().headline1
+                                : widget.themeColor == 1
+                                    ? textTheme().headline2
+                                    : widget.themeColor == 2
+                                        ? textTheme().headline3
+                                        : textTheme().headline1,
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommonFrame2(
+                                        themeColor: widget.themeColor,
+                                        title: '설정',
+                                        clas: Setting(
+                                          idKey: widget.idKey,
+                                          themeColor: widget.themeColor,
+                                          settingInfo: settingResponse,
+                                        ),
+                                      )),
+                            );
+                          },
+                        ),
+                      Container(
+                        height: 1,
+                        color: Colors.grey[200],
                       ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CommonFrame2(
-                                    themeColor: widget.themeColor,
-                                    title: '설정',
-                                    clas: Setting(
-                                      idKey: widget.idKey,
-                                      themeColor: widget.themeColor,
-                                      settingInfo: settingResponse,
-                                    ),
-                                  )),
-                        );
-                      },
-                    )
+                    ],
+                  )
                   : Container(),
-              Container(
-                height: 1,
-                color: Colors.grey[200],
-              ),
               widget.idKey != -1
-                  ? ListTile(
-                      leading: Text(
-                        '로그아웃',
-                        style: widget.themeColor == 0
-                            ? textTheme().headline1
-                            : widget.themeColor == 1
-                                ? textTheme().headline2
-                                : widget.themeColor == 2
-                                    ? textTheme().headline3
-                                    : textTheme().headline1,
+                  ? Column(
+                    children: [
+                      ListTile(
+                          leading: Text(
+                            '로그아웃',
+                            style: widget.themeColor == 0
+                                ? textTheme().headline1
+                                : widget.themeColor == 1
+                                    ? textTheme().headline2
+                                    : widget.themeColor == 2
+                                        ? textTheme().headline3
+                                        : textTheme().headline1,
+                          ),
+                          onTap: () async {
+                            await Future.delayed(Duration(milliseconds: 300));
+                            setState(() {
+                              widget.idKey = -1;
+                            });
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) => CommonFrame1(
+                                          idKey: widget.idKey,
+                                          themeColor: 0,
+                                          title: "GROAD",
+                                          clas: Home(idKey: widget.idKey),
+                                        )),
+                                (route) => false);
+                            NotifyDialog.show(context,
+                                style: TextStyle(
+                                    fontSize: 50,
+                                    color: ThemeColors.black,
+                                    height: 23 / 18),
+                                message: '로그아웃 되었습니다.');
+                          },
+                        ),
+                      Container(
+                        height: 1,
+                        color: Colors.grey[200],
                       ),
-                      onTap: () async {
-                        await Future.delayed(Duration(milliseconds: 300));
-                        setState(() {
-                          widget.idKey = -1;
-                        });
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) => CommonFrame1(
-                                      idKey: widget.idKey,
-                                      themeColor: 0,
-                                      title: "GROAD",
-                                      clas: Home(idKey: widget.idKey),
-                                    )),
-                            (route) => false);
-                        NotifyDialog.show(context,
-                            style: TextStyle(
-                                fontSize: 50,
-                                color: ThemeColors.black,
-                                height: 23 / 18),
-                            message: '로그아웃 되었습니다.');
-                      },
-                    )
+                    ],
+                  )
                   : Container(),
-              Container(
-                height: 1,
-                color: Colors.grey[200],
-              ),
             ],
           ),
         ),
@@ -565,7 +581,7 @@ class _CommonFrame1State extends State<CommonFrame1> {
         ),
       ),
       //앱 바
-      body: pages[selectedIndex],
+      body: widget.clas,
     );
   }
 
@@ -634,6 +650,7 @@ class _CommonFrame1State extends State<CommonFrame1> {
         email: userResponse['gu_email'],
         phone: userResponse['gu_phone_number'],
         point: userResponse['gu_point_number'],
+        step: userResponse['gu_step_number'],
         profileImage: imageUriResponse['data']['url']
       );
       print("유저 업데이트 코드: $userUpdateResponse");

@@ -5,9 +5,10 @@ import 'package:gload_app/page/Menu_screens/inquiry/my_inquiry_history.dart';
 import 'package:gload_app/page/Menu_screens/inquiry/ono_to_one_inquiry.dart';
 
 class Inquiry extends StatefulWidget {
-  Inquiry({Key key,this.themeColor}) : super(key: key);
+  Inquiry({Key key,this.themeColor,this.idKey}) : super(key: key);
 
   int themeColor;
+  int idKey;
 
   @override
   State<Inquiry> createState() => _InquiryState();
@@ -18,6 +19,9 @@ class _InquiryState extends State<Inquiry> {
   void initState() {
     if(widget.themeColor==null){
       widget.themeColor=0;
+    }
+    if(widget.idKey==null){
+      widget.idKey=-1;
     }
     // TODO: implement initState
     super.initState();
@@ -68,8 +72,8 @@ class _InquiryState extends State<Inquiry> {
                 preferredSize: Size.fromHeight(0.0),
               )),
           body: TabBarView(children: [
-            OneToOneInquiry(themeColor:widget.themeColor),
-            MyInquiryHistory(themeColor:widget.themeColor),
+            OneToOneInquiry(themeColor:widget.themeColor,idKey: widget.idKey,),
+            MyInquiryHistory(themeColor:widget.themeColor, idKey: widget.idKey,),
           ]),
         ));
   }

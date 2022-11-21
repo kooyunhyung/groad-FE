@@ -7,10 +7,11 @@ import 'package:gload_app/component/dialog/notify_dialog.dart';
 import 'package:gload_app/models/user.dart';
 import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage.dart';
 
+import '../../../component/common_button.dart';
 import '../../../constant/theme.dart';
 
 class SignupPage extends StatefulWidget {
-  const SignupPage({Key key}) : super(key: key);
+  SignupPage({Key key}) : super(key: key);
 
   @override
   State<SignupPage> createState() => _SignupPageState();
@@ -34,9 +35,6 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign up'),
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -133,9 +131,9 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(
                 height: 30,
               ),
-              ElevatedButton(
-                  child: Text('Sign up'),
-                  onPressed: () async{
+              CommonButton(
+                  label: '가입하기',
+                  onPress: () async{
                     if(id.text == ""){
                       NotifyDialog.show(context,
                           style: TextStyle(
@@ -235,6 +233,28 @@ class _SignupPageState extends State<SignupPage> {
                       );
                       return;
                     }
+                    if(id.text.length<5){
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18
+                          ),
+                          message: 'Id명이 너무 짧습니다. 5자리 이상으로 입력하여 주십시오.'
+                      );
+                      return;
+                    }
+                    if(pw.text.length<8){
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18
+                          ),
+                          message: '비밀번호는 8자리 이상으로 입력하여 주십시오.'
+                      );
+                      return;
+                    }
                     if(pw.text != pwCheck.text){
                       NotifyDialog.show(context,
                         style: TextStyle(
@@ -246,6 +266,66 @@ class _SignupPageState extends State<SignupPage> {
                       );
                       return;
                     }
+                    if(birthDate.text.length<6){
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18
+                          ),
+                          message: '생년월일을 6자리 형식으로 입력하여 주십시오.'
+                      );
+                      return;
+                    }
+                    if(!(email.text.contains('@'))){
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18
+                          ),
+                          message: '이메일 입력형식이 맞지 않습니다.\n(@을 반드시 붙여야 합니다.)'
+                      );
+                      return;
+                    }
+                    if(phone.text.length<10){
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18
+                          ),
+                          message: '전화번호 입력형식이 맞지 않습니다.'
+                      );
+                      return;
+                    }
+                    if(phone.text.length>11){
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18
+                          ),
+                          message: '전화번호 입력형식이 맞지 않습니다.\n(하이픈(-)을 뺀 형식으로 입력하여 주십시오.)'
+                      );
+                      return;
+                    }
+                    
+                    dynamic idCheck= await UserAPI(context: context).getUserAll();
+                    for(int i=0; i<idCheck.length; i++){
+                      if(id.text==idCheck[i]['gu_id']){
+                        NotifyDialog.show(context,
+                            style: TextStyle(
+                                fontSize: 50,
+                                color: ThemeColors.black,
+                                height: 23 / 18
+                            ),
+                            message: '이미 존재하는 ID입니다. ID명을 바꿔주세요.'
+                        );
+                        return;
+                      }
+                    }
+
                       final response = await UserAPI(context: context).createUser(
                           id: id.text,
                           pw: pw.text,
@@ -253,11 +333,20 @@ class _SignupPageState extends State<SignupPage> {
                           gender: gender.text,
                           birth: birthDate.text,
                           email: email.text,
-                          phone: phone.text);
+                          phone: phone.text,
+                      );
                       print(response);
                       if(response['code'] == 200){
                         Navigator.pop(context);
                       }
+                    NotifyDialog.show(context,
+                        style: TextStyle(
+                            fontSize: 50,
+                            color: ThemeColors.black,
+                            height: 23 / 18
+                        ),
+                        message: '회원가입이 완료되었습니다.'
+                    );
                   }),
             ],
           ),

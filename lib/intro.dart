@@ -120,23 +120,16 @@ class _IntroPageState extends State<IntroPage> {
       body: Container(
             width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              color: Colors.lightBlue[50],
+              color: Color(0xFF105854),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/character_blue.png',
+                    'assets/characterGreen.png',
                   ),
                   SizedBox(height: 20,),
-                  Text(
-                    'GROAD',
-                    style: TextStyle(
-                        color: Color(ThemeColors.deepNavy),
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
+                  Image.asset('assets/logo.jpg')
                 ],
               )
           ),

@@ -3,9 +3,10 @@ import '../../../api/user_api.dart';
 import 'components/inquiry_body.dart';
 
 class MyInquiryHistory extends StatefulWidget {
-  MyInquiryHistory({Key key,this.themeColor}) : super(key: key);
+  MyInquiryHistory({Key key,this.themeColor, this.idKey}) : super(key: key);
 
   int themeColor;
+  int idKey;
 
   @override
   State<MyInquiryHistory> createState() => _MyInquiryHistoryState();
@@ -60,7 +61,7 @@ class _MyInquiryHistoryState extends State<MyInquiryHistory> {
         });
   }
   Future<dynamic> _fetchInquiryInfo() async {
-    myInquiryList = await UserAPI(context: context).getInquiryDetail(fk: 2);
+    myInquiryList = await UserAPI(context: context).getInquiryDetail(fk: widget.idKey);
     print(myInquiryList);
     return myInquiryList;
   }

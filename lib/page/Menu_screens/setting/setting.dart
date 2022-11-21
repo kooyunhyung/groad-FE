@@ -488,7 +488,6 @@ class _SettingState extends State<Setting> {
                         themeColor: widget.themeColor,
                         label: '확인',
                         onPress: () async {
-                          print("업데이트창;;;;");
                           await UserAPI(context: context).updateSetting(
                               map: _selectedIndex1,
                               themeColor: _selectedIndex2,

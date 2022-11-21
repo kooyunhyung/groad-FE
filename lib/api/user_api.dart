@@ -63,11 +63,12 @@ class UserAPI extends CommonAPI {
       "gu_email": result['gu_email'],
       "gu_phone_number": result['gu_phone_number'],
       "gu_point_number": result['gu_point_number'],
+      "gu_step_number": result['gu_step_number'],
       "gu_profile_image": result['gu_profile_image']
     };
   }
 
-  Future<List<Map<String, dynamic>>> getUserAll() async {
+  Future<dynamic> getUserAll() async {
     final response = await get('groad/user/', headers: {}, params: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return result;
@@ -89,7 +90,8 @@ class UserAPI extends CommonAPI {
       String gender,
       String birth,
       String email,
-      String phone}) async {
+      String phone,
+      String profileImage}) async {
     final response = await post('groad/user/', body: {
       "gu_id": id,
       "gu_pw": pw,
@@ -97,7 +99,8 @@ class UserAPI extends CommonAPI {
       "gu_gender": gender,
       "gu_birth_date": birth,
       "gu_email": email,
-      "gu_phone_number": phone
+      "gu_phone_number": phone,
+      "gu_profile_image": profileImage,
     }, params: {}, headers: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return {"code": result['code']};
@@ -113,7 +116,9 @@ class UserAPI extends CommonAPI {
       String birth,
       String email,
       String phone,
-      int point,String profileImage}) async {
+      int point,
+      double step,
+      String profileImage}) async {
     final response = await put('groad/user/$pk/', body: {
       "gu_id": id,
       "gu_pw": pw,
@@ -123,6 +128,7 @@ class UserAPI extends CommonAPI {
       "gu_email": email,
       "gu_phone_number": phone,
       "gu_point_number": point,
+      "gu_step_number": step,
       "gu_profile_image": profileImage
     }, params: {}, headers: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
@@ -188,7 +194,7 @@ class UserAPI extends CommonAPI {
       int grade,
       String date,
       String contentImage,
-        String profileImage,
+      String profileImage,
       int fk}) async {
     final request = await post('groad/review/', body: {
       "gr_name": name,
@@ -212,7 +218,7 @@ class UserAPI extends CommonAPI {
       int grade,
       String date,
       String contentImage,
-        String profileImage,
+      String profileImage,
       int pk,
       int fk}) async {
     final response = await put('groad/review/$pk/', body: {
@@ -240,11 +246,10 @@ class UserAPI extends CommonAPI {
   // 후기댓글 조회 (All)
   Future<dynamic> getReviewCommentAll() async {
     final response =
-    await get('groad/review_comment/', headers: {}, params: {});
+        await get('groad/review_comment/', headers: {}, params: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return result;
   }
-
 
   // 후기댓글 조회 (detail)
   Future<dynamic> getReviewComment({int fk}) async {
@@ -269,7 +274,11 @@ class UserAPI extends CommonAPI {
 
   // 후기댓글 수정
   Future<Map<String, dynamic>> updateReviewComment(
-      {String name, String profileImage, String commentText, int pk, int fk}) async {
+      {String name,
+      String profileImage,
+      String commentText,
+      int pk,
+      int fk}) async {
     final response = await put('groad/review_comment/$pk', body: {
       "grc_name": name,
       "grc_profile_image": profileImage,
@@ -416,16 +425,14 @@ class UserAPI extends CommonAPI {
 
   // 카페 리스트 조회
   Future<dynamic> getCafeList() async {
-    final response =
-    await get('groad/cafe_list/', headers: {}, params: {});
+    final response = await get('groad/cafe_list/', headers: {}, params: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return result;
   }
 
   // 포토스팟 리스트 조회
   Future<dynamic> getPhotoList() async {
-    final response =
-    await get('groad/photo_list/', headers: {}, params: {});
+    final response = await get('groad/photo_list/', headers: {}, params: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return result;
   }
@@ -433,15 +440,14 @@ class UserAPI extends CommonAPI {
   // 맛집 리스트 조회
   Future<dynamic> getRestaurantList() async {
     final response =
-    await get('groad/restaurant_list/', headers: {}, params: {});
+        await get('groad/restaurant_list/', headers: {}, params: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return result;
   }
 
   // 숙소 리스트 조회
   Future<dynamic> getLodgingList() async {
-    final response =
-    await get('groad/lodging_list/', headers: {}, params: {});
+    final response = await get('groad/lodging_list/', headers: {}, params: {});
     final result = jsonDecode(utf8.decode(response.bodyBytes));
     return result;
   }

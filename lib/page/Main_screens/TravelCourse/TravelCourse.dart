@@ -14,11 +14,11 @@ import 'PositionPage/position.dart';
 class TravelCourse extends StatefulWidget {
   TravelCourse(
       {Key key,
-        this.userInfo,
-        this.courseInfo,
-        this.idKey,
-        this.mapType,
-        this.themeColor})
+      this.userInfo,
+      this.courseInfo,
+      this.idKey,
+      this.mapType,
+      this.themeColor})
       : super(key: key);
 
   dynamic userInfo;
@@ -64,7 +64,6 @@ class _TravelCourseState extends State<TravelCourse> {
   Map<String, dynamic> response;
   List path = [];
   List<LatLng> path_prepared = [];
-  String _output = 'Empty Scan Code';
   bool course_flag = false;
   bool mk1_col_red = true;
   bool mk2_col_red = true;
@@ -73,9 +72,13 @@ class _TravelCourseState extends State<TravelCourse> {
   bool mk5_col_red = true;
   Completer<NaverMapController> _controller = Completer();
 
+  int addPoint;
+  double addStep;
+
   //_TravelCourse1State();
   @override
   void initState() {
+    addStep=0;
     courseKey = widget.courseInfo["gt_course_key"];
     title = widget.courseInfo["gt_course_title"];
     cameraLat = widget.courseInfo["gt_camera_lat"];
@@ -114,6 +117,25 @@ class _TravelCourseState extends State<TravelCourse> {
     // TODO: implement initState
     super.initState();
     flag = 0;
+    if (courseKey == 1) {
+      addPoint = 300;
+    } else if (courseKey == 2) {
+      addPoint = 250;
+    } else if (courseKey == 3) {
+      addPoint = 250;
+    } else if (courseKey == 4) {
+      addPoint = 350;
+    } else if (courseKey == 5) {
+      addPoint = 300;
+    } else if (courseKey == 6) {
+      addPoint = 350;
+    } else if (courseKey == 7) {
+      addPoint = 400;
+    } else if (courseKey == 8) {
+      addPoint = 200;
+    } else if (courseKey == 9) {
+      addPoint = 100;
+    }
   }
 
   @override
@@ -121,13 +143,13 @@ class _TravelCourseState extends State<TravelCourse> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     CameraPosition _cameraPosition =
-    CameraPosition(target: LatLng(cameraLat, cameraLng), zoom: zoom);
+        CameraPosition(target: LatLng(cameraLat, cameraLng), zoom: zoom);
 
     MapType _mapType = widget.mapType == 0
         ? MapType.Basic
         : widget.mapType == 1
-        ? MapType.Satellite
-        : MapType.Hybrid;
+            ? MapType.Satellite
+            : MapType.Hybrid;
 
     Marker marker1 = Marker(
       markerId: MarkerId1,
@@ -178,9 +200,8 @@ class _TravelCourseState extends State<TravelCourse> {
           padding: EdgeInsets.symmetric(
               horizontal: width * 0.037593, vertical: height * 0.03759),
           //color: Colors.grey[100],
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Padding(
               padding: EdgeInsets.only(left: width * 0.00827),
               child: Column(
@@ -192,8 +213,8 @@ class _TravelCourseState extends State<TravelCourse> {
                       color: widget.themeColor == 0
                           ? Color(ThemeColors.deepNavy)
                           : widget.themeColor == 1
-                          ? ThemeColors.deepGreen
-                          : ThemeColors.deepOrange,
+                              ? ThemeColors.deepGreen
+                              : ThemeColors.deepOrange,
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -205,8 +226,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.deepNavy)
                         : widget.themeColor == 1
-                        ? ThemeColors.deepGreen
-                        : ThemeColors.deepOrange,
+                            ? ThemeColors.deepGreen
+                            : ThemeColors.deepOrange,
                     width: width * 0.343309,
                     height: 4.0,
                   ),
@@ -274,8 +295,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.lightSky)
                         : widget.themeColor == 1
-                        ? ThemeColors.lightGreen
-                        : ThemeColors.lightOrange,
+                            ? ThemeColors.lightGreen
+                            : ThemeColors.lightOrange,
                     width: width * 0.83508515,
                     height: 1.0,
                   ),
@@ -289,8 +310,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.lightSky)
                         : widget.themeColor == 1
-                        ? ThemeColors.lightGreen
-                        : ThemeColors.lightOrange,
+                            ? ThemeColors.lightGreen
+                            : ThemeColors.lightOrange,
                     size: 10.0,
                   ),
                   SizedBox(
@@ -301,8 +322,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.lightSky)
                         : widget.themeColor == 1
-                        ? ThemeColors.lightGreen
-                        : ThemeColors.lightOrange,
+                            ? ThemeColors.lightGreen
+                            : ThemeColors.lightOrange,
                     size: 10.0,
                   ),
                   SizedBox(
@@ -313,8 +334,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.lightSky)
                         : widget.themeColor == 1
-                        ? ThemeColors.lightGreen
-                        : ThemeColors.lightOrange,
+                            ? ThemeColors.lightGreen
+                            : ThemeColors.lightOrange,
                     size: 10.0,
                   ),
                   SizedBox(
@@ -325,8 +346,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.lightSky)
                         : widget.themeColor == 1
-                        ? ThemeColors.lightGreen
-                        : ThemeColors.lightOrange,
+                            ? ThemeColors.lightGreen
+                            : ThemeColors.lightOrange,
                     size: 10.0,
                   ),
                   SizedBox(
@@ -337,8 +358,8 @@ class _TravelCourseState extends State<TravelCourse> {
                     color: widget.themeColor == 0
                         ? Color(ThemeColors.lightSky)
                         : widget.themeColor == 1
-                        ? ThemeColors.lightGreen
-                        : ThemeColors.lightOrange,
+                            ? ThemeColors.lightGreen
+                            : ThemeColors.lightOrange,
                     size: 10.0,
                   ),
                 ],
@@ -372,8 +393,8 @@ class _TravelCourseState extends State<TravelCourse> {
                         color: widget.themeColor == 0
                             ? Color(ThemeColors.deepNavy)
                             : widget.themeColor == 1
-                            ? ThemeColors.deepGreen
-                            : Color(0xFFB8860B),
+                                ? ThemeColors.deepGreen
+                                : Color(0xFFB8860B),
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0),
                   ),
@@ -403,8 +424,8 @@ class _TravelCourseState extends State<TravelCourse> {
                         color: widget.themeColor == 0
                             ? Color(ThemeColors.deepNavy)
                             : widget.themeColor == 1
-                            ? ThemeColors.deepGreen
-                            : Color(0xFFB8860B),
+                                ? ThemeColors.deepGreen
+                                : Color(0xFFB8860B),
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0),
                   ),
@@ -434,8 +455,8 @@ class _TravelCourseState extends State<TravelCourse> {
                         color: widget.themeColor == 0
                             ? Color(ThemeColors.deepNavy)
                             : widget.themeColor == 1
-                            ? ThemeColors.deepGreen
-                            : Color(0xFFB8860B),
+                                ? ThemeColors.deepGreen
+                                : Color(0xFFB8860B),
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0),
                   ),
@@ -465,8 +486,8 @@ class _TravelCourseState extends State<TravelCourse> {
                         color: widget.themeColor == 0
                             ? Color(ThemeColors.deepNavy)
                             : widget.themeColor == 1
-                            ? ThemeColors.deepGreen
-                            : Color(0xFFB8860B),
+                                ? ThemeColors.deepGreen
+                                : Color(0xFFB8860B),
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0),
                   ),
@@ -496,8 +517,8 @@ class _TravelCourseState extends State<TravelCourse> {
                         color: widget.themeColor == 0
                             ? Color(ThemeColors.deepNavy)
                             : widget.themeColor == 1
-                            ? ThemeColors.deepGreen
-                            : Color(0xFFB8860B),
+                                ? ThemeColors.deepGreen
+                                : Color(0xFFB8860B),
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0),
                   ),
@@ -507,7 +528,7 @@ class _TravelCourseState extends State<TravelCourse> {
           ],
         ),
         SizedBox(
-          height: height*0.023,
+          height: height * 0.053,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -526,53 +547,270 @@ class _TravelCourseState extends State<TravelCourse> {
                     course_flag = !course_flag;
                     flag = 1;
                   });
-                  if (course_flag == false && mk5_col_red == false) {
-                    final response2 =
-                    await UserAPI(context: context).updateUser(
-                      pk: widget.idKey,
-                      id: widget.userInfo['gu_id'],
-                      pw: widget.userInfo['gu_pw'],
-                      name: widget.userInfo['gu_name'],
-                      gender: widget.userInfo['gu_gender'],
-                      birth: widget.userInfo['gu_birth'],
-                      email: widget.userInfo['gu_email'],
-                      phone: widget.userInfo['gu_phone_number'],
-                      point: widget.userInfo['gu_point_number'] + 100,
-                    );
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => CommonFrame1(
-                              idKey: widget.idKey,
-                              themeColor: widget.themeColor,
-                              title: "GROAD",
-                              clas: Home(
-                                idKey: widget.idKey,
-                                mapType: widget.mapType,
-                                themeColor: widget.themeColor,
-                              ),
-                            )),
-                            (route) => false);
-                    NotifyDialog.show(context,
-                        style: TextStyle(
-                            fontSize: 40,
-                            color: ThemeColors.black,
-                            height: 23 / 18),
-                        message: '축하드립니다! 코스 주행을 완료하였습니다. \n(포인트 100 적립)');
-                  } else if (course_flag == false && mk5_col_red == true) {
-                    NotifyDialog.show(context,
-                        style: TextStyle(
-                            fontSize: 40,
-                            color: ThemeColors.black,
-                            height: 23 / 18),
-                        message: '코스 주행을 종료합니다. (스탬프 초기화)');
-                    setState(() {
-                      mk1_col_red = true;
-                      mk2_col_red = true;
-                      mk3_col_red = true;
-                      mk4_col_red = true;
-                      mk5_col_red = true;
-                    });
+                  if (course_flag == false) {
+                    if (mk1_col_red == true) {
+                      print("여기도 안될까 설마??");
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CommonFrame1(
+                                    idKey: widget.idKey,
+                                    themeColor: widget.themeColor,
+                                    title: "GROAD",
+                                    clas: Home(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                    ),
+                                  )),
+                          (route) => false);
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '코스 주행을 종료합니다.');
+                    } else if (mk2_col_red == true) {
+                      print("여기도2 안될까 설마??");
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CommonFrame1(
+                                    idKey: widget.idKey,
+                                    themeColor: widget.themeColor,
+                                    title: "GROAD",
+                                    clas: Home(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                    ),
+                                  )),
+                          (route) => false);
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '코스 주행을 종료합니다.');
+                    } else if (mk3_col_red == true) {
+                      print("여기도 안 되니???");
+                      if (courseKey == 1) {
+                        addStep = 15.8;
+                      } else if (courseKey == 2) {
+                        addStep = 2.8;
+                      } else if (courseKey == 3) {
+                        addStep = 1.3;
+                      } else if (courseKey == 4) {
+                        addStep = 14.2;
+                      } else if (courseKey == 5) {
+                        addStep = 10.1;
+                      } else if (courseKey == 6) {
+                        addStep = 7.3;
+                      } else if (courseKey == 7) {
+                        addStep = 2.1;
+                      } else if (courseKey == 8) {
+                        addStep = 1.4;
+                      } else if (courseKey == 9) {
+                        addStep = 1.4;
+                      }
+                      await UserAPI(context: context).updateUser(
+                          pk: widget.idKey,
+                          id: widget.userInfo['gu_id'],
+                          pw: widget.userInfo['gu_pw'],
+                          name: widget.userInfo['gu_name'],
+                          gender: widget.userInfo['gu_gender'],
+                          birth: widget.userInfo['gu_birth_date'],
+                          email: widget.userInfo['gu_email'],
+                          phone: widget.userInfo['gu_phone_number'],
+                          step: widget.userInfo['gu_step_number'] + addStep,
+                          point: widget.userInfo['gu_point_number'],
+                          profileImage: widget.userInfo['gu_profile_image']);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CommonFrame1(
+                                    idKey: widget.idKey,
+                                    themeColor: widget.themeColor,
+                                    title: "GROAD",
+                                    clas: Home(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                    ),
+                                  )),
+                          (route) => false);
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '코스 주행을 종료합니다.');
+                    } else if (mk4_col_red == true) {
+                        if (courseKey == 1) {
+                          addStep = 27.5;
+                        } else if (courseKey == 2) {
+                          addStep = 4.6;
+                        } else if (courseKey == 3) {
+                          addStep = 2.5;
+                        } else if (courseKey == 4) {
+                          addStep = 27.3;
+                        } else if (courseKey == 5) {
+                          addStep = 15.4;
+                        } else if (courseKey == 6) {
+                          addStep = 15.5;
+                        } else if (courseKey == 7) {
+                          addStep = 3.7;
+                        } else if (courseKey == 8) {
+                          addStep = 2.8;
+                        } else if (courseKey == 9) {
+                          addStep = 2.4;
+                        }
+                        await UserAPI(context: context).updateUser(
+                            pk: widget.idKey,
+                            id: widget.userInfo['gu_id'],
+                            pw: widget.userInfo['gu_pw'],
+                            name: widget.userInfo['gu_name'],
+                            gender: widget.userInfo['gu_gender'],
+                            birth: widget.userInfo['gu_birth_date'],
+                            email: widget.userInfo['gu_email'],
+                            phone: widget.userInfo['gu_phone_number'],
+                            step: widget.userInfo['gu_step_number'] + addStep,
+                            point: widget.userInfo['gu_point_number'],
+                            profileImage: widget.userInfo['gu_profile_image']
+                        );
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CommonFrame1(
+                                    idKey: widget.idKey,
+                                    themeColor: widget.themeColor,
+                                    title: "GROAD",
+                                    clas: Home(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                    ),
+                                  )),
+                          (route) => false);
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '코스 주행을 종료합니다.');
+                    } else if (mk5_col_red == true) {
+                        if (courseKey == 1) {
+                          addStep = 31.7;
+                        } else if (courseKey == 2) {
+                          addStep = 7.2;
+                        } else if (courseKey == 3) {
+                          addStep = 11.4;
+                        } else if (courseKey == 4) {
+                          addStep = 41.1;
+                        } else if (courseKey == 5) {
+                          addStep = 21.8;
+                        } else if (courseKey == 6) {
+                          addStep = 15.9;
+                        } else if (courseKey == 7) {
+                          addStep = 6.0;
+                        } else if (courseKey == 8) {
+                          addStep = 4.2;
+                        } else if (courseKey == 9) {
+                          addStep = 4.6;
+                        }
+                        await UserAPI(context: context).updateUser(
+                            pk: widget.idKey,
+                            id: widget.userInfo['gu_id'],
+                            pw: widget.userInfo['gu_pw'],
+                            name: widget.userInfo['gu_name'],
+                            gender: widget.userInfo['gu_gender'],
+                            birth: widget.userInfo['gu_birth_date'],
+                            email: widget.userInfo['gu_email'],
+                            phone: widget.userInfo['gu_phone_number'],
+                            step: widget.userInfo['gu_step_number'] + addStep,
+                            point: widget.userInfo['gu_point_number'],
+                            profileImage: widget.userInfo['gu_profile_image']
+                        );
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CommonFrame1(
+                                    idKey: widget.idKey,
+                                    themeColor: widget.themeColor,
+                                    title: "GROAD",
+                                    clas: Home(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                    ),
+                                  )),
+                          (route) => false);
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '코스 주행을 종료합니다.');
+                    } else {
+                      print("다시 테스트 해본다...");
+                        if (courseKey == 1) {
+                          addStep = 32.1;
+                        } else if (courseKey == 2) {
+                          addStep = 16.9;
+                        } else if (courseKey == 3) {
+                          addStep = 14.2;
+                        } else if (courseKey == 4) {
+                          addStep = 41.6;
+                        } else if (courseKey == 5) {
+                          addStep = 24.0;
+                        } else if (courseKey == 6) {
+                          addStep = 40.4;
+                        } else if (courseKey == 7) {
+                          addStep = 8.2;
+                        } else if (courseKey == 8) {
+                          addStep = 4.3;
+                        } else if (courseKey == 9) {
+                          addStep = 4.9;
+                        }
+
+                        try{
+                          await UserAPI(context: context).updateUser(
+                              pk: widget.idKey,
+                              id: widget.userInfo['gu_id'],
+                              pw: widget.userInfo['gu_pw'],
+                              name: widget.userInfo['gu_name'],
+                              gender: widget.userInfo['gu_gender'],
+                              birth: widget.userInfo['gu_birth_date'],
+                              email: widget.userInfo['gu_email'],
+                              phone: widget.userInfo['gu_phone_number'],
+                              step: widget.userInfo['gu_step_number'] + addStep,
+                              point: widget.userInfo['gu_point_number'] + addPoint,
+                              profileImage: widget.userInfo['gu_profile_image']
+                          );
+                        }catch(e){
+                          print(e);
+                        }
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CommonFrame1(
+                                    idKey: widget.idKey,
+                                    themeColor: widget.themeColor,
+                                    title: "GROAD",
+                                    clas: Home(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                    ),
+                                  )),
+                          (route) => false);
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '코스 주행을 종료합니다. \n(포인트 $addPoint 적립)');
+                    }
                   } else if (course_flag == true) {
                     NotifyDialog.show(context,
                         style: TextStyle(
@@ -594,20 +832,20 @@ class _TravelCourseState extends State<TravelCourse> {
                             color: course_flag
                                 ? ThemeColors.red
                                 : widget.themeColor == 0
-                                ? Color(ThemeColors.deepNavy)
-                                : widget.themeColor == 1
-                                ? ThemeColors.deepGreen
-                                : ThemeColors.deepOrange,
+                                    ? Color(ThemeColors.deepNavy)
+                                    : widget.themeColor == 1
+                                        ? ThemeColors.deepGreen
+                                        : ThemeColors.deepOrange,
                             width: 3)),
                     child: Icon(
                       Icons.directions_walk,
                       color: course_flag
                           ? ThemeColors.red
                           : widget.themeColor == 0
-                          ? Color(ThemeColors.deepNavy)
-                          : widget.themeColor == 1
-                          ? ThemeColors.deepGreen
-                          : ThemeColors.deepOrange,
+                              ? Color(ThemeColors.deepNavy)
+                              : widget.themeColor == 1
+                                  ? ThemeColors.deepGreen
+                                  : ThemeColors.deepOrange,
                       size: 30,
                     ),
                   ),
@@ -624,12 +862,12 @@ class _TravelCourseState extends State<TravelCourse> {
             GestureDetector(
               onTap: () => course_flag
                   ? _scan(
-                mk1: marker1.markerId,
-                mk2: marker2.markerId,
-                mk3: marker3.markerId,
-                mk4: marker4.markerId,
-                mk5: marker5.markerId,
-              )
+                      mk1: marker1.markerId,
+                      mk2: marker2.markerId,
+                      mk3: marker3.markerId,
+                      mk4: marker4.markerId,
+                      mk5: marker5.markerId,
+                    )
                   : {},
               child: Column(
                 children: [
@@ -641,20 +879,20 @@ class _TravelCourseState extends State<TravelCourse> {
                         border: Border.all(
                             color: course_flag
                                 ? widget.themeColor == 0
-                                ? Color(ThemeColors.deepNavy)
-                                : widget.themeColor == 1
-                                ? ThemeColors.deepGreen
-                                : ThemeColors.deepOrange
+                                    ? Color(ThemeColors.deepNavy)
+                                    : widget.themeColor == 1
+                                        ? ThemeColors.deepGreen
+                                        : ThemeColors.deepOrange
                                 : ThemeColors.gray1,
                             width: 3)),
                     child: Icon(
                       Icons.qr_code,
                       color: course_flag
                           ? widget.themeColor == 0
-                          ? Color(ThemeColors.deepNavy)
-                          : widget.themeColor == 1
-                          ? ThemeColors.deepGreen
-                          : ThemeColors.deepOrange
+                              ? Color(ThemeColors.deepNavy)
+                              : widget.themeColor == 1
+                                  ? ThemeColors.deepGreen
+                                  : ThemeColors.deepOrange
                           : ThemeColors.gray1,
                       size: 30,
                     ),
@@ -669,10 +907,10 @@ class _TravelCourseState extends State<TravelCourse> {
                         fontWeight: FontWeight.bold,
                         color: course_flag
                             ? widget.themeColor == 0
-                            ? Color(ThemeColors.deepNavy)
-                            : widget.themeColor == 1
-                            ? ThemeColors.deepGreen
-                            : ThemeColors.deepOrange
+                                ? Color(ThemeColors.deepNavy)
+                                : widget.themeColor == 1
+                                    ? ThemeColors.deepGreen
+                                    : ThemeColors.deepOrange
                             : ThemeColors.gray1),
                   )
                 ],
@@ -680,6 +918,8 @@ class _TravelCourseState extends State<TravelCourse> {
             ),
             GestureDetector(
               onTap: () {
+                print(widget.idKey);
+                print(widget.userInfo);
                 NotifyDialog.show(context,
                     style: TextStyle(
                         fontSize: 50,
@@ -690,7 +930,7 @@ class _TravelCourseState extends State<TravelCourse> {
                         '2. 해당 거점에 도착시 QR 스탬프 버튼을\n 누른 뒤 거점에 설치된 QR코드를 찍으면\n 방문 인증이 됩니다. 인증이 완료되면 지\n도에 표시된 거점 텍스트가 초록색으로 변\n합니다.\n'
                         '(단, 코스 경로 순서대로 찍으셔야 하며 \n중간에 건너뛴 거점이 있다면 QR코드를 인\n식하지 않습니다.)\n\n'
                         '3. 마지막 거점까지 모두 스탬프를 찍고 난\n뒤 코스 주행 종료버튼을 누르면 코스 주\n행이 완료되며 적립 포인트가 지급 됩니다.\n'
-                        '(단, 코스를 완료하지 않은 상태에서 중간에 \n종료를 하게 되면 그동안의 스탬프 기록은\n모두 초기화 됩니다.)');
+                        '(단, 코스를 완료하지 않은 상태에서 중간에 \n종료를 하게 되면 포인트는 받으실 수\n 없으며 해당지점까지의 걸음정보만 추가\n기록 됩니다.)');
               },
               child: Column(
                 children: [
@@ -703,16 +943,16 @@ class _TravelCourseState extends State<TravelCourse> {
                             color: widget.themeColor == 0
                                 ? Color(ThemeColors.deepNavy)
                                 : widget.themeColor == 1
-                                ? ThemeColors.deepGreen
-                                : ThemeColors.deepOrange,
+                                    ? ThemeColors.deepGreen
+                                    : ThemeColors.deepOrange,
                             width: 3)),
                     child: Icon(
                       Icons.question_mark,
                       color: widget.themeColor == 0
                           ? Color(ThemeColors.deepNavy)
                           : widget.themeColor == 1
-                          ? ThemeColors.deepGreen
-                          : ThemeColors.deepOrange,
+                              ? ThemeColors.deepGreen
+                              : ThemeColors.deepOrange,
                       size: 30,
                     ),
                   ),
@@ -728,9 +968,6 @@ class _TravelCourseState extends State<TravelCourse> {
             ),
           ],
         ),
-        SizedBox(
-          height: height * 0.03759,
-        )
       ],
     );
   }
@@ -740,15 +977,15 @@ class _TravelCourseState extends State<TravelCourse> {
       context,
       MaterialPageRoute(
           builder: (context) => CommonFrame2(
-            themeColor: widget.themeColor,
-            title: '여행 코스 둘러보기',
-            clas: Position(
-              themeColor: widget.themeColor,
-              courseKey: courseKey,
-              positionKey: positionKey,
-              name: startPoint,
-            ),
-          )),
+                themeColor: widget.themeColor,
+                title: '여행 코스 둘러보기',
+                clas: Position(
+                  themeColor: widget.themeColor,
+                  courseKey: courseKey,
+                  positionKey: positionKey,
+                  name: startPoint,
+                ),
+              )),
     );
   }
 
@@ -757,15 +994,15 @@ class _TravelCourseState extends State<TravelCourse> {
       context,
       MaterialPageRoute(
           builder: (context) => CommonFrame2(
-            themeColor: widget.themeColor,
-            title: '여행 코스 둘러보기',
-            clas: Position(
-              themeColor: widget.themeColor,
-              courseKey: courseKey,
-              positionKey: positionKey,
-              name: wayPoint1,
-            ),
-          )),
+                themeColor: widget.themeColor,
+                title: '여행 코스 둘러보기',
+                clas: Position(
+                  themeColor: widget.themeColor,
+                  courseKey: courseKey,
+                  positionKey: positionKey,
+                  name: wayPoint1,
+                ),
+              )),
     );
   }
 
@@ -774,15 +1011,15 @@ class _TravelCourseState extends State<TravelCourse> {
       context,
       MaterialPageRoute(
           builder: (context) => CommonFrame2(
-            themeColor: widget.themeColor,
-            title: '여행 코스 둘러보기',
-            clas: Position(
-              themeColor: widget.themeColor,
-              courseKey: courseKey,
-              positionKey: positionKey,
-              name: wayPoint2,
-            ),
-          )),
+                themeColor: widget.themeColor,
+                title: '여행 코스 둘러보기',
+                clas: Position(
+                  themeColor: widget.themeColor,
+                  courseKey: courseKey,
+                  positionKey: positionKey,
+                  name: wayPoint2,
+                ),
+              )),
     );
   }
 
@@ -791,15 +1028,15 @@ class _TravelCourseState extends State<TravelCourse> {
       context,
       MaterialPageRoute(
           builder: (context) => CommonFrame2(
-            themeColor: widget.themeColor,
-            title: '여행 코스 둘러보기',
-            clas: Position(
-              themeColor: widget.themeColor,
-              courseKey: courseKey,
-              positionKey: positionKey,
-              name: wayPoint3,
-            ),
-          )),
+                themeColor: widget.themeColor,
+                title: '여행 코스 둘러보기',
+                clas: Position(
+                  themeColor: widget.themeColor,
+                  courseKey: courseKey,
+                  positionKey: positionKey,
+                  name: wayPoint3,
+                ),
+              )),
     );
   }
 
@@ -808,15 +1045,15 @@ class _TravelCourseState extends State<TravelCourse> {
       context,
       MaterialPageRoute(
           builder: (context) => CommonFrame2(
-            themeColor: widget.themeColor,
-            title: '여행 코스 둘러보기',
-            clas: Position(
-              themeColor: widget.themeColor,
-              courseKey: courseKey,
-              positionKey: positionKey,
-              name: endPoint,
-            ),
-          )),
+                themeColor: widget.themeColor,
+                title: '여행 코스 둘러보기',
+                clas: Position(
+                  themeColor: widget.themeColor,
+                  courseKey: courseKey,
+                  positionKey: positionKey,
+                  name: endPoint,
+                ),
+              )),
     );
   }
 
@@ -889,13 +1126,13 @@ class _TravelCourseState extends State<TravelCourse> {
       color: widget.themeColor == 0
           ? Color(ThemeColors.deepNavy)
           : widget.themeColor == 1
-          ? ThemeColors.deepGreen
-          : ThemeColors.deepOrange,
+              ? ThemeColors.deepGreen
+              : ThemeColors.deepOrange,
       outlineColor: widget.themeColor == 0
           ? Color(ThemeColors.deepNavy)
           : widget.themeColor == 1
-          ? ThemeColors.deepGreen
-          : ThemeColors.deepOrange,
+              ? ThemeColors.deepGreen
+              : ThemeColors.deepOrange,
     ));
     await Future.delayed(Duration(seconds: 1));
     return path_prepared;

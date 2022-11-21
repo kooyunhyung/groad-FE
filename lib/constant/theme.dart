@@ -35,9 +35,11 @@ TextTheme textTheme() {
         fontSize: 20.0, color: ThemeColors.deepOrange, fontWeight: FontWeight.bold),
     headline4: GoogleFonts.ibmPlexSans(
         fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold),
+    headline5: GoogleFonts.ibmPlexSans(
+        fontSize: 20.0, color: ThemeColors.white, fontWeight: FontWeight.bold),
     bodyText1: GoogleFonts.ibmPlexSans(fontSize: 18.0, color: ThemeColors.black),
     bodyText2: GoogleFonts.ibmPlexSans(fontSize: 16.0, color: ThemeColors.black),
-    subtitle1: GoogleFonts.ibmPlexSans(fontSize: 14.0, color: Colors.black),
+    subtitle1: GoogleFonts.ibmPlexSans(fontSize: 16.0, color: Colors.black),
   );
 }
 

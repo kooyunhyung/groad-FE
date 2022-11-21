@@ -272,9 +272,9 @@ class _PositionState extends State<Position> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 24.0),
+                              padding: EdgeInsets.only(left: 24.0),
                               child: Text(
-                                '교통 정보',
+                                '교통 정보 (현재 => 다음)',
                                 style: TextStyle(
                                   color: widget.themeColor == 0
                                       ? Color(ThemeColors.deepNavy)

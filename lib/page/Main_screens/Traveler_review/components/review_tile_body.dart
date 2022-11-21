@@ -6,10 +6,11 @@ import '../traveler_review.dart';
 
 class ReviewTileBody extends StatefulWidget {
   ReviewTileBody(
-      {Key key, this.idKey, this.themeColor, this.userInfo, this.reviewInfo})
+      {Key key, this.idKey,this.mapType, this.themeColor, this.userInfo, this.reviewInfo})
       : super(key: key);
 
   int idKey;
+  int mapType;
   int themeColor;
   dynamic userInfo;
   dynamic reviewInfo;
@@ -28,6 +29,9 @@ class _ReviewTileBodyState extends State<ReviewTileBody> {
 
   @override
   void initState() {
+    if(widget.mapType==null){
+      widget.mapType=0;
+    }
     if (widget.idKey == null) {
       widget.idKey = -1;
     }
@@ -60,6 +64,7 @@ class _ReviewTileBodyState extends State<ReviewTileBody> {
                   clas: TravelerReview(
                     userInfo: widget.userInfo,
                     idKey: widget.idKey,
+                    mapType: widget.mapType,
                     themeColor: widget.themeColor,
                   ))),
         );

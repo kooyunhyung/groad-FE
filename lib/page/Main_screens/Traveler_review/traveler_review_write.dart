@@ -9,11 +9,17 @@ import 'package:image_picker/image_picker.dart';
 import '../../../component/common_button.dart';
 import '../../../component/dialog/notify_dialog.dart';
 import '../../../constant/theme.dart';
+import '../../frame/common_frame1.dart';
+import '../../frame/common_frame2.dart';
+import '../home.dart';
+import 'traveler_review.dart';
 
 class TravelerReviewWrite extends StatefulWidget {
-  TravelerReviewWrite({Key key, this.idKey, this.userInfo, this.themeColor}) : super(key: key);
+  TravelerReviewWrite({Key key, this.idKey, this.userInfo, this.mapType, this.themeColor})
+      : super(key: key);
 
   int idKey;
+  int mapType;
   int themeColor;
   dynamic userInfo;
 
@@ -27,7 +33,6 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
   bool star3 = false;
   bool star4 = false;
   bool star5 = false;
-  TextEditingController name = TextEditingController();
   TextEditingController place = TextEditingController();
   TextEditingController content_text = TextEditingController();
   int grade;
@@ -40,6 +45,9 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
 
   @override
   void initState() {
+    if(widget.mapType==null){
+      widget.mapType=0;
+    }
     if (widget.idKey == null) {
       widget.idKey = -1;
     }
@@ -65,45 +73,6 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
           color: ThemeColors.white,
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '이름 *',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: ThemeColors.black,
-                    ),
-                  ),
-                  Container(
-                    width: width * 0.67,
-                    height: height * 0.09,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextField(
-                          style: TextStyle(fontSize: 20),
-                          maxLength: 5,
-                          controller: name,
-                          decoration: InputDecoration(
-                              counterText: '',
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1.5, color: ThemeColors.black)),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1.5, color: ThemeColors.gray1))),
-                          keyboardType: TextInputType.text,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -220,7 +189,7 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
                       ? GestureDetector(
                           onTap: () {
                             setState(() {
-                              _image=null;
+                              _image = null;
                             });
                           },
                           child: Icon(
@@ -377,15 +346,6 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
                         message: '로그인 후 작성 가능합니다.');
                     return;
                   }
-                  if (name.text == '') {
-                    NotifyDialog.show(context,
-                        style: TextStyle(
-                            fontSize: 50,
-                            color: ThemeColors.black,
-                            height: 23 / 18),
-                        message: '이름을 입력하지 않았습니다.');
-                    return;
-                  }
                   if (place.text == '') {
                     NotifyDialog.show(context,
                         style: TextStyle(
@@ -415,23 +375,50 @@ class _TravelerReviewWriteState extends State<TravelerReviewWrite> {
                   }
 
                   if (_image != null) {
-                    try{
+                    try {
+                      NotifyDialog.show(context,
+                          style: TextStyle(
+                              fontSize: 50,
+                              color: ThemeColors.black,
+                              height: 23 / 18),
+                          message: '잠시만 기다려주세요.');
                       imageUriResponse = await uploadImageFile(_image);
-                    }catch(e){
+                    } catch (e) {
                       print(e);
                     }
                   }
-
-                  final result = await UserAPI(context: context).createReview(
-                      name: name.text,
-                      place: place.text,
-                      contentText: content_text.text,
-                      grade: grade,
-                      date: DateTime.now().toString(),
-                      contentImage: imageUriResponse['data']['url'],
-                      profileImage: widget.userInfo['gu_profile_image'],
-                      fk: widget.idKey);
-                  print(result['code']);
+                  try {
+                    final result = await UserAPI(context: context).createReview(
+                        name: widget.userInfo['gu_name'],
+                        place: place.text,
+                        contentText: content_text.text,
+                        grade: grade,
+                        date: DateTime.now().toString(),
+                        contentImage: imageUriResponse['data']['url'],
+                        profileImage: widget.userInfo['gu_profile_image'],
+                        fk: widget.idKey);
+                    print(result['code']);
+                  } catch (e) {
+                    print(e);
+                  }
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => CommonFrame1(
+                          userInfo: widget.userInfo,
+                          idKey: widget.idKey,
+                          mapType: widget.mapType,
+                          themeColor: widget.themeColor,
+                          title: "GROAD",
+                          clas: Home(
+                            userInfo: widget.userInfo,
+                            idKey: widget.idKey,
+                            mapType: widget.mapType,
+                            themeColor: widget.themeColor,
+                          ),
+                        ),
+                      ),
+                          (route) => false);
                   NotifyDialog.show(context,
                       style: TextStyle(
                           fontSize: 50,

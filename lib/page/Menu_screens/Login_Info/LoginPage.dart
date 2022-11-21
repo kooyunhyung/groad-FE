@@ -5,6 +5,9 @@ import 'package:gload_app/page/frame/common_frame1.dart';
 import 'package:gload_app/page/Main_screens/home.dart';
 import 'package:gload_app/constant/theme.dart';
 import 'package:gload_app/page/Menu_screens/Login_Info/signup.dart';
+import 'package:gload_app/page/frame/common_frame2.dart';
+
+import '../../../component/dialog/notify_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -20,20 +23,17 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Builder(
         builder: (context) {
           return SingleChildScrollView(
             child: Column(
               children: [
-                Padding(padding: EdgeInsets.only(top: 50.0)),
-                Center(
-                  child: Image(
-                    image: AssetImage('assets/image10.png'),
-                    width: 170.0,
-                    height: 190.0,
-                  ),
-                ),
+                Padding(padding: EdgeInsets.only(top: height*0.1)),
+                Image.asset('assets/image10.png'),
                 Form(
                     child: Theme(
                   data: ThemeData(
@@ -93,35 +93,37 @@ class _LoginPageState extends State<LoginPage> {
                                                   fk: response1["gu_seq"]);
 
                                           final response4 =
-                                          await UserAPI(context: context)
-                                              .getSetting(
-                                              fk: response1["gu_seq"]);
+                                              await UserAPI(context: context)
+                                                  .getSetting(
+                                                      fk: response1["gu_seq"]);
 
                                           final response3 = await UserAPI(
-                                              context: context)
+                                                  context: context)
                                               .getUser(pk: response1["gu_seq"]);
 
                                           Navigator.pushAndRemoveUntil(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (BuildContext
-                                                  context) =>
+                                                          context) =>
                                                       CommonFrame1(
                                                         idKey:
-                                                        response1["gu_seq"],
+                                                            response1["gu_seq"],
                                                         userInfo: response3,
-                                                        themeColor:
-                                                        response4['gs_theme'],
+                                                        themeColor: response4[
+                                                            'gs_theme'],
                                                         title: "GROAD",
                                                         clas: Home(
                                                             userInfo: response3,
                                                             idKey: response1[
-                                                            "gu_seq"],
+                                                                "gu_seq"],
                                                             mapType: response4[
-                                                            'gs_map'],
-                                                            themeColor: response4[
-                                                            'gs_theme']),
-                                                      )),(route) => false);
+                                                                'gs_map'],
+                                                            themeColor:
+                                                                response4[
+                                                                    'gs_theme']),
+                                                      )),
+                                              (route) => false);
                                           return;
                                         }
 
@@ -147,9 +149,17 @@ class _LoginPageState extends State<LoginPage> {
                                                               'gs_map'],
                                                           themeColor: response2[
                                                               'gs_theme']),
-                                                    )),(route) => false);
+                                                    )),
+                                            (route) => false);
                                       } else {
-                                        showSnackBar(context);
+                                        NotifyDialog.show(context,
+                                            style: TextStyle(
+                                                fontSize: 50,
+                                                color: ThemeColors.black,
+                                                height: 23 / 18
+                                            ),
+                                            message: '로그인 정보를 다시 확인하세요.'
+                                        );
                                       }
                                     },
                                     child: Text(
@@ -169,7 +179,9 @@ class _LoginPageState extends State<LoginPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                SignupPage()));
+                                                CommonFrame2(
+                                                    title: '회원가입',
+                                                    clas: SignupPage())));
                                   },
                                   child: Text(
                                     '회원가입',
@@ -193,13 +205,3 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-void showSnackBar(BuildContext context) {
-  Scaffold.of(context).showSnackBar(SnackBar(
-    content: Text(
-      '로그인 정보를 다시 확인하세요',
-      textAlign: TextAlign.center,
-    ),
-    duration: Duration(seconds: 2),
-    backgroundColor: Color(ThemeColors.deepNavy),
-  ));
-}

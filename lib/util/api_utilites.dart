@@ -7,12 +7,8 @@ class APIConfig {
   APIConfig(this.host, {this.version});
 }
 
-final bool dev = true;
+final host = APIConfig('http://3.36.5.43:8000',version: 1);
 
-final host = dev
-    ? APIConfig('http://15.165.25.66:8000',version: 1)
-// 주소 변경 시 아래의 부분만 변경하면 됩니다.
-    : APIConfig('https://api.telliot.co.kr', version: 1);
 
 String getQueryString(Map params,
     {String prefix = '&', bool inRecursion = false}) {

@@ -5,7 +5,7 @@ import 'package:gload_app/constant/theme.dart';
 import '../../../models/question_text_menu.dart';
 
 class Question extends StatefulWidget {
-  Question({Key key,this.themeColor}) : super(key: key);
+  Question({Key key, this.themeColor}) : super(key: key);
 
   int themeColor;
 
@@ -31,8 +31,8 @@ class _QuestionState extends State<Question> {
 
   @override
   void initState() {
-    if(widget.themeColor==null){
-      widget.themeColor=0;
+    if (widget.themeColor == null) {
+      widget.themeColor = 0;
     }
     // TODO: implement initState
     super.initState();
@@ -74,8 +74,8 @@ class _QuestionState extends State<Question> {
                       selectedColor: widget.themeColor == 0
                           ? ThemeColors.skyBlue
                           : widget.themeColor == 1
-                          ? Color(0xFF90EE90)
-                          : Color(0xFFDAA520),
+                              ? Color(0xFF90EE90)
+                              : Color(0xFFDAA520),
                       isSelected: isSelected,
                       renderBorder: false,
                       onPressed: (int newIndex) {
@@ -184,8 +184,8 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -203,9 +203,21 @@ class _QuestionState extends State<Question> {
             ? Container(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
                 width: width * 0.9,
-                height: height * 0.08,
-                color: ThemeColors.gray1,
-                child: Text(AMenuList1[0].text),
+                height: height * 0.1,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList1[0].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
               )
             : Container(
                 width: width * 0.9,
@@ -219,8 +231,8 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -238,9 +250,21 @@ class _QuestionState extends State<Question> {
             ? Container(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
                 width: width * 0.9,
-                height: height * 0.06,
-                color: ThemeColors.gray1,
-                child: Text(AMenuList1[1].text),
+                height: height * 0.072,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList1[1].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
               )
             : Container(
                 width: width * 0.9,
@@ -254,12 +278,14 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
-          title: Text(QMenuList1[2].text),
+          title: Text(
+            QMenuList1[2].text,
+          ),
           trailing: Q_sign3
               ? Icon(Icons.keyboard_arrow_up_sharp)
               : Icon(Icons.keyboard_arrow_down_sharp),
@@ -273,9 +299,21 @@ class _QuestionState extends State<Question> {
             ? Container(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
                 width: width * 0.9,
-                height: height * 0.06,
-                color: ThemeColors.gray1,
-                child: Text(AMenuList1[2].text),
+                height: height * 0.072,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList1[2].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
               )
             : Container(
                 width: width * 0.9,
@@ -289,8 +327,8 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
@@ -308,9 +346,21 @@ class _QuestionState extends State<Question> {
             ? Container(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
                 width: width * 0.9,
-                height: height * 0.06,
-                color: ThemeColors.gray1,
-                child: Text(AMenuList1[3].text),
+                height: height * 0.05,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList1[3].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
               )
             : Container(
                 width: width * 0.9,
@@ -334,14 +384,16 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList2[0].text),
-          trailing: Q_pass1? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
-          onTap: (){
+          trailing: Q_pass1
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
+          onTap: () {
             setState(() {
               Q_pass1 = !Q_pass1;
             });
@@ -349,17 +401,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_pass1
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.13,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList2[0].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.16,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList2[0].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
         ListTile(
           leading: Text(
             'Q.',
@@ -367,13 +431,15 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList2[1].text),
-          trailing: Q_pass2? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
+          trailing: Q_pass2
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
           onTap: () {
             setState(() {
               Q_pass2 = !Q_pass2;
@@ -382,17 +448,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_pass2
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.06,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList2[1].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.075,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList2[1].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
         ListTile(
           leading: Text(
             'Q.',
@@ -400,13 +478,15 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList2[2].text),
-          trailing: Q_pass3? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
+          trailing: Q_pass3
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
           onTap: () {
             setState(() {
               Q_pass3 = !Q_pass3;
@@ -415,17 +495,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_pass3
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.06,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList2[2].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.075,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList2[2].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
       ],
     );
   }
@@ -443,32 +535,46 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList3[0].text),
-          trailing: Q_point1? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
-          onTap: (){
+          trailing: Q_point1
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
+          onTap: () {
             setState(() {
-              Q_point1= !Q_point1;
+              Q_point1 = !Q_point1;
             });
           },
         ),
         Q_point1
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.06,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList3[0].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.07,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList3[0].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
         ListTile(
           leading: Text(
             'Q.',
@@ -476,14 +582,16 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList3[1].text),
-          trailing: Q_point2? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
-          onTap: (){
+          trailing: Q_point2
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
+          onTap: () {
             setState(() {
               Q_point2 = !Q_point2;
             });
@@ -491,17 +599,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_point2
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.06,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList3[1].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.07,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList3[1].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
         ListTile(
           leading: Text(
             'Q.',
@@ -509,13 +629,15 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList3[2].text),
-          trailing: Q_point3? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
+          trailing: Q_point3
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
           onTap: () {
             setState(() {
               Q_point3 = !Q_point3;
@@ -524,17 +646,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_point3
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.06,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList3[2].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.075,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList3[2].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
       ],
     );
   }
@@ -552,14 +686,16 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList4[0].text),
-          trailing: Q_etc1? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
-          onTap: (){
+          trailing: Q_etc1
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
+          onTap: () {
             setState(() {
               Q_etc1 = !Q_etc1;
             });
@@ -567,17 +703,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_etc1
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.06,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList4[0].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.1,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList4[0].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
         ListTile(
           leading: Text(
             'Q.',
@@ -585,13 +733,15 @@ class _QuestionState extends State<Question> {
                 color: widget.themeColor == 0
                     ? ThemeColors.skyBlue
                     : widget.themeColor == 1
-                    ? Color(0xFF90EE90)
-                    : Color(0xFFDAA520),
+                        ? Color(0xFF90EE90)
+                        : Color(0xFFDAA520),
                 fontWeight: FontWeight.bold,
                 fontSize: 23),
           ),
           title: Text(QMenuList4[1].text),
-          trailing: Q_etc2? Icon(Icons.keyboard_arrow_up_sharp):Icon(Icons.keyboard_arrow_down_sharp),
+          trailing: Q_etc2
+              ? Icon(Icons.keyboard_arrow_up_sharp)
+              : Icon(Icons.keyboard_arrow_down_sharp),
           onTap: () {
             setState(() {
               Q_etc2 = !Q_etc2;
@@ -600,17 +750,29 @@ class _QuestionState extends State<Question> {
         ),
         Q_etc2
             ? Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          width: width * 0.9,
-          height: height * 0.16,
-          color: ThemeColors.gray1,
-          child: Text(AMenuList4[1].text),
-        )
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                width: width * 0.9,
+                height: height * 0.22,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey[300], width: 2)),
+                child: Text(
+                  AMenuList4[1].text,
+                  style: TextStyle(
+                    color: widget.themeColor == 0
+                        ? Color(ThemeColors.deepNavy)
+                        : widget.themeColor == 1
+                            ? ThemeColors.deepGreen
+                            : Color(0xFFB8860B),
+                  ),
+                ),
+              )
             : Container(
-          width: width * 0.9,
-          height: 1,
-          color: ThemeColors.gray1,
-        ),
+                width: width * 0.9,
+                height: 1,
+                color: ThemeColors.gray1,
+              ),
       ],
     );
   }

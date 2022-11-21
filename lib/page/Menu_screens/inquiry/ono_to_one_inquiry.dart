@@ -6,15 +6,19 @@ import 'package:gload_app/component/dialog/notify_dialog.dart';
 import 'package:gload_app/constant/theme.dart';
 
 class OneToOneInquiry extends StatefulWidget {
-  OneToOneInquiry({Key key, this.themeColor}) : super(key: key);
+  OneToOneInquiry({Key key, this.themeColor, this.idKey}) : super(key: key);
 
   int themeColor;
+  int idKey;
 
   @override
   State<OneToOneInquiry> createState() => _OneToOneInquiryState();
 }
 
 class _OneToOneInquiryState extends State<OneToOneInquiry> {
+  TextEditingController title = TextEditingController();
+  TextEditingController contents = TextEditingController();
+
   @override
   void initState() {
     if (widget.themeColor == null) {
@@ -28,9 +32,6 @@ class _OneToOneInquiryState extends State<OneToOneInquiry> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-
-    TextEditingController title = TextEditingController();
-    TextEditingController contents = TextEditingController();
 
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -141,7 +142,7 @@ class _OneToOneInquiryState extends State<OneToOneInquiry> {
                   }
                   final response = await UserAPI(context: context)
                       .createInquiry(
-                          title: title.text, contents: contents.text, fk: 2);
+                          title: title.text, contents: contents.text, fk: widget.idKey);
                   print(response);
                   NotifyDialog.show(context,
                       style: TextStyle(

@@ -33,10 +33,12 @@ class _HomeState extends State<Home> {
   dynamic lodgingInfoList;
   dynamic reviewInfoList;
   dynamic userInfo;
+  double userStep;
   int currentPage;
   Map<String, dynamic> weather;
   String formattedDate;
   String weatherImage;
+  String weatherMent;
 
   @override
   void initState() {
@@ -226,23 +228,38 @@ class _HomeState extends State<Home> {
                             height: height * 0.02506,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    '뜨거운 태양이 내리쬐는 오늘',
-                                    style: TextStyle(
-                                      color: ThemeColors.white,
-                                    ),
-                                  ),
-                                  Text(
-                                    '햇살을 만끽하며 걸어볼까요?',
-                                    style: TextStyle(
-                                      color: ThemeColors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
+                              FutureBuilder(
+                                  future: _fetchWeather(),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return CircularProgressIndicator();
+                                    } else if (snapshot.hasError) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Error: ${snapshot.error}',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      );
+                                    } else {
+                                      return Padding(
+                                        padding:
+                                            EdgeInsets.only(top: height * 0.01),
+                                        child: Container(
+                                          width: width * 0.5,
+                                          child: Text(
+                                            weatherMent,
+                                            style: TextStyle(
+                                              color: ThemeColors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  }),
                               SizedBox(
                                 width: width * 0.11065,
                               ),
@@ -287,7 +304,7 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
-                  ])
+                  ]) // 날씨 정보
                 ],
               ),
               Padding(
@@ -308,58 +325,85 @@ class _HomeState extends State<Home> {
                 ),
               )
             ]),
-          ), //상단 화면(banner)
-          Container(
-            color: widget.themeColor == 0
-                ? Color(ThemeColors.deepNavy)
-                : widget.themeColor == 1
-                    ? ThemeColors.deepGreen
-                    : ThemeColors.deepOrange,
-            width: width,
-            height: height * 0.06265,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CircleAvatar(
-                  radius: 20.0,
-                  backgroundColor: Colors.blueGrey[400],
-                  child: Icon(
-                    Icons.directions_walk,
-                    color: Colors.white,
+          ),
+          //상단 화면(banner)
+          widget.idKey != -1
+              ? Container(
+                  color: widget.themeColor == 0
+                      ? Color(ThemeColors.deepNavy)
+                      : widget.themeColor == 1
+                          ? ThemeColors.deepGreen
+                          : ThemeColors.deepOrange,
+                  width: width,
+                  height: height * 0.06265,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CircleAvatar(
+                        radius: 20.0,
+                        backgroundColor: Colors.blueGrey[400],
+                        child: Icon(
+                          Icons.directions_walk,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text('GROAD와 함께한 걸음', style: textTheme().headline5),
+                      Container(
+                        color: Colors.white,
+                        width: width * 0.05,
+                        height: 1,
+                      ),
+                      FutureBuilder(
+                          future: _fetchUserStep(),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            double step = snapshot.data;
+                            double targetNum =
+                                double.parse(step.toStringAsFixed(1));
+                            if (snapshot.hasData == false) {
+                              return Container(
+                                  width: width,
+                                  height: height * 0.25,
+                                  child: Center(
+                                      child: Container(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator())));
+                            } else if (snapshot.hasError) {
+                              return Container(
+                                width: width,
+                                height: height * 0.25,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Error: ${snapshot.error}',
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return Text(
+                                '$targetNum',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 9543 / width,
+                                    letterSpacing: 5.0),
+                              );
+                            }
+                          }),
+                      Text(
+                        'Km',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
                   ),
+                )
+              : Container(
+                  width: width,
+                  height: 1,
+                  color: Colors.grey,
                 ),
-                Text(
-                  '지금까지',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                Text(
-                  '9230',
-                  style: TextStyle(color: Colors.white, fontSize: 9543 / width),
-                ),
-                Text(
-                  '걸음',
-                  style: TextStyle(color: Colors.white),
-                ),
-                Image.asset(
-                  'assets/line.png',
-                  width: 110.0,
-                ),
-                Text(
-                  '2.3',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 9543 / width,
-                      letterSpacing: 5.0),
-                ),
-                Text(
-                  'Km',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ), //중간 걸음수, km 정보
+          //user의 km 정보
           SizedBox(
             height: height * 0.03132,
           ),
@@ -377,7 +421,8 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ],
-          ), //여행 코스 둘러보기
+          ),
+          //여행 코스 둘러보기
           SizedBox(
             height: height * 0.02506,
           ),
@@ -409,32 +454,36 @@ class _HomeState extends State<Home> {
                   return Container(
                     width: width,
                     height: height * 0.347,
-                    child:
-                        ListView(scrollDirection: Axis.horizontal, children: [
-                      ...List.generate(
-                          snapshot.data.length,
-                          (index) => Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: TravelCourseBody(
-                                  idKey: widget.idKey,
-                                  mapType: widget.mapType,
-                                  userInfo: widget.userInfo,
-                                  themeColor: widget.themeColor,
-                                  courseInfo: snapshot.data[index],
-                                ),
-                              ))
-                    ]),
+                    child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(right: 12.0),
+                        children: [
+                          ...List.generate(
+                              snapshot.data.length,
+                              (index) => Padding(
+                                    padding: const EdgeInsets.only(left: 12.0),
+                                    child: TravelCourseBody(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      userInfo: userInfo,
+                                      themeColor: widget.themeColor,
+                                      courseInfo: snapshot.data[index],
+                                    ),
+                                  ))
+                        ]),
                   );
                 }
-              }), //코스 종류(수평 슬라이드)
+              }),
+          //코스 종류(수평 슬라이드)
           SizedBox(
             height: height * 0.03132,
           ),
           Container(
             color: Colors.grey,
             height: 1.0,
-            width: width * 0.83454,
-          ), //수평선
+            width: width * 0.89454,
+          ),
+          //수평선
           SizedBox(
             height: height * 0.037593,
           ),
@@ -468,11 +517,13 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ],
-          ), //여행전 알아둘 여행꿀팁
+          ),
+          //여행전 알아둘 여행꿀팁
           SizedBox(
             height: height * 0.025062,
           ),
           SingleChildScrollView(
+            padding: EdgeInsets.only(right: width * 0.02433),
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
@@ -502,6 +553,7 @@ class _HomeState extends State<Home> {
                       } else {
                         return InkWell(
                           onTap: () {
+                            print(userInfo);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -654,15 +706,17 @@ class _HomeState extends State<Home> {
                     })
               ],
             ),
-          ), //여행전 알아둘 여행꿀팁(수평 슬라이드)
+          ),
+          //코스 주변 카페 & 포토스팟 모음집(수평 슬라이드)
           SizedBox(
             height: height * 0.031328,
           ),
           Container(
             color: Colors.grey,
-            width: width * 0.83454,
+            width: width * 0.89454,
             height: 1.0,
-          ), //수평선
+          ),
+          //수평선
           SizedBox(
             height: height * 0.032581,
           ),
@@ -696,11 +750,13 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ],
-          ), //GROAD'S PICK 이번주 인기 맛집
+          ),
+          //GROAD'S PICK 이번주 인기 맛집
           SizedBox(
             height: height * 0.02506,
           ),
           SingleChildScrollView(
+            padding: EdgeInsets.only(right: width * 0.02433),
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
@@ -886,8 +942,17 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
+          //코스 주변 맛집 & 숙소 모음집
           SizedBox(
-            height: height * 0.05012,
+            height: height * 0.031328,
+          ),
+          Container(
+            color: Colors.grey,
+            width: width * 0.89454,
+            height: 1.0,
+          ),
+          SizedBox(
+            height: height * 0.02012,
           ),
           Row(
             children: [
@@ -919,7 +984,9 @@ class _HomeState extends State<Home> {
                               themeColor: widget.themeColor,
                               title: '여행자들의 후기',
                               clas: TravelerReview(
+                                userInfo: widget.userInfo,
                                 idKey: widget.idKey,
+                                mapType: widget.mapType,
                                 themeColor: widget.themeColor,
                               ))),
                     );
@@ -939,7 +1006,8 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ],
-          ), //여행자들의 후기
+          ),
+          //여행자들의 후기
           SizedBox(
             height: height * 0.02506,
           ),
@@ -971,25 +1039,30 @@ class _HomeState extends State<Home> {
                   return Container(
                     width: width,
                     height: height * 0.347,
-                    child:
-                        ListView(scrollDirection: Axis.horizontal, children: [
-                      ...List.generate(
-                          snapshot.data.length,
-                          (index) => Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: ReviewTileBody(
-                                  idKey: widget.idKey,
-                                  themeColor: widget.themeColor,
-                                  userInfo: userInfo,
-                                  reviewInfo: snapshot.data[snapshot.data.length-1-index],
-                                ),
-                              ))
-                    ]),
+                    child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(right: width * 0.02433),
+                        children: [
+                          ...List.generate(
+                              snapshot.data.length,
+                              (index) => Padding(
+                                    padding:
+                                        EdgeInsets.only(left: width * 0.02433),
+                                    child: ReviewTileBody(
+                                      idKey: widget.idKey,
+                                      mapType: widget.mapType,
+                                      themeColor: widget.themeColor,
+                                      userInfo: userInfo,
+                                      reviewInfo: snapshot.data[
+                                          snapshot.data.length - 1 - index],
+                                    ),
+                                  ))
+                        ]),
                   );
                 }
               }),
           SizedBox(
-            height: height * 0.09012,
+            height: height * 0.03012,
           ),
         ],
       ), //메인스크린
@@ -997,6 +1070,9 @@ class _HomeState extends State<Home> {
   }
 
   Future<dynamic> _fetchCourseInfo() async {
+    if (widget.idKey != -1) {
+      userInfo = await UserAPI(context: context).getUser(pk: widget.idKey);
+    }
     courseInfoList = await UserAPI(context: context).getTravelCourse();
     print(courseInfoList);
     return courseInfoList;
@@ -1013,6 +1089,14 @@ class _HomeState extends State<Home> {
   Future<dynamic> _fetchCafeInfo() async {
     cafeInfoList = await UserAPI(context: context).getCafeList();
     return cafeInfoList;
+  }
+
+  Future<dynamic> _fetchUserStep() async {
+    if (widget.idKey != -1) {
+      userInfo = await UserAPI(context: context).getUser(pk: widget.idKey);
+    }
+    userStep = userInfo['gu_step_number'];
+    return userStep;
   }
 
   Future<dynamic> _fetchPhotoInfo() async {
@@ -1036,19 +1120,23 @@ class _HomeState extends State<Home> {
 
     if (weather['main_weather'] == "Thunderstorm") {
       weatherImage = "thunder.png";
+      weatherMent = '천둥번개나 폭풍이 예상되는 날이에요. 오늘은 따뜻한 차 한잔 마시며 여유있는 하루를 보내는 것은 어떨까요? ';
     }
     if (weather['main_weather'] == "Drizzle") {
       weatherImage = "showerRain.png";
+      weatherMent = '이슬비 소식이 있지만 새로운 의욕과 에너지로 기분 상쾌하게 걷는것은 어떨까요?';
     }
     if (weather['main_weather'] == "Rain") {
       if (weather['description'] == "freezing rain") {
         weatherImage = "snow.png";
+        weatherMent = '낮은 온도의 서릿발 비가 내리치네요. 몸을 따뜻하게 유지하시며 힘찬 하루를 보내시면 좋을 것 같아요.';
       }
       if (weather['description'] == "light rain" ||
           weather['description'] == "moderate rain" ||
           weather['description'] == "heavy intensity rain" ||
           weather['description'] == "very heavy rain" ||
           weather['description'] == "extreme rain") {
+        weatherMent = '내리는 비가 더위를 잠시 식혀주네요. 길을 걷게 된다면 우비나 우산은 꼭 챙겨가세요.';
         if (weather['iconId'] == "10d") {
           weatherImage = "rain.png";
         } else if (weather['iconId'] == "10n") {
@@ -1060,10 +1148,12 @@ class _HomeState extends State<Home> {
           weather['description'] == "heavy intensity shower rain" ||
           weather['description'] == "ragged shower rain") {
         weatherImage = "showerRain.png";
+        weatherMent ='장대비가 내리치는 오늘, 흐린 날이지만 기운 내시고 기분 좋은 하루를 보내세요.';
       }
     }
     if (weather['main_weather'] == "Snow") {
       weatherImage = "snow.png";
+      weatherMent = '눈이 오네요. 바닥 위에 쌓인 눈을 사뿐히 즈려밟으며 걷는 길은 낭만적일 것 같아요.';
     }
     if (weather['main_weather'] == "Mist" ||
         weather['main_weather'] == "Smoke" ||
@@ -1075,15 +1165,23 @@ class _HomeState extends State<Home> {
         weather['main_weather'] == "Squall" ||
         weather['main_weather'] == "Tornado") {
       weatherImage = "mist+.png";
+      weatherMent = '안개나 먼지가 많이 낀 날씨라 마스크롤 꼭 쓰고서 외출하시는 것이 좋을 것 같아요.';
     }
     if (weather['main_weather'] == "Clear") {
       if (weather['iconId'] == "01d") {
         weatherImage = "clear.png";
+        if(weather['temp']>20){
+          weatherMent = '뜨거운 태양이 내리쬐는 오늘 햇살을 만끽하며 걸어볼까요?';
+        }else{
+          weatherMent = '푸른 하늘에 내리쬐는 오늘 햇살을 만끽하며 걸어볼까요?';
+        }
       } else if (weather['iconId'] == "01n") {
+        weatherMent = '맑은 하늘에 별 구경을 하며 걷는 길은 낭만적일 것 같아요.';
         weatherImage = "clear2.png";
       }
     }
     if (weather['main_weather'] == "Clouds") {
+      weatherMent = '날이 흐려서 그런지 몸이 축축 늘어지는 그런 날이네요. 기운 내시고 힘차게 걷는 길이 되었으면 하네요.';
       if (weather['iconId'] == "02d") {
         weatherImage = "fewClouds.png";
       } else if (weather['iconId'] == "02n") {

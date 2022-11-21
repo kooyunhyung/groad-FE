@@ -5,10 +5,11 @@ import 'package:gload_app/page/Main_screens/Traveler_review/traveler_review_writ
 import '../../../constant/theme.dart';
 
 class TravelerReview extends StatefulWidget {
-  TravelerReview({Key key,this.idKey, this.userInfo, this.themeColor}) : super(key: key);
+  TravelerReview({Key key,this.idKey, this.userInfo, this.mapType, this.themeColor}) : super(key: key);
 
   int idKey;
   dynamic userInfo;
+  int mapType;
   int themeColor;
 
   @override
@@ -18,6 +19,9 @@ class TravelerReview extends StatefulWidget {
 class _TravelerReviewState extends State<TravelerReview> {
   @override
   void initState() {
+    if(widget.mapType==null){
+      widget.mapType=0;
+    }
     if(widget.idKey==null){
       widget.idKey=-1;
     }
@@ -76,7 +80,7 @@ class _TravelerReviewState extends State<TravelerReview> {
               )),
           body: TabBarView(children: [
             TravelerReviewDetail(idKey: widget.idKey, userInfo: widget.userInfo, themeColor: widget.themeColor,),
-            TravelerReviewWrite(idKey:widget.idKey, userInfo: widget.userInfo, themeColor: widget.themeColor),
+            TravelerReviewWrite(idKey:widget.idKey, userInfo: widget.userInfo,mapType: widget.mapType, themeColor: widget.themeColor),
           ]),
         ));
   }
