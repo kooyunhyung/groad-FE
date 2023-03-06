@@ -72,3 +72,7 @@ A new Flutter project.
 
 ![image](https://user-images.githubusercontent.com/77048218/222999479-335d424a-8f79-49f4-8f48-42d2d80e5d7d.png)
 ![image](https://user-images.githubusercontent.com/77048218/222999568-631aa214-8f1d-42ef-999c-102f6dbb7f33.png)
+
+▶ 포토스팟 & 카페 & 맛집 & 숙소 리스트 : 코스 해당 거점 주변에 있는 지점들을 선별하여 관광객들에게 정보 제공
+
+![image](https://user-images.githubusercontent.com/77048218/222999735-429a64ac-def4-4ad2-aeb5-225639081d8b.png)
