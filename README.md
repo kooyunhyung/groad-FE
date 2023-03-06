@@ -55,5 +55,10 @@ A new Flutter project.
 
 ![image](https://user-images.githubusercontent.com/77048218/222998725-09c125ac-5874-4662-8402-df55ec85e40d.png)
 
+▶ 여행도우미: 여행도우미 메뉴를 클릭하면 여행에 도움이 되는 정보들을 제공해준다. (이용수칙, 준비물, 패스포트)
+
+![image](https://user-images.githubusercontent.com/77048218/222998912-feafd303-4d57-4b0e-bba0-5d50b902f376.png)
+![image](https://user-images.githubusercontent.com/77048218/222998934-8a892095-8120-4b8a-afb4-4c4bbcc9ddab.png)
+
 
 
