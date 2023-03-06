@@ -45,9 +45,11 @@ A new Flutter project.
 
 ![image](https://user-images.githubusercontent.com/77048218/222998251-82b06441-1cdb-477d-abb5-af6c89c523ce.png)
 
-
 ▶ 총 9개의 코스 구현 : 메인 화면의 여행 코스 둘러보기에 소개된 리스트를 선택할 시 해당 코스 화면으로 넘어감. 코스 주행을 시작하면 실시간으로 여행자의 위치정보가 GPS로 기록되며 해당 거점에서의 방문 인증을 스탬프 QR 코드를 통해 할 수 있다. 
 
+![image](https://user-images.githubusercontent.com/77048218/222998399-dee85429-3f98-4e12-a619-e80cf33846f6.png)
+![image](https://user-images.githubusercontent.com/77048218/222998477-b75a263b-c60b-45fd-a57a-50103182d77f.png)
+![image](https://user-images.githubusercontent.com/77048218/222998534-70964407-6eb5-4d99-a779-58f209aa4308.png)
 
 
 
