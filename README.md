@@ -60,5 +60,6 @@ A new Flutter project.
 ![image](https://user-images.githubusercontent.com/77048218/222998912-feafd303-4d57-4b0e-bba0-5d50b902f376.png)
 ![image](https://user-images.githubusercontent.com/77048218/222998984-84536625-77a9-4873-8e5a-4eebb9cce0b8.png)
 
+▶ 여행자들의 후기 : 후기 작성 탭에서 장소, 텍스트, 사진, 평점을 입력하고 작성 완료 버튼을 누르면 후기 리스트에 등록이 된다.
 
-
+![image](https://user-images.githubusercontent.com/77048218/222999305-a2f7f816-c372-4db7-acbc-dcede9640e31.png)
