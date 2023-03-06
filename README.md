@@ -11,9 +11,13 @@ A new Flutter project.
 2. 오픈소스 사용 내역
 
 ▶ 안드로이드 스튜디오 (플러터 프레임워크(Dart))
+
 ▶ 파이참 (장고 프레임워크(Python))
+
 ▶ 피그마(Figma)
+
 ▶ MariaDB
+
 ▶ imgbb(이미지 저장소)
 
 3. 프로젝트 목적
