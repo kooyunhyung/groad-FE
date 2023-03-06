@@ -28,23 +28,24 @@ A new Flutter project.
 
 ▶ 인트로 화면 : 어플 로고와 캐릭터를 띄워주며 3초간 보여주게 됨.
 
-![image](https://user-images.githubusercontent.com/77048218/222997529-d19ab207-cead-48f9-be63-220b1017245c.png)
+![image](https://user-images.githubusercontent.com/77048218/222997865-4f14edee-7ca5-45d4-99da-4b60915443bb.png)
+
 
 ▶ 메인 화면 : 공지 배너창(포스터, 날씨 알림창), 여행 코스 둘러보기, 코스 주변 포토스팟&카페 리스트, 코스 주변 맛집&숙소 리스트, 여행자들의 후기 리스트 등 목록 나열
 
-![image](https://user-images.githubusercontent.com/77048218/222997623-29532255-29f5-4558-932b-054619a8cd80.png)
+
 
 ▶ 메뉴 리스트: (로그인 전) 여행 정보, 여행 도우미, 자주 묻는 질문, 이용 약관, (로그인 후) 이벤트, 문의하기, 설정, 로그아웃 목록 추가 
 
-![image](https://user-images.githubusercontent.com/77048218/222997738-3d450c06-ab03-4727-b0e3-156ba645c836.png)
+
 
 ▶ 회원가입&로그인 창: 회원 가입, 로그인 정보들은 모두 DB에 저장 후 서버를 통해 불러와 기능 작동함.
 
-![image](https://user-images.githubusercontent.com/77048218/222997758-c2a79836-0671-4a0c-97a7-4edc36fa8ed9.png)
+
 
 ▶ 총 9개의 코스 구현 : 메인 화면의 여행 코스 둘러보기에 소개된 리스트를 선택할 시 해당 코스 화면으로 넘어감. 코스 주행을 시작하면 실시간으로 여행자의 위치정보가 GPS로 기록되며 해당 거점에서의 방문 인증을 스탬프 QR 코드를 통해 할 수 있다. 
 
-![image](https://user-images.githubusercontent.com/77048218/222997797-9d59ed38-152c-4cf0-9f40-17dcd9ed086a.png)
+
 
 
 
