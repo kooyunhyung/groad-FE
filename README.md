@@ -23,8 +23,10 @@ A new Flutter project.
 4. 프로젝트 어플 화면 설명서
 
 ▶ 인트로 화면 : 어플 로고와 캐릭터를 띄워주며 3초간 보여주게 됨.
+
 ![image](https://user-images.githubusercontent.com/77048218/222997529-d19ab207-cead-48f9-be63-220b1017245c.png)
 
 ▶ 메인 화면 : 공지 배너창(포스터, 날씨 알림창), 여행 코스 둘러보기, 코스 주변 포토스팟&카페 리스트, 코스 주변 맛집&숙소 리스트, 여행자들의 후기 리스트 등 목록 나열
+
 ![image](https://user-images.githubusercontent.com/77048218/222997623-29532255-29f5-4558-932b-054619a8cd80.png)
 
