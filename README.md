@@ -63,3 +63,12 @@ A new Flutter project.
 ▶ 여행자들의 후기 : 후기 작성 탭에서 장소, 텍스트, 사진, 평점을 입력하고 작성 완료 버튼을 누르면 후기 리스트에 등록이 된다.
 
 ![image](https://user-images.githubusercontent.com/77048218/222999305-a2f7f816-c372-4db7-acbc-dcede9640e31.png)
+
+▶ FAQ & 문의하기 : 자주 묻는 질문 사항들과 여행객들이 문의 사항을 접수할 수 있도록 하였다.
+
+![image](https://user-images.githubusercontent.com/77048218/222999430-1b26ddcd-09bc-443f-8ca4-6edffe6ec1a3.png)
+
+▶ 설정 : 지도 종류, 테마 색상 종류를 선택하는 페이지
+
+![image](https://user-images.githubusercontent.com/77048218/222999479-335d424a-8f79-49f4-8f48-42d2d80e5d7d.png)
+![image](https://user-images.githubusercontent.com/77048218/222999568-631aa214-8f1d-42ef-999c-102f6dbb7f33.png)
