@@ -28,11 +28,11 @@ A new Flutter project.
 
 ▶ 인트로 화면 : 어플 로고와 캐릭터를 띄워주며 3초간 보여주게 됨.
 
-![image](https://user-images.githubusercontent.com/77048218/222997865-4f14edee-7ca5-45d4-99da-4b60915443bb.png)
-
+![image](https://user-images.githubusercontent.com/77048218/222997914-32de434f-4f9c-49a3-a2b0-ef3a697854db.png)
 
 ▶ 메인 화면 : 공지 배너창(포스터, 날씨 알림창), 여행 코스 둘러보기, 코스 주변 포토스팟&카페 리스트, 코스 주변 맛집&숙소 리스트, 여행자들의 후기 리스트 등 목록 나열
 
+![image](https://user-images.githubusercontent.com/77048218/222997935-3932bf12-fe0c-4f72-b7f2-79ff2004f4f2.png)
 
 
 ▶ 메뉴 리스트: (로그인 전) 여행 정보, 여행 도우미, 자주 묻는 질문, 이용 약관, (로그인 후) 이벤트, 문의하기, 설정, 로그아웃 목록 추가 
