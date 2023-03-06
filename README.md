@@ -79,5 +79,7 @@ A new Flutter project.
 
 ▶ 이렇게 기존의 부실했던 앱이 가질 수 있는 디자인과 기능, 제도면에서 관광객들을 적극 참여할 수 있도록 코스 완주 포인트 지급 기능과 다양한 디자인 설정 기능들을 추가하여 문제점을 보완하였다. 다음과 같이 코스를 완주하였을 때 지급받은 포인트가 적립되는 것을 통해 이후 다양한 이벤트 혜택을 받을 수 있다.
 
-![image](https://user-images.githubusercontent.com/77048218/223000003-bcad5406-d97f-4f99-9962-694aec130bcb.png)
+![image](https://user-images.githubusercontent.com/77048218/223000069-0d92f9e0-2d3b-41ce-ad76-6d747b91bef8.png)
+![image](https://user-images.githubusercontent.com/77048218/223000081-b8db239a-71fa-40b1-afc8-5bb6acb1394a.png)
+
 
