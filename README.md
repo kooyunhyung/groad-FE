@@ -51,6 +51,9 @@ A new Flutter project.
 ![image](https://user-images.githubusercontent.com/77048218/222998477-b75a263b-c60b-45fd-a57a-50103182d77f.png)
 ![image](https://user-images.githubusercontent.com/77048218/222998534-70964407-6eb5-4d99-a779-58f209aa4308.png)
 
+▶ 여행 정보: 9개의 코스를 종류별로 나눈 정보를 제공해준다.
+
+![image](https://user-images.githubusercontent.com/77048218/222998725-09c125ac-5874-4662-8402-df55ec85e40d.png)
 
 
 
