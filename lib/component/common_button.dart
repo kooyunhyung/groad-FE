@@ -54,7 +54,7 @@ class CommonButton extends StatelessWidget {
           : null,
       child: Container(
         alignment: Alignment.center,
-        padding: padding,//EdgeInsets.symmetric(horizontal: 165, vertical: 24),
+        padding: padding,
         margin: margin,
         width: MediaQuery.of(context).size.width * 0.9,
         height: 82,

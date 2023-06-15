@@ -160,7 +160,7 @@ class _LodgingPositionState extends State<LodgingPosition> {
             Padding(
               padding: const EdgeInsets.only(left: 24.0),
               child: Text(
-                '카페 정보',
+                '숙소 정보',
                 style: TextStyle(
                   color: widget.themeColor == 0
                       ? Color(ThemeColors.deepNavy)

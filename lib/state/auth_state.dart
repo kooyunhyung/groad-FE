@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../api/user_api.dart';
-import '../models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthState extends ChangeNotifier {
@@ -9,7 +8,6 @@ class AuthState extends ChangeNotifier {
   String get token => _token;
   String get username => _username;
   String get password => _password;
-  User get me => _user;
   bool get firstInit => _firstInit;
   bool get savePassword => _savePassword;
   bool get saveUsername => _saveUsername;
@@ -20,8 +18,6 @@ class AuthState extends ChangeNotifier {
   bool _firstInit;
   bool _savePassword = false;
   bool _saveUsername = false;
-
-  User _user;
 
 
   // 이게 뭔지 잘모르겠음..

@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:gload_app/api/user_api.dart';
 import 'package:gload_app/component/dialog/error_dialog.dart';
 import 'package:gload_app/component/dialog/notify_dialog.dart';
-import 'package:gload_app/models/user.dart';
 import 'package:gload_app/page/Menu_screens/Login_Info/LoginPage.dart';
 
 import '../../../component/common_button.dart';

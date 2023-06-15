@@ -5,8 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gload_app/api/user_api.dart';
-import 'package:gload_app/constant/theme.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import '/component/dialog/error_dialog.dart';
@@ -63,7 +61,6 @@ class _IntroPageState extends State<IntroPage> {
       await context.read<AuthState>().checkFirstLaunch();           // ??
 
       await Future.wait([
-        //context.read<AuthState>().autoLogin(context),
         Future.delayed(Duration(seconds: 3))
       ]);
 
@@ -90,12 +87,6 @@ class _IntroPageState extends State<IntroPage> {
         ),
       );
 
-      // else {
-      //   if (Platform.isIOS) {
-      //     exit(0);
-      //   }
-      //   SystemNavigator.pop();
-      // }
     } catch (e, s) {
       print(e);
       print(s);

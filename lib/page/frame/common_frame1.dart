@@ -574,10 +574,6 @@ class _CommonFrame1State extends State<CommonFrame1> {
                         ? ThemeColors.deepGreen
                         : ThemeColors.deepOrange),
           ),
-          // actions: [
-          //   IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          //   IconButton(onPressed: () {}, icon: Icon(Icons.menu))
-          // ],
         ),
       ),
       //앱 바
