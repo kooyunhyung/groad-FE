@@ -42,7 +42,7 @@ class _LodgingListState extends State<LodgingList> {
           MaterialPageRoute(
               builder: (context) => CommonFrame2(
                   themeColor: widget.themeColor,
-                  title: '카페 정보',
+                  title: '숙소 정보',
                   clas: LodgingPosition(
                     lodgingName: widget.lodgingInfo['gll_name'],
                     lodgingImage: widget.lodgingInfo['gll_main_image'],

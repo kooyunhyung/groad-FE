@@ -52,7 +52,7 @@ class _RestaurantPositionState extends State<RestaurantPosition> {
         : MapType.Hybrid;
 
     Marker marker = Marker(
-      markerId: "231",
+      markerId: "E1E43D4C7E41CF5C1F32CEB2B5CA66C60EED68F1CA7F96A5151B190C507E0F39",
       position: LatLng(widget.restaurantLat, widget.restaurantLng),
       captionText: widget.restaurantName,
       captionColor: widget.themeColor == 0

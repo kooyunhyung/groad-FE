@@ -42,7 +42,7 @@ class _RestaurantListState extends State<RestaurantList> {
           MaterialPageRoute(
               builder: (context) => CommonFrame2(
                   themeColor: widget.themeColor,
-                  title: '카페 정보',
+                  title: '맛집 정보',
                   clas: RestaurantPosition(
                     restaurantName: widget.restaurantInfo['grl_name'],
                     restaurantImage: widget.restaurantInfo['grl_main_image'],

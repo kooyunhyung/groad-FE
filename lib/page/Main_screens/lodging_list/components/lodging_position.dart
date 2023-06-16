@@ -56,7 +56,7 @@ class _LodgingPositionState extends State<LodgingPosition> {
         : MapType.Hybrid;
 
     Marker marker = Marker(
-      markerId: "231",
+      markerId: "6FB2183449B983B1006E926BFBA5B5957D51FF29A65ABC8FF0ED03695E777BE1",
       position: LatLng(widget.lodgingLat, widget.lodgingLng),
       captionText: widget.lodgingName,
       captionColor: widget.themeColor == 0

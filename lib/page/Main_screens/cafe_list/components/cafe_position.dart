@@ -59,7 +59,7 @@ class _CafePositionState extends State<CafePosition> {
             : MapType.Hybrid;
 
     Marker marker = Marker(
-      markerId: "231",
+      markerId: "80E747E67143601B7B59D81D850E77780933B4F77B1AFCEE994A230D489B7A87",
       position: LatLng(widget.cafeLat, widget.cafeLng),
       captionText: widget.cafeName,
       captionColor: widget.themeColor == 0

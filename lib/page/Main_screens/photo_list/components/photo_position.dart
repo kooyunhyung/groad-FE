@@ -50,7 +50,7 @@ class _PhotoPositionState extends State<PhotoPosition> {
         : MapType.Hybrid;
 
     Marker marker = Marker(
-      markerId: "231",
+      markerId: "03C95A665720024FE6F765BFB831870630219E56F5AB6D96B04CD348A72A9EB7",
       position: LatLng(widget.photoLat, widget.photoLng),
       captionText: widget.photoName,
       captionColor: widget.themeColor == 0
