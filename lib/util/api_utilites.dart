@@ -7,7 +7,7 @@ class APIConfig {
   APIConfig(this.host, {this.version});
 }
 
-final host = APIConfig('http://210.115.229.254', version: 1);
+final host = APIConfig('http://{HOST_IP_ADDRESS}', version: 1);
 
 
 String getQueryString(Map params,
